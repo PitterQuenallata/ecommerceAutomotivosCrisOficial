@@ -6,13 +6,13 @@
       <div class="header__topbar--inner d-flex align-items-center justify-content-between">
         <ul class="header__topbar--info d-none d-lg-flex">
           <li class="header__info--list">
-            <a class="header__info--link" href="shop.html">REPUESTOS</a>
+            <a class="header__info--link" href="repuestos">REPUESTOS</a>
           </li>
           <li class="header__info--list">
-            <a class="header__info--link" href="shop.html">ENVIOS</a>
+            <a class="header__info--link" href="envios">ENVIOS</a>
           </li>
           <li class="header__info--list">
-            <a class="header__info--link" href="privacy-policy.html">GARANTIA</a>
+            <a class="header__info--link" href="privacy-policy">GARANTIA</a>
           </li>
           <li class="header__info--list">
             <a class="header__info--link" href="mailto:info@example.com">
@@ -313,11 +313,11 @@
                   <a class="header__menu--link text-white" href="about">Sobre Nosotros</a>
                 </li>
                 <li class="header__menu--items">
-                  <a class="header__menu--link text-white" href="about">Politicas de privacidad</a>
+                  <a class="header__menu--link text-white" href="privacy-policy">Politicas de privacidad</a>
                 </li>
                 
                 <li class="header__menu--items">
-                  <a class="header__menu--link text-white" href="contact">Contactos </a>
+                  <a class="header__menu--link text-white" href="contactos">Contactos </a>
                 </li>
               </ul>
             </nav>

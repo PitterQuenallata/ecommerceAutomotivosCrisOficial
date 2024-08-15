@@ -43,10 +43,7 @@ foreach ($routesArray as $key => $value) {
 
 // Lista blanca de rutas
 $pages = array(
-    "home", "product", "cart", "profile", "checkout",
-    "admin", "dashboard", "login", "logout",
-    "marcas", "modelos", "motores", "categorias",
-    "repuestos", "repuestosCards", "clientes", "carrito"
+    "home","categorias","repuestos","profile","wishlist","contactos","about","privacy-policy"
 );
 
 // Verificación de permisos y rutas

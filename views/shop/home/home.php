@@ -15,11 +15,11 @@
                             </div>
 
                         </div>
-                        <form class="search__filter--form" id="formFiltrosRepuestos" method="GET" action="categorias" >
-                        <input type="hidden" id="listaFiltros" name="listaFiltros" value="">
+                        <form class="search__filter--form" id="formFiltrosRepuestos" method="GET" action="categorias">
+                            <input type="hidden" id="listaFiltros" name="listaFiltros" value="">
                             <div class="search__filter--select select">
                                 <select class="search__filter--select__field" id="filtroMarca" name="idMarca">
-                                    <option value="" selected disabled >Seleccione una Marca</option>
+                                    <option value="" selected disabled>Seleccione una Marca</option>
                                     <?php
                                     $marcas = ControladorRepuestosCards::ctrMostrarMarcas();
                                     foreach ($marcas as $marca) {
@@ -30,14 +30,14 @@
                             </div>
                             <div class="search__filter--select select">
                                 <select class="search__filter--select__field" id="filtroModelo" name="idModelo">
-                                <option value="" selected disabled>Seleccione un Modelo</option>
-                                <!-- Opciones generadas dinámicamente -->
+                                    <option value="" selected disabled>Seleccione un Modelo</option>
+                                    <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
                             <div class="search__filter--select select">
                                 <select class="search__filter--select__field" id="filtroMotor" name="idMotor">
-                                <option value="" selected disabled>Seleccione un Motor</option>
-                                <!-- Opciones generadas dinámicamente -->
+                                    <option value="" selected disabled>Seleccione un Motor</option>
+                                    <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
                             <button class="search__filter--btn primary__btn" type="submit">Search</button>
@@ -69,7 +69,7 @@
                             <div class="swiper-slide ">
                                 <div class="hero__slider--items__style2 home2-slider1-bg">
                                     <div class="slider__content style2">
-                                    <span class="slider__subtitle text__secondary">Lo mejor de lo mejor</span>
+                                        <span class="slider__subtitle text__secondary">Lo mejor de lo mejor</span>
                                         <h2 class="slider__maintitle--style2 h1">AUTOMOTIVOS CRIS <br> TIENDA DE AUTOPARTES</h2>
                                         <p class="slider__desc text__secondary">De lo mas bajo - A los mas Caro</p>
                                         <a class="primary__btn slider__btn" href="repuestos">
@@ -87,7 +87,7 @@
                             <div class="swiper-slide ">
                                 <div class="hero__slider--items__style2 home2-slider1-bg">
                                     <div class="slider__content style2">
-                                    <span class="slider__subtitle text__secondary">Lo mejor de lo mejor</span>
+                                        <span class="slider__subtitle text__secondary">Lo mejor de lo mejor</span>
                                         <h2 class="slider__maintitle--style2 h1">AUTOMOTIVOS CRIS <br> TIENDA DE AUTOPARTES</h2>
                                         <p class="slider__desc text__secondary">De lo mas bajo - A los mas Caro</p>
                                         <a class="primary__btn slider__btn" href="repuestos">

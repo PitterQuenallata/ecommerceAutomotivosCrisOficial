@@ -22,11 +22,14 @@ if (empty($routesArray[0])) {
   include "views/shop/home/home.php";
 } elseif (
   $routesArray[0] == "home" ||
+  $routesArray[0] == "contactos" ||
   $routesArray[0] == "categorias" ||
   $routesArray[0] == "repuestos" ||
-  $routesArray[0] == "cart" ||
   $routesArray[0] == "profile" ||
-  $routesArray[0] == "wishlist"
+  $routesArray[0] == "wishlist" ||
+  $routesArray[0] == "about" ||
+  $routesArray[0] == "privacy-policy"
+
 ) {
 
   include "views/shop/" . $routesArray[0] . "/" . $routesArray[0] . ".php";
