@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-08-2024 a las 12:30:01
+-- Tiempo de generación: 15-08-2024 a las 14:12:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `carritos` (
   `id_carrito` int(11) NOT NULL,
   `id_cliente` int(11) DEFAULT NULL,
-  `id_producto` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `precio_unitario` decimal(10,2) DEFAULT NULL,
-  `fecha_agregado` timestamp NOT NULL DEFAULT current_timestamp()
+  `id_repuesto` int(11) DEFAULT NULL,
+  `cantidad_carrito` int(11) DEFAULT NULL,
+  `precio_unitario_carrito` decimal(10,2) DEFAULT NULL,
+  `fecha_agregado_carrito` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -55,15 +55,15 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `img_categoria`, `date_created_categoria`, `date_updated_categoria`) VALUES
-(1, 'filtros', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(2, 'frenos', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(3, 'motor', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(4, 'suspension', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(5, 'amortiguadores', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(6, 'bujias', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(7, 'carreras, cadenas, rodillos', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(8, 'embrague', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55'),
-(9, 'rodamientos', '', '2024-06-09 15:36:55', '2024-06-09 15:36:55');
+(1, 'filtros', 'filtros.png', '2024-06-09 15:36:55', '2024-08-13 07:16:18'),
+(2, 'frenos', 'frenos.png', '2024-06-09 15:36:55', '2024-08-13 07:16:30'),
+(3, 'motor', 'motores.png', '2024-06-09 15:36:55', '2024-08-13 07:16:41'),
+(4, 'suspension', 'suspension.png', '2024-06-09 15:36:55', '2024-08-13 07:17:05'),
+(5, 'amortiguadores', 'amortiguadores.png', '2024-06-09 15:36:55', '2024-08-13 07:17:19'),
+(6, 'bujias', 'bujias.png', '2024-06-09 15:36:55', '2024-08-13 07:18:48'),
+(7, 'carreras, cadenas, rodillos', 'correas.png', '2024-06-09 15:36:55', '2024-08-13 07:19:04'),
+(8, 'embrague', 'embreagues.png', '2024-06-09 15:36:55', '2024-08-13 07:19:41'),
+(9, 'rodamientos', 'rodamientos.png', '2024-06-09 15:36:55', '2024-08-13 07:20:49');
 
 -- --------------------------------------------------------
 
@@ -675,78 +675,78 @@ CREATE TABLE `repuestos` (
 --
 
 INSERT INTO `repuestos` (`id_repuesto`, `id_categoria`, `nombre_repuesto`, `descripcion_repuesto`, `oem_repuesto`, `codigo_tienda_repuesto`, `img_repuesto`, `stock_repuesto`, `precio_repuesto`, `precio_compra`, `marca_repuesto`, `venta_repuesto`, `estado_repuesto`, `date_created_repuesto`, `date_updated_repuesto`) VALUES
-(1, 1, 'Filtro de Aire Toyota Corolla', 'Filtro de Aire Toyota Corolla adecuado para modelos específicos.', 'OEM85224', '1000', 'views/dist/images/repuestos/suspension.png', 435, 193.43, 154.74, 'MarcaZ', 167, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(2, 1, 'Filtro de Aceite Nissan Sentra', 'Filtro de Aceite Nissan Sentra adecuado para modelos específicos.', 'OEM82305', '1001', 'views/dist/images/repuestos/suspension.png', 293, 87.17, 69.74, 'MarcaZ', 86, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(3, 1, 'Filtro de Combustible Ford Ranger', 'Filtro de Combustible Ford Ranger adecuado para modelos específicos.', 'OEM65162', '1002', 'views/dist/images/repuestos/suspension.png', 420, 61.22, 48.98, 'MarcaY', 39, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(4, 1, 'Filtro de Cabina Hyundai Tucson', 'Filtro de Cabina Hyundai Tucson adecuado para modelos específicos.', 'OEM48916', '1003', 'views/dist/images/repuestos/suspension.png', 384, 60.19, 48.15, 'MarcaX', 97, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(5, 1, 'Filtro de Transmisión Kia Sportage', 'Filtro de Transmisión Kia Sportage adecuado para modelos específicos.', 'OEM63002', '1004', 'views/dist/images/repuestos/suspension.png', 458, 142.73, 114.18, 'MarcaX', 88, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(6, 1, 'Filtro de Aceite Renault Duster', 'Filtro de Aceite Renault Duster adecuado para modelos específicos.', 'OEM54263', '1005', 'views/dist/images/repuestos/suspension.png', 307, 145.44, 116.35, 'MarcaZ', 76, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(7, 1, 'Filtro de Combustible Chevrolet Aveo', 'Filtro de Combustible Chevrolet Aveo adecuado para modelos específicos.', 'OEM44282', '1006', 'views/dist/images/repuestos/suspension.png', 224, 162.41, 129.93, 'MarcaX', 158, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(8, 1, 'Filtro de Aire Mazda CX-5', 'Filtro de Aire Mazda CX-5 adecuado para modelos específicos.', 'OEM31932', '1007', 'views/dist/images/repuestos/suspension.png', 208, 100.16, 80.13, 'MarcaY', 200, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(9, 2, 'Bujía NGK LFR5A-11', 'Bujía NGK LFR5A-11 adecuado para modelos específicos.', 'OEM91761', '1008', 'views/dist/images/repuestos/suspension.png', 383, 151.76, 121.41, 'MarcaX', 93, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(10, 2, 'Bobina de Encendido Bosch 0221504470', 'Bobina de Encendido Bosch 0221504470 adecuado para modelos específicos.', 'OEM82820', '1009', 'views/dist/images/repuestos/suspension.png', 386, 151.69, 121.35, 'MarcaX', 11, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(11, 2, 'Cable de Bujía Denso', 'Cable de Bujía Denso adecuado para modelos específicos.', 'OEM66971', '1010', 'views/dist/images/repuestos/suspension.png', 356, 135.23, 108.18, 'MarcaY', 18, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(12, 2, 'Inyector de Combustible Bosch', 'Inyector de Combustible Bosch adecuado para modelos específicos.', 'OEM60061', '1011', 'views/dist/images/repuestos/suspension.png', 113, 125.77, 100.62, 'MarcaY', 148, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(13, 2, 'Sensor de Oxígeno Denso', 'Sensor de Oxígeno Denso adecuado para modelos específicos.', 'OEM34605', '1012', 'views/dist/images/repuestos/suspension.png', 420, 166.16, 132.93, 'MarcaY', 179, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(14, 2, 'Bujía NGK IZFR6K-11S', 'Bujía NGK IZFR6K-11S adecuado para modelos específicos.', 'OEM72118', '1013', 'views/dist/images/repuestos/suspension.png', 430, 47.29, 37.83, 'MarcaY', 110, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(15, 2, 'Bobina de Encendido Delphi GN10241', 'Bobina de Encendido Delphi GN10241 adecuado para modelos específicos.', 'OEM75156', '1014', 'views/dist/images/repuestos/suspension.png', 427, 171.43, 137.14, 'MarcaZ', 82, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(16, 2, 'Inyector Siemens Deka', 'Inyector Siemens Deka adecuado para modelos específicos.', 'OEM88086', '1015', 'views/dist/images/repuestos/suspension.png', 243, 143.51, 114.81, 'MarcaY', 118, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(17, 3, 'Pastillas de Freno Brembo P06028', 'Pastillas de Freno Brembo P06028 adecuado para modelos específicos.', 'OEM79031', '1016', 'views/dist/images/repuestos/suspension.png', 175, 168.59, 134.87, 'MarcaY', 151, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(18, 3, 'Disco de Freno ATE PowerDisc', 'Disco de Freno ATE PowerDisc adecuado para modelos específicos.', 'OEM62683', '1017', 'views/dist/images/repuestos/suspension.png', 272, 185.92, 148.74, 'MarcaX', 143, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(19, 3, 'Caliper de Freno TRW', 'Caliper de Freno TRW adecuado para modelos específicos.', 'OEM82413', '1018', 'views/dist/images/repuestos/suspension.png', 220, 88.54, 70.83, 'MarcaX', 142, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(20, 3, 'Tambor de Freno Brembo', 'Tambor de Freno Brembo adecuado para modelos específicos.', 'OEM64510', '1019', 'views/dist/images/repuestos/suspension.png', 349, 123.03, 98.42, 'MarcaY', 147, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(21, 3, 'Sensor ABS Bosch', 'Sensor ABS Bosch adecuado para modelos específicos.', 'OEM45508', '1020', 'views/dist/images/repuestos/suspension.png', 301, 182.14, 145.71, 'MarcaY', 147, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(22, 3, 'Pastillas de Freno Bosch BP976', 'Pastillas de Freno Bosch BP976 adecuado para modelos específicos.', 'OEM10299', '1021', 'views/dist/images/repuestos/suspension.png', 364, 164.11, 131.29, 'MarcaX', 53, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(23, 3, 'Disco de Freno TRW DF2802', 'Disco de Freno TRW DF2802 adecuado para modelos específicos.', 'OEM96035', '1022', 'views/dist/images/repuestos/suspension.png', 135, 28.99, 23.19, 'MarcaZ', 38, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(24, 3, 'Caliper de Freno ACDelco', 'Caliper de Freno ACDelco adecuado para modelos específicos.', 'OEM72531', '1023', 'views/dist/images/repuestos/suspension.png', 464, 163.75, 131.00, 'MarcaY', 47, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(25, 4, 'Amortiguador KYB Excel-G', 'Amortiguador KYB Excel-G adecuado para modelos específicos.', 'OEM82003', '1024', 'views/dist/images/repuestos/suspension.png', 361, 131.29, 105.03, 'MarcaY', 57, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(26, 4, 'Muelles de Suspensión Eibach', 'Muelles de Suspensión Eibach adecuado para modelos específicos.', 'OEM49816', '1025', 'views/dist/images/repuestos/suspension.png', 423, 199.80, 159.84, 'MarcaZ', 130, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(27, 4, 'Barra Estabilizadora Moog', 'Barra Estabilizadora Moog adecuado para modelos específicos.', 'OEM57477', '1026', 'views/dist/images/repuestos/suspension.png', 457, 142.63, 114.10, 'MarcaY', 180, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(28, 4, 'Bujes de Suspensión Febi Bilstein', 'Bujes de Suspensión Febi Bilstein adecuado para modelos específicos.', 'OEM74210', '1027', 'views/dist/images/repuestos/suspension.png', 86, 25.36, 20.29, 'MarcaZ', 90, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(29, 4, 'Resorte de Suspensión Lesjofors', 'Resorte de Suspensión Lesjofors adecuado para modelos específicos.', 'OEM83363', '1028', 'views/dist/images/repuestos/suspension.png', 352, 154.15, 123.32, 'MarcaY', 45, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(30, 4, 'Amortiguador Bilstein B6', 'Amortiguador Bilstein B6 adecuado para modelos específicos.', 'OEM96598', '1029', 'views/dist/images/repuestos/suspension.png', 268, 129.82, 103.86, 'MarcaX', 63, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(31, 4, 'Muelles de Suspensión H&R', 'Muelles de Suspensión H&R adecuado para modelos específicos.', 'OEM73198', '1030', 'views/dist/images/repuestos/suspension.png', 419, 56.50, 45.20, 'MarcaX', 21, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(32, 4, 'Barra Estabilizadora Meyle', 'Barra Estabilizadora Meyle adecuado para modelos específicos.', 'OEM87876', '1031', 'views/dist/images/repuestos/suspension.png', 124, 41.98, 33.58, 'MarcaZ', 35, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(33, 5, 'Correa de Distribución Continental CTAM', 'Correa de Distribución Continental CTAM adecuado para modelos específicos.', 'OEM11812', '1032', 'views/dist/images/repuestos/suspension.png', 99, 55.75, 44.60, 'MarcaY', 61, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(34, 5, 'Correa de Accesorios Gates', 'Correa de Accesorios Gates adecuado para modelos específicos.', 'OEM62266', '1033', 'views/dist/images/repuestos/suspension.png', 419, 89.23, 71.38, 'MarcaY', 170, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(35, 5, 'Tensor de Correa SKF', 'Tensor de Correa SKF adecuado para modelos específicos.', 'OEM94067', '1034', 'views/dist/images/repuestos/suspension.png', 260, 186.40, 149.12, 'MarcaZ', 29, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(36, 5, 'Polea de Correa INA', 'Polea de Correa INA adecuado para modelos específicos.', 'OEM58682', '1035', 'views/dist/images/repuestos/suspension.png', 333, 133.51, 106.81, 'MarcaY', 161, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(37, 5, 'Kit de Correas Dayco', 'Kit de Correas Dayco adecuado para modelos específicos.', 'OEM76935', '1036', 'views/dist/images/repuestos/suspension.png', 412, 107.69, 86.15, 'MarcaY', 187, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(38, 5, 'Correa de Distribución Bosch', 'Correa de Distribución Bosch adecuado para modelos específicos.', 'OEM44201', '1037', 'views/dist/images/repuestos/suspension.png', 312, 48.45, 38.76, 'MarcaY', 199, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(39, 5, 'Correa de Accesorios ContiTech', 'Correa de Accesorios ContiTech adecuado para modelos específicos.', 'OEM97202', '1038', 'views/dist/images/repuestos/suspension.png', 67, 137.89, 110.31, 'MarcaX', 148, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(40, 5, 'Polea de Correa Gates', 'Polea de Correa Gates adecuado para modelos específicos.', 'OEM56692', '1039', 'views/dist/images/repuestos/suspension.png', 88, 139.23, 111.38, 'MarcaX', 153, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(41, 6, 'Radiador Denso', 'Radiador Denso adecuado para modelos específicos.', 'OEM54380', '1040', 'views/dist/images/repuestos/suspension.png', 327, 197.14, 157.71, 'MarcaY', 10, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(42, 6, 'Termostato Wahler', 'Termostato Wahler adecuado para modelos específicos.', 'OEM53911', '1041', 'views/dist/images/repuestos/suspension.png', 124, 149.28, 119.42, 'MarcaZ', 172, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(43, 6, 'Bomba de Agua Aisin', 'Bomba de Agua Aisin adecuado para modelos específicos.', 'OEM72699', '1042', 'views/dist/images/repuestos/suspension.png', 286, 154.34, 123.47, 'MarcaX', 58, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(44, 6, 'Ventilador de Radiador Valeo', 'Ventilador de Radiador Valeo adecuado para modelos específicos.', 'OEM82215', '1043', 'views/dist/images/repuestos/suspension.png', 383, 198.78, 159.02, 'MarcaY', 60, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(45, 6, 'Manguera de Radiador Gates', 'Manguera de Radiador Gates adecuado para modelos específicos.', 'OEM82562', '1044', 'views/dist/images/repuestos/suspension.png', 337, 165.97, 132.78, 'MarcaZ', 75, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(46, 6, 'Radiador Nissens', 'Radiador Nissens adecuado para modelos específicos.', 'OEM21693', '1045', 'views/dist/images/repuestos/suspension.png', 394, 52.23, 41.78, 'MarcaZ', 51, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(47, 6, 'Termostato Behr', 'Termostato Behr adecuado para modelos específicos.', 'OEM42174', '1046', 'views/dist/images/repuestos/suspension.png', 368, 62.34, 49.87, 'MarcaX', 109, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(48, 6, 'Bomba de Agua Graf', 'Bomba de Agua Graf adecuado para modelos específicos.', 'OEM68212', '1047', 'views/dist/images/repuestos/suspension.png', 467, 22.47, 17.98, 'MarcaY', 51, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(49, 7, 'Embrague LUK', 'Embrague LUK adecuado para modelos específicos.', 'OEM15378', '1048', 'views/dist/images/repuestos/suspension.png', 71, 198.92, 159.14, 'MarcaZ', 125, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(50, 7, 'Disco de Embrague Sachs', 'Disco de Embrague Sachs adecuado para modelos específicos.', 'OEM53782', '1049', 'views/dist/images/repuestos/suspension.png', 298, 158.88, 127.10, 'MarcaZ', 167, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(51, 7, 'Plato de Presión Valeo', 'Plato de Presión Valeo adecuado para modelos específicos.', 'OEM87688', '1050', 'views/dist/images/repuestos/suspension.png', 130, 174.05, 139.24, 'MarcaX', 159, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(52, 7, 'Rodamiento de Embrague SKF', 'Rodamiento de Embrague SKF adecuado para modelos específicos.', 'OEM82861', '1051', 'views/dist/images/repuestos/suspension.png', 390, 94.58, 75.66, 'MarcaX', 71, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(53, 7, 'Cilindro Maestro de Embrague Aisin', 'Cilindro Maestro de Embrague Aisin adecuado para modelos específicos.', 'OEM40331', '1052', 'views/dist/images/repuestos/suspension.png', 456, 26.14, 20.91, 'MarcaX', 81, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(54, 7, 'Embrague Exedy', 'Embrague Exedy adecuado para modelos específicos.', 'OEM36867', '1053', 'views/dist/images/repuestos/suspension.png', 58, 25.89, 20.71, 'MarcaX', 100, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(55, 7, 'Disco de Embrague Aisin', 'Disco de Embrague Aisin adecuado para modelos específicos.', 'OEM41067', '1054', 'views/dist/images/repuestos/suspension.png', 346, 125.10, 100.08, 'MarcaX', 80, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(56, 7, 'Plato de Presión Sachs', 'Plato de Presión Sachs adecuado para modelos específicos.', 'OEM20686', '1055', 'views/dist/images/repuestos/suspension.png', 452, 173.57, 138.86, 'MarcaY', 172, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(57, 8, 'Batería Bosch S4', 'Batería Bosch S4 adecuado para modelos específicos.', 'OEM47503', '1056', 'views/dist/images/repuestos/suspension.png', 298, 148.80, 119.04, 'MarcaX', 31, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(58, 8, 'Alternador Denso', 'Alternador Denso adecuado para modelos específicos.', 'OEM92236', '1057', 'views/dist/images/repuestos/suspension.png', 129, 46.13, 36.90, 'MarcaY', 180, 1, '2024-08-11 14:17:10', '2024-08-11 14:17:10'),
-(59, 8, 'Motor de Arranque Valeo', 'Motor de Arranque Valeo adecuado para modelos específicos.', 'OEM38602', '1058', 'views/dist/images/repuestos/suspension.png', 362, 112.89, 90.31, 'MarcaY', 86, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(60, 8, 'Regulador de Voltaje Hella', 'Regulador de Voltaje Hella adecuado para modelos específicos.', 'OEM69650', '1059', 'views/dist/images/repuestos/suspension.png', 222, 69.24, 55.39, 'MarcaY', 98, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(61, 8, 'Cableado Eléctrico NGK', 'Cableado Eléctrico NGK adecuado para modelos específicos.', 'OEM67318', '1060', 'views/dist/images/repuestos/suspension.png', 240, 109.07, 87.26, 'MarcaY', 67, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(62, 8, 'Batería Varta Blue Dynamic', 'Batería Varta Blue Dynamic adecuado para modelos específicos.', 'OEM11583', '1061', 'views/dist/images/repuestos/suspension.png', 473, 153.46, 122.77, 'MarcaZ', 107, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(63, 8, 'Alternador Bosch', 'Alternador Bosch adecuado para modelos específicos.', 'OEM59902', '1062', 'views/dist/images/repuestos/suspension.png', 50, 193.55, 154.84, 'MarcaY', 192, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(64, 8, 'Motor de Arranque Bosch', 'Motor de Arranque Bosch adecuado para modelos específicos.', 'OEM22471', '1063', 'views/dist/images/repuestos/suspension.png', 146, 199.70, 159.76, 'MarcaY', 88, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(65, 9, 'Faro Delantero Hella', 'Faro Delantero Hella adecuado para modelos específicos.', 'OEM29548', '1064', 'views/dist/images/repuestos/suspension.png', 155, 129.87, 103.90, 'MarcaY', 154, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(66, 9, 'Luz Trasera Magneti Marelli', 'Luz Trasera Magneti Marelli adecuado para modelos específicos.', 'OEM54856', '1065', 'views/dist/images/repuestos/suspension.png', 463, 109.34, 87.47, 'MarcaY', 100, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(67, 9, 'Espejo Lateral TYC', 'Espejo Lateral TYC adecuado para modelos específicos.', 'OEM54959', '1066', 'views/dist/images/repuestos/suspension.png', 184, 133.90, 107.12, 'MarcaZ', 112, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(68, 9, 'Parachoques Delantero KLOKKERHOLM', 'Parachoques Delantero KLOKKERHOLM adecuado para modelos específicos.', 'OEM84535', '1067', 'views/dist/images/repuestos/suspension.png', 193, 160.77, 128.62, 'MarcaY', 12, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(69, 9, 'Parrilla Delantera Johns', 'Parrilla Delantera Johns adecuado para modelos específicos.', 'OEM26797', '1068', 'views/dist/images/repuestos/suspension.png', 396, 99.31, 79.45, 'MarcaZ', 80, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(70, 9, 'Faro Delantero Bosch', 'Faro Delantero Bosch adecuado para modelos específicos.', 'OEM86781', '1069', 'views/dist/images/repuestos/suspension.png', 352, 142.38, 113.90, 'MarcaY', 141, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(71, 9, 'Luz Trasera Valeo', 'Luz Trasera Valeo adecuado para modelos específicos.', 'OEM35995', '1070', 'views/dist/images/repuestos/suspension.png', 83, 73.50, 58.80, 'MarcaZ', 98, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11'),
-(72, 9, 'Espejo Lateral ULO', 'Espejo Lateral ULO adecuado para modelos específicos.', 'OEM91329', '1071', 'views/dist/images/repuestos/suspension.png', 396, 164.08, 131.26, 'MarcaZ', 33, 1, '2024-08-11 14:17:11', '2024-08-11 14:17:11');
+(1, 1, 'Filtro de Aire Toyota Corolla', 'Filtro de Aire Toyota Corolla adecuado para modelos específicos.', 'OEM85224', '1000', 'public/assets/shop/img/repuestos/filtros.png', 435, 193.43, 154.74, 'MarcaZ', 167, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(2, 1, 'Filtro de Aceite Nissan Sentra', 'Filtro de Aceite Nissan Sentra adecuado para modelos específicos.', 'OEM82305', '1001', 'public/assets/shop/img/repuestos/filtros.png', 293, 87.17, 69.74, 'MarcaZ', 86, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(3, 1, 'Filtro de Combustible Ford Ranger', 'Filtro de Combustible Ford Ranger adecuado para modelos específicos.', 'OEM65162', '1002', 'public/assets/shop/img/repuestos/filtros.png', 420, 61.22, 48.98, 'MarcaY', 39, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(4, 1, 'Filtro de Cabina Hyundai Tucson', 'Filtro de Cabina Hyundai Tucson adecuado para modelos específicos.', 'OEM48916', '1003', 'public/assets/shop/img/repuestos/filtros.png', 384, 60.19, 48.15, 'MarcaX', 97, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(5, 1, 'Filtro de Transmisión Kia Sportage', 'Filtro de Transmisión Kia Sportage adecuado para modelos específicos.', 'OEM63002', '1004', 'public/assets/shop/img/repuestos/filtros.png', 458, 142.73, 114.18, 'MarcaX', 88, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(6, 1, 'Filtro de Aceite Renault Duster', 'Filtro de Aceite Renault Duster adecuado para modelos específicos.', 'OEM54263', '1005', 'public/assets/shop/img/repuestos/filtros.png', 307, 145.44, 116.35, 'MarcaZ', 76, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(7, 1, 'Filtro de Combustible Chevrolet Aveo', 'Filtro de Combustible Chevrolet Aveo adecuado para modelos específicos.', 'OEM44282', '1006', 'public/assets/shop/img/repuestos/filtros.png', 224, 162.41, 129.93, 'MarcaX', 158, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(8, 1, 'Filtro de Aire Mazda CX-5', 'Filtro de Aire Mazda CX-5 adecuado para modelos específicos.', 'OEM31932', '1007', 'public/assets/shop/img/repuestos/filtros.png', 208, 100.16, 80.13, 'MarcaY', 200, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(9, 2, 'Bujía NGK LFR5A-11', 'Bujía NGK LFR5A-11 adecuado para modelos específicos.', 'OEM91761', '1008', 'public/assets/shop/img/repuestos/frenos.png', 383, 151.76, 121.41, 'MarcaX', 93, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(10, 2, 'Bobina de Encendido Bosch 0221504470', 'Bobina de Encendido Bosch 0221504470 adecuado para modelos específicos.', 'OEM82820', '1009', 'public/assets/shop/img/repuestos/frenos.png', 386, 151.69, 121.35, 'MarcaX', 11, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(11, 2, 'Cable de Bujía Denso', 'Cable de Bujía Denso adecuado para modelos específicos.', 'OEM66971', '1010', 'public/assets/shop/img/repuestos/frenos.png', 356, 135.23, 108.18, 'MarcaY', 18, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(12, 2, 'Inyector de Combustible Bosch', 'Inyector de Combustible Bosch adecuado para modelos específicos.', 'OEM60061', '1011', 'public/assets/shop/img/repuestos/frenos.png', 113, 125.77, 100.62, 'MarcaY', 148, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(13, 2, 'Sensor de Oxígeno Denso', 'Sensor de Oxígeno Denso adecuado para modelos específicos.', 'OEM34605', '1012', 'public/assets/shop/img/repuestos/frenos.png', 420, 166.16, 132.93, 'MarcaY', 179, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(14, 2, 'Bujía NGK IZFR6K-11S', 'Bujía NGK IZFR6K-11S adecuado para modelos específicos.', 'OEM72118', '1013', 'public/assets/shop/img/repuestos/frenos.png', 430, 47.29, 37.83, 'MarcaY', 110, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(15, 2, 'Bobina de Encendido Delphi GN10241', 'Bobina de Encendido Delphi GN10241 adecuado para modelos específicos.', 'OEM75156', '1014', 'public/assets/shop/img/repuestos/frenos.png', 427, 171.43, 137.14, 'MarcaZ', 82, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(16, 2, 'Inyector Siemens Deka', 'Inyector Siemens Deka adecuado para modelos específicos.', 'OEM88086', '1015', 'public/assets/shop/img/repuestos/frenos.png', 243, 143.51, 114.81, 'MarcaY', 118, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(17, 3, 'Pastillas de Freno Brembo P06028', 'Pastillas de Freno Brembo P06028 adecuado para modelos específicos.', 'OEM79031', '1016', 'public/assets/shop/img/repuestos/motores.png', 175, 168.59, 134.87, 'MarcaY', 151, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(18, 3, 'Disco de Freno ATE PowerDisc', 'Disco de Freno ATE PowerDisc adecuado para modelos específicos.', 'OEM62683', '1017', 'public/assets/shop/img/repuestos/motores.png', 272, 185.92, 148.74, 'MarcaX', 143, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(19, 3, 'Caliper de Freno TRW', 'Caliper de Freno TRW adecuado para modelos específicos.', 'OEM82413', '1018', 'public/assets/shop/img/repuestos/motores.png', 220, 88.54, 70.83, 'MarcaX', 142, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(20, 3, 'Tambor de Freno Brembo', 'Tambor de Freno Brembo adecuado para modelos específicos.', 'OEM64510', '1019', 'public/assets/shop/img/repuestos/motores.png', 349, 123.03, 98.42, 'MarcaY', 147, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(21, 3, 'Sensor ABS Bosch', 'Sensor ABS Bosch adecuado para modelos específicos.', 'OEM45508', '1020', 'public/assets/shop/img/repuestos/motores.png', 301, 182.14, 145.71, 'MarcaY', 147, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(22, 3, 'Pastillas de Freno Bosch BP976', 'Pastillas de Freno Bosch BP976 adecuado para modelos específicos.', 'OEM10299', '1021', 'public/assets/shop/img/repuestos/motores.png', 364, 164.11, 131.29, 'MarcaX', 53, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(23, 3, 'Disco de Freno TRW DF2802', 'Disco de Freno TRW DF2802 adecuado para modelos específicos.', 'OEM96035', '1022', 'public/assets/shop/img/repuestos/motores.png', 135, 28.99, 23.19, 'MarcaZ', 38, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(24, 3, 'Caliper de Freno ACDelco', 'Caliper de Freno ACDelco adecuado para modelos específicos.', 'OEM72531', '1023', 'public/assets/shop/img/repuestos/motores.png', 464, 163.75, 131.00, 'MarcaY', 47, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(25, 4, 'Amortiguador KYB Excel-G', 'Amortiguador KYB Excel-G adecuado para modelos específicos.', 'OEM82003', '1024', 'public/assets/shop/img/repuestos/suspension.png', 361, 131.29, 105.03, 'MarcaY', 57, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(26, 4, 'Muelles de Suspensión Eibach', 'Muelles de Suspensión Eibach adecuado para modelos específicos.', 'OEM49816', '1025', 'public/assets/shop/img/repuestos/suspension.png', 423, 199.80, 159.84, 'MarcaZ', 130, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(27, 4, 'Barra Estabilizadora Moog', 'Barra Estabilizadora Moog adecuado para modelos específicos.', 'OEM57477', '1026', 'public/assets/shop/img/repuestos/suspension.png', 457, 142.63, 114.10, 'MarcaY', 180, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(28, 4, 'Bujes de Suspensión Febi Bilstein', 'Bujes de Suspensión Febi Bilstein adecuado para modelos específicos.', 'OEM74210', '1027', 'public/assets/shop/img/repuestos/suspension.png', 86, 25.36, 20.29, 'MarcaZ', 90, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(29, 4, 'Resorte de Suspensión Lesjofors', 'Resorte de Suspensión Lesjofors adecuado para modelos específicos.', 'OEM83363', '1028', 'public/assets/shop/img/repuestos/suspension.png', 352, 154.15, 123.32, 'MarcaY', 45, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(30, 4, 'Amortiguador Bilstein B6', 'Amortiguador Bilstein B6 adecuado para modelos específicos.', 'OEM96598', '1029', 'public/assets/shop/img/repuestos/suspension.png', 268, 129.82, 103.86, 'MarcaX', 63, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(31, 4, 'Muelles de Suspensión H&R', 'Muelles de Suspensión H&R adecuado para modelos específicos.', 'OEM73198', '1030', 'public/assets/shop/img/repuestos/suspension.png', 419, 56.50, 45.20, 'MarcaX', 21, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(32, 4, 'Barra Estabilizadora Meyle', 'Barra Estabilizadora Meyle adecuado para modelos específicos.', 'OEM87876', '1031', 'public/assets/shop/img/repuestos/suspension.png', 124, 41.98, 33.58, 'MarcaZ', 35, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(33, 5, 'Correa de Distribución Continental CTAM', 'Correa de Distribución Continental CTAM adecuado para modelos específicos.', 'OEM11812', '1032', 'public/assets/shop/img/repuestos/amortiguadores.png', 99, 55.75, 44.60, 'MarcaY', 61, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(34, 5, 'Correa de Accesorios Gates', 'Correa de Accesorios Gates adecuado para modelos específicos.', 'OEM62266', '1033', 'public/assets/shop/img/repuestos/amortiguadores.png', 419, 89.23, 71.38, 'MarcaY', 170, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(35, 5, 'Tensor de Correa SKF', 'Tensor de Correa SKF adecuado para modelos específicos.', 'OEM94067', '1034', 'public/assets/shop/img/repuestos/amortiguadores.png', 260, 186.40, 149.12, 'MarcaZ', 29, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(36, 5, 'Polea de Correa INA', 'Polea de Correa INA adecuado para modelos específicos.', 'OEM58682', '1035', 'public/assets/shop/img/repuestos/amortiguadores.png', 333, 133.51, 106.81, 'MarcaY', 161, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(37, 5, 'Kit de Correas Dayco', 'Kit de Correas Dayco adecuado para modelos específicos.', 'OEM76935', '1036', 'public/assets/shop/img/repuestos/amortiguadores.png', 412, 107.69, 86.15, 'MarcaY', 187, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(38, 5, 'Correa de Distribución Bosch', 'Correa de Distribución Bosch adecuado para modelos específicos.', 'OEM44201', '1037', 'public/assets/shop/img/repuestos/amortiguadores.png', 312, 48.45, 38.76, 'MarcaY', 199, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(39, 5, 'Correa de Accesorios ContiTech', 'Correa de Accesorios ContiTech adecuado para modelos específicos.', 'OEM97202', '1038', 'public/assets/shop/img/repuestos/amortiguadores.png', 67, 137.89, 110.31, 'MarcaX', 148, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(40, 5, 'Polea de Correa Gates', 'Polea de Correa Gates adecuado para modelos específicos.', 'OEM56692', '1039', 'public/assets/shop/img/repuestos/amortiguadores.png', 88, 139.23, 111.38, 'MarcaX', 153, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(41, 6, 'Radiador Denso', 'Radiador Denso adecuado para modelos específicos.', 'OEM54380', '1040', 'public/assets/shop/img/repuestos/bujias.png', 327, 197.14, 157.71, 'MarcaY', 10, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(42, 6, 'Termostato Wahler', 'Termostato Wahler adecuado para modelos específicos.', 'OEM53911', '1041', 'public/assets/shop/img/repuestos/bujias.png', 124, 149.28, 119.42, 'MarcaZ', 172, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(43, 6, 'Bomba de Agua Aisin', 'Bomba de Agua Aisin adecuado para modelos específicos.', 'OEM72699', '1042', 'public/assets/shop/img/repuestos/bujias.png', 286, 154.34, 123.47, 'MarcaX', 58, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(44, 6, 'Ventilador de Radiador Valeo', 'Ventilador de Radiador Valeo adecuado para modelos específicos.', 'OEM82215', '1043', 'public/assets/shop/img/repuestos/bujias.png', 383, 198.78, 159.02, 'MarcaY', 60, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(45, 6, 'Manguera de Radiador Gates', 'Manguera de Radiador Gates adecuado para modelos específicos.', 'OEM82562', '1044', 'public/assets/shop/img/repuestos/bujias.png', 337, 165.97, 132.78, 'MarcaZ', 75, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(46, 6, 'Radiador Nissens', 'Radiador Nissens adecuado para modelos específicos.', 'OEM21693', '1045', 'public/assets/shop/img/repuestos/bujias.png', 394, 52.23, 41.78, 'MarcaZ', 51, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(47, 6, 'Termostato Behr', 'Termostato Behr adecuado para modelos específicos.', 'OEM42174', '1046', 'public/assets/shop/img/repuestos/bujias.png', 368, 62.34, 49.87, 'MarcaX', 109, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(48, 6, 'Bomba de Agua Graf', 'Bomba de Agua Graf adecuado para modelos específicos.', 'OEM68212', '1047', 'public/assets/shop/img/repuestos/bujias.png', 467, 22.47, 17.98, 'MarcaY', 51, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(49, 7, 'Embrague LUK', 'Embrague LUK adecuado para modelos específicos.', 'OEM15378', '1048', 'public/assets/shop/img/repuestos/correas.png', 71, 198.92, 159.14, 'MarcaZ', 125, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(50, 7, 'Disco de Embrague Sachs', 'Disco de Embrague Sachs adecuado para modelos específicos.', 'OEM53782', '1049', 'public/assets/shop/img/repuestos/correas.png', 298, 158.88, 127.10, 'MarcaZ', 167, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(51, 7, 'Plato de Presión Valeo', 'Plato de Presión Valeo adecuado para modelos específicos.', 'OEM87688', '1050', 'public/assets/shop/img/repuestos/correas.png', 130, 174.05, 139.24, 'MarcaX', 159, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(52, 7, 'Rodamiento de Embrague SKF', 'Rodamiento de Embrague SKF adecuado para modelos específicos.', 'OEM82861', '1051', 'public/assets/shop/img/repuestos/correas.png', 390, 94.58, 75.66, 'MarcaX', 71, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(53, 7, 'Cilindro Maestro de Embrague Aisin', 'Cilindro Maestro de Embrague Aisin adecuado para modelos específicos.', 'OEM40331', '1052', 'public/assets/shop/img/repuestos/correas.png', 456, 26.14, 20.91, 'MarcaX', 81, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(54, 7, 'Embrague Exedy', 'Embrague Exedy adecuado para modelos específicos.', 'OEM36867', '1053', 'public/assets/shop/img/repuestos/correas.png', 58, 25.89, 20.71, 'MarcaX', 100, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(55, 7, 'Disco de Embrague Aisin', 'Disco de Embrague Aisin adecuado para modelos específicos.', 'OEM41067', '1054', 'public/assets/shop/img/repuestos/correas.png', 346, 125.10, 100.08, 'MarcaX', 80, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(56, 7, 'Plato de Presión Sachs', 'Plato de Presión Sachs adecuado para modelos específicos.', 'OEM20686', '1055', 'public/assets/shop/img/repuestos/correas.png', 452, 173.57, 138.86, 'MarcaY', 172, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(57, 8, 'Batería Bosch S4', 'Batería Bosch S4 adecuado para modelos específicos.', 'OEM47503', '1056', 'public/assets/shop/img/repuestos/embreagues.png', 298, 148.80, 119.04, 'MarcaX', 31, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(58, 8, 'Alternador Denso', 'Alternador Denso adecuado para modelos específicos.', 'OEM92236', '1057', 'public/assets/shop/img/repuestos/embreagues.png', 129, 46.13, 36.90, 'MarcaY', 180, 1, '2024-08-11 14:17:10', '2024-08-13 19:57:51'),
+(59, 8, 'Motor de Arranque Valeo', 'Motor de Arranque Valeo adecuado para modelos específicos.', 'OEM38602', '1058', 'public/assets/shop/img/repuestos/embreagues.png', 362, 112.89, 90.31, 'MarcaY', 86, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(60, 8, 'Regulador de Voltaje Hella', 'Regulador de Voltaje Hella adecuado para modelos específicos.', 'OEM69650', '1059', 'public/assets/shop/img/repuestos/embreagues.png', 222, 69.24, 55.39, 'MarcaY', 98, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(61, 8, 'Cableado Eléctrico NGK', 'Cableado Eléctrico NGK adecuado para modelos específicos.', 'OEM67318', '1060', 'public/assets/shop/img/repuestos/embreagues.png', 240, 109.07, 87.26, 'MarcaY', 67, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(62, 8, 'Batería Varta Blue Dynamic', 'Batería Varta Blue Dynamic adecuado para modelos específicos.', 'OEM11583', '1061', 'public/assets/shop/img/repuestos/embreagues.png', 473, 153.46, 122.77, 'MarcaZ', 107, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(63, 8, 'Alternador Bosch', 'Alternador Bosch adecuado para modelos específicos.', 'OEM59902', '1062', 'public/assets/shop/img/repuestos/embreagues.png', 50, 193.55, 154.84, 'MarcaY', 192, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(64, 8, 'Motor de Arranque Bosch', 'Motor de Arranque Bosch adecuado para modelos específicos.', 'OEM22471', '1063', 'public/assets/shop/img/repuestos/embreagues.png', 146, 199.70, 159.76, 'MarcaY', 88, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(65, 9, 'Faro Delantero Hella', 'Faro Delantero Hella adecuado para modelos específicos.', 'OEM29548', '1064', 'public/assets/shop/img/repuestos/rodamientos.png', 155, 129.87, 103.90, 'MarcaY', 154, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(66, 9, 'Luz Trasera Magneti Marelli', 'Luz Trasera Magneti Marelli adecuado para modelos específicos.', 'OEM54856', '1065', 'public/assets/shop/img/repuestos/rodamientos.png', 463, 109.34, 87.47, 'MarcaY', 100, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(67, 9, 'Espejo Lateral TYC', 'Espejo Lateral TYC adecuado para modelos específicos.', 'OEM54959', '1066', 'public/assets/shop/img/repuestos/rodamientos.png', 184, 133.90, 107.12, 'MarcaZ', 112, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(68, 9, 'Parachoques Delantero KLOKKERHOLM', 'Parachoques Delantero KLOKKERHOLM adecuado para modelos específicos.', 'OEM84535', '1067', 'public/assets/shop/img/repuestos/rodamientos.png', 193, 160.77, 128.62, 'MarcaY', 12, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(69, 9, 'Parrilla Delantera Johns', 'Parrilla Delantera Johns adecuado para modelos específicos.', 'OEM26797', '1068', 'public/assets/shop/img/repuestos/rodamientos.png', 396, 99.31, 79.45, 'MarcaZ', 80, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(70, 9, 'Faro Delantero Bosch', 'Faro Delantero Bosch adecuado para modelos específicos.', 'OEM86781', '1069', 'public/assets/shop/img/repuestos/rodamientos.png', 352, 142.38, 113.90, 'MarcaY', 141, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(71, 9, 'Luz Trasera Valeo', 'Luz Trasera Valeo adecuado para modelos específicos.', 'OEM35995', '1070', 'public/assets/shop/img/repuestos/rodamientos.png', 83, 73.50, 58.80, 'MarcaZ', 98, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51'),
+(72, 9, 'Espejo Lateral ULO', 'Espejo Lateral ULO adecuado para modelos específicos.', 'OEM91329', '1071', 'public/assets/shop/img/repuestos/rodamientos.png', 396, 164.08, 131.26, 'MarcaZ', 33, 1, '2024-08-11 14:17:11', '2024-08-13 19:57:51');
 
 -- --------------------------------------------------------
 
@@ -773,7 +773,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `user_usuario`, `foto_usuario`, `email_usuario`, `password_usuario`, `rol_usuario`, `estado_usuario`, `date_created_usuario`, `date_updated_usuario`) VALUES
-(1, 'benjamin', 'canaviri', 'benjo1234', 'views/assets/media/avatars/usuarios/benjo1234/713.jpg', 'benjo@gmail.com', '$2a$07$azybxcags23425sdg23sdem1CFT2u/A.0JOm/IXWxebxaQOkjS85C', 'administrador', 1, '2024-06-09 15:27:08', '2024-08-11 04:35:28'),
+(1, 'benjamin', 'canaviri', 'benjo1234', 'views/assets/media/avatars/usuarios/benjo1234/713.jpg', 'benjo@gmail.com', '$2a$07$azybxcags23425sdg23sdem1CFT2u/A.0JOm/IXWxebxaQOkjS85C', 'administrador', 1, '2024-06-09 15:27:08', '2024-08-13 21:36:12'),
 (2, 'pitter', 'kevin', 'pitter123', 'views/assets/media/avatars/usuarios/pitter123/696.jpg', 'pitter@gmail.com', '$2a$07$azybxcags23425sdg23sdexDgBwF1Wba.r8oVb3KiQPBr8fPcAQBe', 'venta', 1, '2024-07-25 03:06:26', '2024-07-25 03:06:26'),
 (3, 'david', 'apaza', 'tonkis123', 'views/assets/media/avatars/usuarios/tonkis123/570.jpg', 'tonkis@gmail.com', '$2a$07$azybxcags23425sdg23sdeqJpRVasxIvNizan7dQx1M6JQIJEH4vK', 'venta', 1, '2024-07-29 23:17:47', '2024-07-29 23:18:04');
 
@@ -803,7 +803,8 @@ CREATE TABLE `ventas` (
 --
 ALTER TABLE `carritos`
   ADD PRIMARY KEY (`id_carrito`),
-  ADD KEY `id_cliente` (`id_cliente`);
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `fk_idRepuesto_carrito` (`id_repuesto`);
 
 --
 -- Indices de la tabla `categorias`
@@ -992,7 +993,8 @@ ALTER TABLE `ventas`
 -- Filtros para la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  ADD CONSTRAINT `carritos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
+  ADD CONSTRAINT `carritos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
+  ADD CONSTRAINT `fk_idRepuesto_carrito` FOREIGN KEY (`id_repuesto`) REFERENCES `repuestos` (`id_repuesto`);
 
 --
 -- Filtros para la tabla `compras`
