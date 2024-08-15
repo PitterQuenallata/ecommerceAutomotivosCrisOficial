@@ -1,0 +1,31 @@
+carrito:
+1. Agregar Repuestos al Carrito (Usuario No Logueado)
+Carrito en Local Storage o Sesión: Cuando un cliente no está logueado, los repuestos que agrega al carrito se almacenan localmente en el navegador (usando localStorage o la sesión). Esto permite que el cliente continúe navegando y añadiendo productos al carrito sin necesidad de iniciar sesión.
+Mostrar Modal del Carrito: Cada vez que el cliente agrega un repuesto al carrito, el carrito se actualiza y se muestra en un modal o sección de la página, mostrando los productos seleccionados.
+2. Acceder a la Página del Carrito
+Vista del Carrito: El cliente puede acceder a una vista del carrito donde ve todos los productos que ha seleccionado, la cantidad, el precio total, etc. En esta vista, el cliente tiene la opción de continuar comprando o proceder al pago.
+Sin Login: En este punto, el cliente aún no necesita estar logueado para ver el contenido del carrito.
+3. Requerir Inicio de Sesión para Proceder al Pago
+Redirección al Login: Si el cliente decide proceder al pago, se le solicitará que inicie sesión o cree una cuenta si no tiene una. En este punto, puedes guardar la URL o el estado de la página en la que estaba para redirigirlo de vuelta después de iniciar sesión.
+Opcional: Guardar Carrito Temporalmente: Puedes ofrecer la opción de que el cliente guarde su carrito temporalmente para acceder a él desde otros dispositivos después de iniciar sesión.
+4. Sincronizar Carrito con la Base de Datos (Después del Login)
+Actualizar Carrito en la Base de Datos: Una vez que el cliente inicia sesión, el contenido del carrito que estaba en localStorage o sesión se sincroniza con la base de datos en la tabla carritos, vinculando los productos seleccionados con la cuenta del cliente.
+Manejar Duplicados: Si el cliente ya tenía productos en el carrito desde una sesión anterior, se deben manejar posibles duplicados (sumando cantidades, por ejemplo).
+5. Regresar al Estado Anterior del Cliente
+Redirección al Carrito: Después de iniciar sesión, el cliente debería ser redirigido automáticamente a la página del carrito, donde puede ver su carrito actualizado (ahora sincronizado con su cuenta) y proceder al pago.
+6. Proceder con la Compra
+Página de Checkout: En esta página, el cliente podrá revisar los detalles de su compra, seleccionar métodos de pago, introducir la dirección de envío, y finalmente confirmar la compra.
+Validación Final: Antes de confirmar la compra, se debe validar que toda la información necesaria está presente (por ejemplo, que los productos aún están disponibles, que la dirección de envío es válida, etc.).
+Confirmación del Pedido: Una vez realizada la compra, se genera un pedido en la base de datos y se envía una confirmación al cliente (por correo electrónico, SMS, etc.).
+7. Post-Compra
+Actualización de Stock: El sistema debe actualizar el stock de los productos comprados en la base de datos.
+Historial de Pedidos: El pedido se debe registrar en el historial de compras del cliente, accesible desde su cuenta.
+Manejo de Carrito: Después de la compra, el carrito del cliente se puede vaciar o actualizar según la implementación que prefieras.
+8. Consideraciones Adicionales
+Persistencia del Carrito: Puedes decidir cuánto tiempo mantener el carrito en la base de datos si el cliente no completa la compra.
+Ofertas o Descuentos: Puedes integrar un sistema de cupones o descuentos que los clientes puedan aplicar antes de proceder al pago.
+Recordatorios: Si un cliente deja productos en el carrito sin comprarlos, puedes enviarles recordatorios por correo electrónico.
+Resumen:
+Inicio: El cliente agrega productos al carrito sin necesidad de iniciar sesión.
+Login: El cliente debe iniciar sesión para proceder al pago, lo que sincroniza su carrito con la base de datos.
+Checkout: Después de iniciar sesión, el cliente procede al pago y completa la compra.
