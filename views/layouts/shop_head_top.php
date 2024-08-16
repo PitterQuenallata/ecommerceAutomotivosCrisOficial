@@ -9,6 +9,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="<?php BASE_URL?>public/assets/shop/img/favicon.ico">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="htt ps://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
    <!-- ======= All CSS Plugins here ======== -->
@@ -26,8 +27,9 @@
 <!-- 
   <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script> -->
     <!-- ecommerce -->
-    <script src="<?php BASE_URL?>public/assets/shop/js/carrito.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="<?php BASE_URL?>public/assets/pluginsGen/jqueryToast/dist/jquery.toast.min.css">
+  <script src="<?php BASE_URL?>public/assets/pluginsGen/jqueryToast/dist/jquery.toast.min.js"></script>
+  <script src="<?php BASE_URL?>public/assets/shop/js/carrito.js"></script>
 </head>
 
 <body>

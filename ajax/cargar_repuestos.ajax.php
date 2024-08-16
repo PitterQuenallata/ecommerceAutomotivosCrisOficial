@@ -25,24 +25,25 @@ if (empty($repuestos)) {
     return;
 }
 
+
 // Generar el HTML de los repuestos filtrados
 foreach ($repuestos as $repuesto) {
-    echo "<div class='col-lg-3 col-md-4 col-sm-6 col-6 mb-30' data-product-id='{$repuesto['id_repuesto']}'>";
-    echo "<article class='product__card'>";
+    echo "<div class='col-lg-3 col-md-4 col-sm-6 col-6 mb-30' data-product-id='{$repuesto['id_repuesto']}' >";
+    echo "<article class='product__card' data-stock-repuesto='{$repuesto['stock_repuesto']}'>";
     echo "<div class='product__card--thumbnail'>";
-    echo "<a class='product__card--thumbnail__link display-block' href='product-details.html'>";
+    echo "<a class='product__card--thumbnail__link display-block' href='product-details'>";
     echo "<img class='product__card--thumbnail__img product__primary--img' src='{$repuesto['img_repuesto']}' alt='Imagen del producto'>";
     echo "<img class='product__card--thumbnail__img product__secondary--img' src='{$repuesto['img_repuesto']}' alt='Imagen del producto'>";
     echo "</a>";
     echo "<ul class='product__card--action d-flex align-items-center justify-content-center'>";
     echo "<li class='product__card--action__list'>";
-    echo "<a class='product__card--action__btn' title='Vista Rápida' data-open='modall' href='javascript:void(0)'";
-    echo "<i class='fas fa-eye'></i>";
+    echo "<a class='product__card--action__btn view-details-btn' title='Vista Rápida' data-open='modal1' href='javascript:void(0)' data-id-repuesto-vista='{$repuesto['id_repuesto']}'>";
+    echo "<i class='fas fa-search'></i>";
     echo "<span class='visually-hidden'>Vista Rápida</span>";
     echo "</a>";
     echo "</li>";
     echo "<li class='product__card--action__list'>";
-    echo "<a class='product__card--action__btn' title='Lista de Deseos' href='wishlist.html'>";
+    echo "<a class='product__card--action__btn' title='Lista de Deseos' href='wishlist' data-id-repuesto-wishlist='{$repuesto['id_repuesto']}'>";
     echo "<i class='fas fa-heart'></i>";
     echo "<span class='visually-hidden'>Lista de Deseos</span>";
     echo "</a>";
@@ -56,10 +57,8 @@ foreach ($repuestos as $repuesto) {
     echo "<span class='old__price'>\${$repuesto['precio_repuesto']}</span>";
     echo "</div>";
     echo "<div class='product__card--footer d-flex justify-content-between align-items-center'>";
-    echo "<a class='product__card--btn primary__btn d-flex justify-content-center align-items-center w-75 text-center me-1' href='carritoPage.html'>Comprar</a>";
-    echo "<a class='product__card--btn primary__btn d-flex justify-content-center align-items-center w-25 text-center ms-1 minicart__open--btn add-to-cart-button' href='javascript:void(0)' data-id-repuesto-select='{$repuesto['id_repuesto']}'>";
-
-
+    echo "<a class='product__card--btn primary__btn d-flex justify-content-center align-items-center w-75 text-center me-1' href='carritoPage' data-id-repuesto-comprar='{$repuesto['id_repuesto']}'>Comprar</a>";
+    echo "<a class='product__card--btn primary__btn d-flex justify-content-center align-items-center w-25 text-center ms-1 minicart__open--btn add-to-cart-button add-to-cart-btn' href='javascript:void(0)' data-id-repuesto-add='{$repuesto['id_repuesto']}'>";
     echo "<i class='fas fa-shopping-cart' style='font-size: 1.2em;'></i>";
     echo "</a>";
     echo "</div>";
@@ -67,4 +66,7 @@ foreach ($repuestos as $repuesto) {
     echo "</article>";
     echo "</div>";
 }
+?>
+
+
 

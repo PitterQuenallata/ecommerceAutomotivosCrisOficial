@@ -28,7 +28,8 @@ if (empty($routesArray[0])) {
   $routesArray[0] == "profile" ||
   $routesArray[0] == "wishlist" ||
   $routesArray[0] == "about" ||
-  $routesArray[0] == "privacy-policy"
+  $routesArray[0] == "privacy-policy" ||
+  $routesArray[0] == "cart"
 
 ) {
 
@@ -53,3 +54,5 @@ include "views/shop/modals/ver_repuesto.php";
 // Footer y cierre del HTML (incluye scripts al final)
 include "views/partials/shop_footer.php";
 include "views/layouts/shop_footer_end.php";
+
+?>

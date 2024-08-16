@@ -15,9 +15,10 @@
   <!-- Customscript js -->
   <script src="<?php BASE_URL?>public/assets/shop/js/script.js"></script>
 
+  <script src="<?php BASE_URL?>public/assets/shop/js/viewRepuestoDetail.js"></script>
 
 
 
-
+  <script src="<?php BASE_URL?>public/assets/shop/js/alerts/alerts.js"></script>
 </body>
 </html>

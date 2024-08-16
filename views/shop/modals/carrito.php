@@ -16,10 +16,6 @@
     </div>
     <div class="minicart__amount">
         <div class="minicart__amount_list d-flex justify-content-between">
-            <span>Sub Total:</span>
-            <span><b id="subtotal">$0.00</b></span>
-        </div>
-        <div class="minicart__amount_list d-flex justify-content-between">
             <span>Total:</span>
             <span><b id="total">$0.00</b></span>
         </div>
@@ -29,8 +25,8 @@
         <label class="minicart__conditions--label" for="accept">Estoy de acuerdo con la <a class="minicart__conditions--link" href="privacy-policy.html">Política de Privacidad</a></label>
     </div>
     <div class="minicart__button d-flex justify-content-center">
-        <a class="primary__btn minicart__button--link" href="cart.html">Ver carrito</a>
-        <a class="primary__btn minicart__button--link" href="checkout.html">Pagar</a>
+        <a class="primary__btn minicart__button--link" href="cart">Ver carrito</a>
+        <a class="primary__btn minicart__button--link" href="checkout">Pagar</a>
     </div>
 </div>
 <!-- Fin del offCanvas minicart -->

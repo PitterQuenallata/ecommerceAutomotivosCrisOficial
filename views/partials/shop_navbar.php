@@ -182,7 +182,7 @@
                     </g>
                   </g>
                 </svg>
-                <span class="items__count">2</span>
+                <span class="items__count"></span>
                 <span class="minicart__btn--text">My Cart <br> <span class="minicart__btn--text__price">$0.00</span></span>
               </a>
             </li>

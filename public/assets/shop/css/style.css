@@ -5191,6 +5191,9 @@ input[type=number]::-webkit-outer-spin-button {
   bottom: 30%;
   gap: 0.8rem;
 }
+.product__card--action__btn i {
+  pointer-events: none; /* Esto asegura que el clic se registre en el contenedor, no solo en el ícono */
+}
 
 .product__card--action__btn {
   width: 3rem;

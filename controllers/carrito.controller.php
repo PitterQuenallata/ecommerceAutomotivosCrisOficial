@@ -96,21 +96,3 @@ class ControladorCarrito
 }
 
 ?>
-
-<!-- 
-// Supongamos que esto es parte del código de inicio de sesión
-
-if ($usuarioAutenticado) {
-    // Obtener carrito desde localStorage
-    if (isset($_POST['carritoLocal']) && !empty($_POST['carritoLocal'])) {
-        $carritoLocal = json_decode($_POST['carritoLocal'], true);
-        
-        foreach ($carritoLocal as $idRepuesto => $cantidad) {
-            // Llama a tu función existente para agregar productos al carrito
-            ModeloCarrito::mdlAgregarProducto($idUsuario, $idRepuesto, $cantidad);
-        }
-    }
-    
-    // Limpiar el carrito del localStorage (podrías hacer esto en JS después de confirmar que el carrito se transfirió correctamente)
-    echo '<script>localStorage.removeItem("carrito");</script>';
-} -->
