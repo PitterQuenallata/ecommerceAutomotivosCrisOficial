@@ -29,7 +29,8 @@ if (empty($routesArray[0])) {
   $routesArray[0] == "wishlist" ||
   $routesArray[0] == "about" ||
   $routesArray[0] == "privacy-policy" ||
-  $routesArray[0] == "cart"
+  $routesArray[0] == "cart"||
+  $routesArray[0] == "product-details"
 
 ) {
 

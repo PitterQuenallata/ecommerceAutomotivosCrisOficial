@@ -4,6 +4,7 @@ $(document).ready(function () {
   const brandSelect = $("#sidebarBrandSelect");
   const modelSelect = $("#sidebarModelSelect");
   const motorSelect = $("#sidebarMotorSelect");
+  const searchButton = $("#filterSearchButton");
 
   function initializeOffcanvasSidebar() {
     if ($(".minicart__open--btn").length) {
@@ -58,8 +59,7 @@ $(document).ready(function () {
   }
 
   function getFilterParams() {
-    const { idCategoria, idMarca, idModelo, idMotor, oemRepuesto } =
-      getURLParameters();
+    const { idCategoria, idMarca, idModelo, idMotor, oemRepuesto } = getURLParameters();
     const params = {};
     if (idCategoria) params.idCategoria = idCategoria;
     if (idMarca) params.idMarca = idMarca;
@@ -69,13 +69,13 @@ $(document).ready(function () {
     return params;
   }
 
-  function fetchFilteredProducts() {
-    const params = getFilterParams();
+  function fetchFilteredProducts(params = null) {
+    const queryParams = params || getFilterParams();
 
     $.ajax({
       url: "ajax/cargar_repuestos.ajax.php",
       method: "GET",
-      data: params,
+      data: queryParams,
       beforeSend: function () {
         productList.html("<p>Cargando...</p>");
       },
@@ -99,59 +99,16 @@ $(document).ready(function () {
   }
 
   function initializeFilterEvents() {
-    categorySelect.on("change", onFilterChange);
     brandSelect.on("change", function () {
       fetchModelos(brandSelect.val());
-      modelSelect.trigger("change");
     });
+
     modelSelect.on("change", function () {
       fetchMotores(modelSelect.val());
-      motorSelect.trigger("change");
-    });
-    motorSelect.on("change", onFilterChange);
-  }
-
-  function fetchModelos(idMarca) {
-    if (!idMarca) return;
-
-    $.ajax({
-      url: "ajax/llenar_selects_repuestos.ajax.php",
-      method: "POST",
-      data: {
-        action: "cargarModelos",
-        idMarca: encodeURIComponent(idMarca),
-      },
-      success: function (data) {
-        modelSelect.html(data);
-        motorSelect.html('<option value="">Seleccione un Motor</option>');
-        modelSelect.prop("disabled", false);
-      },
-      error: function (error) {
-        console.error("Error al llenar los modelos:", error);
-      },
     });
   }
 
-  function fetchMotores(idModelo) {
-    if (!idModelo) return;
-
-    $.ajax({
-      url: "ajax/llenar_selects_repuestos.ajax.php",
-      method: "POST",
-      data: {
-        action: "cargarMotores",
-        idModelo: encodeURIComponent(idModelo),
-      },
-      success: function (data) {
-        motorSelect.html(data);
-        motorSelect.prop("disabled", false);
-      },
-      error: function (error) {
-        console.error("Error al llenar los motores:", error);
-      },
-    });
-  }
-
+  // Aquí es donde definimos synchronizeFiltersWithURL
   function synchronizeFiltersWithURL() {
     const { idCategoria, idMarca, idModelo, idMotor } = getURLParameters();
     if (idCategoria) categorySelect.val(idCategoria);
@@ -166,10 +123,62 @@ $(document).ready(function () {
     if (idMotor) motorSelect.val(idMotor);
   }
 
+  // Inicialización de los eventos y sincronización de filtros con la URL
   synchronizeFiltersWithURL();
   initializeFilterEvents();
-  fetchFilteredProducts();
+
+  // Cargar los productos al iniciar la página si hay parámetros en la URL
+  const urlParams = getURLParameters();
+  if (urlParams.idCategoria || urlParams.idMarca || urlParams.idModelo || urlParams.idMotor || urlParams.oemRepuesto) {
+    fetchFilteredProducts(urlParams);
+  }
+
+  searchButton.on("click", function () {
+    updateURLWithFilters();
+    fetchFilteredProducts();
+  });
 });
+
+function fetchModelos(idMarca) {
+  if (!idMarca) return;
+
+  $.ajax({
+    url: "ajax/llenar_selects_repuestos.ajax.php",
+    method: "POST",
+    data: {
+      action: "cargarModelos",
+      idMarca: encodeURIComponent(idMarca),
+    },
+    success: function (data) {
+      $("#sidebarModelSelect").html(data);
+      $("#sidebarMotorSelect").html('<option value="">Seleccione un Motor</option>');
+      $("#sidebarModelSelect").prop("disabled", false);
+    },
+    error: function (error) {
+      console.error("Error al llenar los modelos:", error);
+    },
+  });
+}
+
+function fetchMotores(idModelo) {
+  if (!idModelo) return;
+
+  $.ajax({
+    url: "ajax/llenar_selects_repuestos.ajax.php",
+    method: "POST",
+    data: {
+      action: "cargarMotores",
+      idModelo: encodeURIComponent(idModelo),
+    },
+    success: function (data) {
+      $("#sidebarMotorSelect").html(data);
+      $("#sidebarMotorSelect").prop("disabled", false);
+    },
+    error: function (error) {
+      console.error("Error al llenar los motores:", error);
+    },
+  });
+}
 
 function initializeModal() {
   if (!document.querySelector('[data-modal-initialized]')) {

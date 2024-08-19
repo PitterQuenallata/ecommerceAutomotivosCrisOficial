@@ -108,4 +108,50 @@ class ModeloFiltros
     // Usar fetchAll para obtener todos los resultados
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public static function mdlObtenerRepuestosPorCategoriayMarca($idCategoria, $idMarca)
+  {
+      $sql = "SELECT r.*, mr.id_modelo, mo.nombre_modelo, ma.nombre_marca, c.nombre_categoria
+              FROM repuestos r
+              INNER JOIN modelo_repuestos mr ON r.id_repuesto = mr.id_repuesto
+              INNER JOIN modelos mo ON mr.id_modelo = mo.id_modelo
+              INNER JOIN marcas ma ON mo.id_marca = ma.id_marca
+              INNER JOIN categorias c ON r.id_categoria = c.id_categoria
+              WHERE r.id_categoria = :idCategoria 
+                AND ma.id_marca = :idMarca";
+  
+      $stmt = Conexion::conectar()->prepare($sql);
+  
+      $stmt->bindParam(":idCategoria", $idCategoria, PDO::PARAM_INT);
+      $stmt->bindParam(":idMarca", $idMarca, PDO::PARAM_INT);
+  
+      $stmt->execute();
+  
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
+  
+  public static function mdlObtenerRepuestosPorCategoriaMarcaModelo($idCategoria, $idMarca, $idModelo)
+  {
+      $sql = "SELECT r.*, mr.id_modelo, mo.nombre_modelo, ma.nombre_marca, c.nombre_categoria
+              FROM repuestos r
+              INNER JOIN modelo_repuestos mr ON r.id_repuesto = mr.id_repuesto
+              INNER JOIN modelos mo ON mr.id_modelo = mo.id_modelo
+              INNER JOIN marcas ma ON mo.id_marca = ma.id_marca
+              INNER JOIN categorias c ON r.id_categoria = c.id_categoria
+              WHERE r.id_categoria = :idCategoria 
+                AND ma.id_marca = :idMarca 
+                AND mo.id_modelo = :idModelo";
+  
+      $stmt = Conexion::conectar()->prepare($sql);
+  
+      $stmt->bindParam(":idCategoria", $idCategoria, PDO::PARAM_INT);
+      $stmt->bindParam(":idMarca", $idMarca, PDO::PARAM_INT);
+      $stmt->bindParam(":idModelo", $idModelo, PDO::PARAM_INT);
+  
+      $stmt->execute();
+  
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
 }

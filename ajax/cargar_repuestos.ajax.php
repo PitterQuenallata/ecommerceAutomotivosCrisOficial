@@ -29,9 +29,9 @@ if (empty($repuestos)) {
 // Generar el HTML de los repuestos filtrados
 foreach ($repuestos as $repuesto) {
     echo "<div class='col-lg-3 col-md-4 col-sm-6 col-6 mb-30' data-product-id='{$repuesto['id_repuesto']}' >";
-    echo "<article class='product__card' data-stock-repuesto='{$repuesto['stock_repuesto']}'>";
+    echo "<article class='product__card' data-stock-repuesto='{$repuesto['stock_repuesto']}' data-descripcion-repuesto='{$repuesto['descripcion_repuesto']}' data-marca-repuesto='{$repuesto['marca_repuesto']}'>";
     echo "<div class='product__card--thumbnail'>";
-    echo "<a class='product__card--thumbnail__link display-block' href='product-details'>";
+    echo "<a class='product__card--thumbnail__link display-block' href='product-details?idRepuesto={$repuesto['id_repuesto']}'>";
     echo "<img class='product__card--thumbnail__img product__primary--img' src='{$repuesto['img_repuesto']}' alt='Imagen del producto'>";
     echo "<img class='product__card--thumbnail__img product__secondary--img' src='{$repuesto['img_repuesto']}' alt='Imagen del producto'>";
     echo "</a>";

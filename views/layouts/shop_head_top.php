@@ -9,8 +9,10 @@
   <link rel="shortcut icon" type="image/x-icon" href="<?php BASE_URL?>public/assets/shop/img/favicon.ico">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="htt ps://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+  <script src="<?php BASE_URL?>public/assets/pluginsGen/jquery/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     
    <!-- ======= All CSS Plugins here ======== -->
   <link rel="stylesheet" href="<?php BASE_URL?>public/assets/shop/css/plugins/swiper-bundle.min.css">

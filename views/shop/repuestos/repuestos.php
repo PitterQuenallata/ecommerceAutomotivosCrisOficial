@@ -1,24 +1,7 @@
+
+
 <main class="main__content_wrapper">
 
-    <!-- Start breadcrumb section -->
-    <!-- <section class="breadcrumb__section breadcrumb__bg">
-        <div class="container">
-            <div class="row row-cols-1">
-                <div class="col">
-                    <div class="breadcrumb__content text-center">
-                        <h1 class="breadcrumb__content--title">Repuestos</h1>
-                        <ul class="breadcrumb__content--menu d-flex justify-content-center">
-                            <li class="breadcrumb__content--menu__items"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb__content--menu__items"><span>Product</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End breadcrumb section -->
-
-    <!-- Start shop section -->
     <div class="shop__section section--padding">
         <div class="container">
             <div class="row">
@@ -74,8 +57,9 @@
                                     <option value="" selected disabled>Seleccione un Motor</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
+                                
                             </div>
-
+                            <button class="search__filter--btn primary__btn" id="filterSearchButton">Buscar</button>
                         </div>
 
 

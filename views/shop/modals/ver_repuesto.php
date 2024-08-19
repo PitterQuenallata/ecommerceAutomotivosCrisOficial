@@ -24,30 +24,32 @@
                                 <span class="current__price"></span>
                                 <span class="old__price"></span>
                             </div>
-                            
+
                             <p class="product__details--info__desc"></p>
                             <p class="marca"></p>
                             <div class="product__variant">
                                 <input type="hidden" id="hidden_id_repuesto" value="">
                                 <input type="hidden" value="" id="stock_repuesto">
-                                
+
                                 <div class="quickview__variant--list quantity d-flex align-items-center mb-10">
-                                    <div class="quantity__box">
-                                        <button type="button" class="quantity__value quickview__value--quantity decrease abajo" aria-label="quantity value" value="Decrease Value">-</button>
-                                        <label>
-                                            <input type="number" class="quantity__number quickview__value--number" value="1" data-counter />
-                                        </label>
-                                        <button type="button" class="quantity__value quickview__value--quantity increase arriba" aria-label="quantity value" value="Increase Value">+</button>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+                                                    <span class="glyphicon glyphicon-minus"></span>
+                                                </button>
+                                            </span>
+                                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
                                     </div>
                                     <button class="primary__btn quickview__cart--btn" type="submit">Añadir al carrito</button>
                                 </div>
 
-                                <div class="quickview__variant--list variant__wishlist">
-                                    <a class="variant__wishlist--icon" href="wishlist" title="Add to wishlist">
-                                        <i class="fa-regular fa-heart me-2"></i>
-                                        Añadir a la lista de deseos
-                                    </a>
-                                </div>
                             </div>
 
                             <div class="quickview__social d-flex align-items-center pt-5">

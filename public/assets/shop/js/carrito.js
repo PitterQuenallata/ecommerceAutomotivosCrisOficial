@@ -15,6 +15,8 @@ $(document).ready(function () {
       var precio = productCard.find('.current__price').text().replace('$', '');
       var imagen = productCard.find('.product__primary--img').attr('src');
       var stock = productCard.data('stock-repuesto');
+      var marca = productCard.data('marca-repuesto');
+        var descripcion = productCard.data('descripcion-repuesto');
 
       // Crear un objeto con los datos del repuesto
       var repuesto = {
@@ -23,7 +25,9 @@ $(document).ready(function () {
           precio: parseFloat(precio),
           imagen: imagen,
           cantidad: 1,
-          stock: stock
+          stock: stock,
+          marca: marca,
+          descripcion: descripcion
       };
 
       // Añadir el repuesto al carrito con validación de stock
@@ -40,13 +44,15 @@ $(document).ready(function () {
           if (existe.cantidad < repuesto.stock) {
               existe.cantidad += 1;
           } else {
-              alert('No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
+            fncToastr('warning', 'No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
+              
           }
       } else {
           if (repuesto.stock > 0) {
               carrito.push(repuesto);
           } else {
-              alert('Este producto está fuera de stock.');
+              fncToastr('warning', 'Este producto está fuera de stock.');
+              
           }
       }
 
@@ -179,7 +185,7 @@ $(document).ready(function () {
           } else if (change < 0 && repuesto.cantidad === 1) {
               carrito = carrito.filter(item => item.id !== id);
           } else {
-              alert('No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
+            fncToastr('warning', 'No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
           }
 
           localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -228,4 +234,18 @@ $(document).ready(function () {
   $('.minicart__open--btn').on('click', function () {
       actualizarModalCarrito();
   });
+  $(document).on('click', '.continue__shopping--clear', function() {
+    // Vaciar el carrito eliminando el item del localStorage
+    localStorage.removeItem('carrito');
+    
+    // Actualizar la interfaz de usuario
+    actualizarContadorCarrito();
+    actualizarTotalCarrito();
+    actualizarModalCarrito();
+    cargarDatosCarrito();
+
+    // Mostrar un mensaje de confirmación al usuario
+    fncToastr('success', 'Carrito vaciado con éxito.');
+});
+
 });

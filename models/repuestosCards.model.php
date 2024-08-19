@@ -18,7 +18,7 @@ class ModeloRepuestosCards
     return $stmt->fetchAll();
   }
 
-  
+
 
   // Método para obtener las marcas de vehículos
   public static function mdlMostrarMarcas()
@@ -51,32 +51,15 @@ class ModeloRepuestosCards
   }
 
 
-      // Método para obtener los detalles de un repuesto por su ID
-      public static function mdlMostrarRepuestosPorId($id_repuesto) {
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM repuestos WHERE id_repuesto = :id_repuesto");
-        $stmt->bindParam(":id_repuesto", $id_repuesto, PDO::PARAM_INT);
-        $stmt->execute();
+  // Método para obtener los detalles de un repuesto por su ID
+  public static function mdlMostrarRepuestosPorId($id_repuesto)
+  {
+    $stmt = Conexion::conectar()->prepare("SELECT * FROM repuestos WHERE id_repuesto = :id_repuesto");
+    $stmt->bindParam(":id_repuesto", $id_repuesto, PDO::PARAM_INT);
+    $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna un solo registro
-    }
+    return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna un solo registro
+  }
 
-        // // Método para obtener los datos de un repuesto por su ID
-        // public static function mdlMostrarRepuestosPorId($id_repuesto)
-        // {
-        //     // Preparar la consulta SQL para obtener el repuesto
-        //     $stmt = Conexion::conectar()->prepare("SELECT nombre, precio_actual, precio_anterior, descripcion, marca, imagen FROM repuestos WHERE id_repuesto = :id_repuesto");
-    
-        //     // Vincular el parámetro
-        //     $stmt->bindParam(":id_repuesto", $id_repuesto, PDO::PARAM_INT);
-    
-        //     // Ejecutar la consulta
-        //     $stmt->execute();
-    
-        //     // Devolver el resultado como un array asociativo
-        //     return $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        //     // Cerrar la conexión
-        //     $stmt = null;
-        // }
- 
+
 }
