@@ -52,14 +52,20 @@ class ModeloRepuestosCards
 
 
   // Método para obtener los detalles de un repuesto por su ID
-  public static function mdlMostrarRepuestosPorId($id_repuesto)
-  {
-    $stmt = Conexion::conectar()->prepare("SELECT * FROM repuestos WHERE id_repuesto = :id_repuesto");
-    $stmt->bindParam(":id_repuesto", $id_repuesto, PDO::PARAM_INT);
+  public static function mdlObtenerRepuestoPorId($idRepuesto) {
+    $stmt = Conexion::conectar()->prepare("SELECT * FROM repuestos WHERE id_repuesto = :idRepuesto");
+    $stmt->bindParam(":idRepuesto", $idRepuesto, PDO::PARAM_INT);
     $stmt->execute();
+    $repuesto = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna un solo registro
-  }
+    // Convertir los precios a float para asegurarnos de que se devuelvan como números
+    if ($repuesto) {
+        $repuesto['precio_repuesto'] = (float)$repuesto['precio_repuesto'];
+    }
+
+    return $repuesto;
+}
+
 
 
 }

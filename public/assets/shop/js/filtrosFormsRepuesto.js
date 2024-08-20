@@ -1,144 +1,196 @@
 $(document).ready(function () {
+  const productList = $("#productList");
   initFilters();
+  cargarRepuestos();
 
-  // Cargar modelos cuando se selecciona una marca
-  $("#filtroMarca").change(function () {
-    var idMarca = $(this).val();
-    localStorage.setItem("filtroMarca", idMarca); // Guardar en localStorage
-    cargarModelos(idMarca); // Cargar modelos
-    updateListaFiltros(); // Actualizar la lista de filtros
+  $("[data-idFiltroCategoria]").on("click", function () {
+    const idCategoria = $(this).data("idfiltrocategoria"); // Obtener el valor de data-idFiltroCategoria
+    localStorage.setItem("filtroCategoria", idCategoria); // Guardar en localStorage
   });
 
-  // Cargar motores cuando se selecciona un modelo
-  $("#filtroModelo").change(function () {
-    var idModelo = $(this).val();
-    localStorage.setItem("filtroModelo", idModelo); // Guardar en localStorage
-    cargarMotores(idModelo); // Cargar motores
-    updateListaFiltros(); // Actualizar la lista de filtros
-  });
-
-  // Actualizar la lista de filtros cuando se selecciona un motor
-  $("#filtroMotor").change(function () {
-    var idMotor = $(this).val();
-    localStorage.setItem("filtroMotor", idMotor); // Guardar en localStorage
-    updateListaFiltros(); // Actualizar la lista de filtros
-  });
-
-  // Guardar filtros y realizar la búsqueda cuando se hace clic en "Buscar"
-  $("#formFiltrosRepuestos").submit(function (e) {
-    e.preventDefault(); // Prevenir la acción por defecto del formulario
-    updateListaFiltros(); // Guardar los filtros en localStorage
-    enviarFiltrosPorGet(); // Enviar los filtros a través de GET
-  });
-
-  // Botón de Resetear Filtros
-  $("#btnResetearFiltros").click(function () {
-    $("#filtroMarca").val("");
-    $("#filtroModelo").html('<option value="" selected disabled>Seleccione un Modelo</option>');
-    $("#filtroMotor").html('<option value="" selected disabled>Seleccione un Motor</option>');
-
-    localStorage.removeItem("filtroMarca");
-    localStorage.removeItem("filtroModelo");
-    localStorage.removeItem("filtroMotor");
-
-    updateListaFiltros(); // Actualizar la lista de filtros después de resetear
-    window.location.href ="categorias"; // Redirigir a la página de recambios sin filtros
-  });
-
-  // Función para inicializar los filtros con valores del localStorage
   function initFilters() {
+    // Inicializar filtros desde localStorage
     const savedMarca = localStorage.getItem("filtroMarca");
     const savedModelo = localStorage.getItem("filtroModelo");
     const savedMotor = localStorage.getItem("filtroMotor");
+    const savedCategoria = localStorage.getItem("filtroCategoria");
+
+    if (savedCategoria) {
+      $("#sidebarCategorySelect").val(savedCategoria);
+    }
 
     if (savedMarca) {
-      $("#filtroMarca").val(savedMarca);
+      $("#sidebarMarcaSelect").val(savedMarca);
       cargarModelos(savedMarca, savedModelo);
     }
 
-    if (savedModelo && savedMarca) {
-      $("#filtroModelo").val(savedModelo);
+    if (savedModelo) {
+      $("#sidebarModelSelect").val(savedModelo);
       cargarMotores(savedModelo, savedMotor);
     }
 
-    if (savedMotor && savedModelo) {
-      $("#filtroMotor").val(savedMotor);
+    if (savedMotor) {
+      $("#sidebarMotorSelect").val(savedMotor);
     }
-
-    //console.log("Filtros restaurados:", savedMarca, savedModelo, savedMotor);
   }
 
-  // Función para actualizar el input hidden con los filtros seleccionados
-  function updateListaFiltros() {
-    const idMarca = $("#filtroMarca").val();
-    const idModelo = $("#filtroModelo").val();
-    const idMotor = $("#filtroMotor").val();
+  // Lógica para manejar eventos de cambio en los filtros
+  setupFilterEvents();
 
-    let filtros = {
-      idMarca: idMarca,
-      idModelo: idModelo,
-      idMotor: idMotor,
-    };
+  // Función que se ejecuta al cambiar un filtro
+  function setupFilterEvents() {
+    $("#sidebarMarcaSelect").on("change", function () {
+      console.log("cambio de marca");
+      const idMarca = $(this).val();
+      localStorage.setItem("filtroMarca", idMarca);
+      cargarModelos(idMarca);
+    });
 
-    // Guardar en localStorage
-    if (idMarca) localStorage.setItem("filtroMarca", idMarca);
-    if (idModelo) localStorage.setItem("filtroModelo", idModelo);
-    if (idMotor) localStorage.setItem("filtroMotor", idMotor);
+    $("#sidebarModelSelect").on("change", function () {
+      const idModelo = $(this).val();
+      localStorage.setItem("filtroModelo", idModelo);
+      cargarMotores(idModelo);
+    });
 
-    $("#listaFiltros").val(JSON.stringify(filtros));
-    //console.log("Filtros guardados:", filtros);
+    $("#sidebarMotorSelect").on("change", function () {
+      const idMotor = $(this).val();
+      localStorage.setItem("filtroMotor", idMotor);
+    });
+
+    $("#sidebarCategorySelect").on("change", function () {
+      const idCategoria = $(this).val();
+      localStorage.setItem("filtroCategoria", idCategoria);
+    });
   }
 
-  // Función para cargar modelos y restaurar la selección si hay
   function cargarModelos(idMarca, selectedModelo = null) {
+    // Realiza la petición AJAX para cargar los modelos
     $.ajax({
       url: "ajax/filtrosFormsRepuesto.ajax.php",
       method: "POST",
       data: { idMarca: idMarca, action: "cargarModelos" },
-      success: function (respuesta) {
-        $("#filtroModelo").html(respuesta);
-        $("#filtroMotor").html('<option value="" selected disabled>Seleccione un Motor</option>');
+      success: function (response) {
+        $("#sidebarModelSelect").html(response);
+        $("#sidebarMotorSelect").html(
+          '<option value="" selected disabled>Seleccione un Motor</option>'
+        );
 
         if (selectedModelo) {
-          $("#filtroModelo").val(selectedModelo);
+          $("#sidebarModelSelect").val(selectedModelo);
           cargarMotores(selectedModelo, localStorage.getItem("filtroMotor"));
         }
+      },
+      error: function () {
+        console.error("Error al cargar los modelos");
       },
     });
   }
 
-  // Función para cargar motores y restaurar la selección si hay
   function cargarMotores(idModelo, selectedMotor = null) {
+    // Realiza la petición AJAX para cargar los motores
     $.ajax({
       url: "ajax/filtrosFormsRepuesto.ajax.php",
       method: "POST",
       data: { idModelo: idModelo, action: "cargarMotores" },
-      success: function (respuesta) {
-        $("#filtroMotor").html(respuesta);
-
+      success: function (response) {
+        $("#sidebarMotorSelect").html(response);
         if (selectedMotor) {
-          $("#filtroMotor").val(selectedMotor);
+          $("#sidebarMotorSelect").val(selectedMotor);
         }
-        updateListaFiltros(); // Actualizar la lista de filtros después de cargar motores
+      },
+      error: function () {
+        console.error("Error al cargar los motores");
       },
     });
   }
 
-  // Función para enviar los filtros a través de GET
-  function enviarFiltrosPorGet() {
-    const idMarca = $("#filtroMarca").val();
-    const idModelo = $("#filtroModelo").val();
-    const idMotor = $("#filtroMotor").val();
+  function cargarRepuestos() {
+    // Obtener los parámetros de la URL actual
+    const urlParams = new URLSearchParams(window.location.search);
 
-    let queryParams = [];
+    // Convertir los parámetros en un objeto de datos para enviar con la petición AJAX
+    const queryParams = {};
+    urlParams.forEach((value, key) => {
+      queryParams[key] = value;
+    });
 
-    if (idMarca) queryParams.push("idMarca=" + encodeURIComponent(idMarca));
-    if (idModelo) queryParams.push("idModelo=" + encodeURIComponent(idModelo));
-    if (idMotor) queryParams.push("idMotor=" + encodeURIComponent(idMotor));
+    $.ajax({
+      url: "ajax/cargar_repuestos.ajax.php",
+      method: "GET",
+      data: queryParams,
+      beforeSend: function () {
+        productList.html("<p>Cargando...</p>");
+      },
+      success: function (response) {
+        productList.html(response);
 
-    const queryString = queryParams.join("&");
-    const url = "categorias?" + queryString;
+        // Inicializar el script del modal después de cargar los productos
+        initializeOffcanvasSidebar();
+        initializeModal(); // Inicializa el modal aquí después de la carga
+      },
+      error: function (error) {
+        console.error("Error al cargar los repuestos:", error);
+        productList.html(
+          "<p>Error al cargar los productos. Inténtalo de nuevo.</p>"
+        );
+      },
+    });
+  }
 
-    window.location.href = url; // Redirigir a la página con los filtros en la URL
+  function initializeOffcanvasSidebar() {
+    if ($(".minicart__open--btn").length) {
+      offcanvsSidebar(".minicart__open--btn", ".minicart__close--btn", ".offCanvas__minicart");
+    }
+  }
+  $(document).on("click", ".minicart__open--btn", function (event) {
+    event.preventDefault();
+    const offCanvasElement = $(".offCanvas__minicart");
+    offCanvasElement.addClass("active");
+    $("body").addClass("offCanvas__minicart_active");
+  });
+
+  $(document).on("click", ".minicart__close--btn", function (event) {
+    event.preventDefault();
+    closeOffcanvas();
+  });
+
+  $(document).on("click", function (event) {
+    if (
+      $(event.target).closest(".offCanvas__minicart, .minicart__open--btn")
+        .length === 0
+    ) {
+      closeOffcanvas();
+    }
+  });
+
+  function closeOffcanvas() {
+    const offCanvasElement = $(".offCanvas__minicart");
+    offCanvasElement.removeClass("active");
+    $("body").removeClass("offCanvas__minicart_active");
   }
 });
+
+function initializeModal() {
+  if (!document.querySelector("[data-modal-initialized]")) {
+    document.addEventListener("click", function (event) {
+      if (event.target.matches("[data-open]")) {
+        const modalId = event.target.getAttribute("data-open");
+        document.getElementById(modalId).classList.add("is-visible");
+      }
+    });
+
+    document.querySelectorAll("[data-open]").forEach(function (el) {
+      el.setAttribute("data-modal-initialized", true);
+    });
+  }
+}
+
+function initializeOffcanvasSidebar() {
+  if ($(".minicart__open--btn").length) {
+    offcanvsSidebar(
+      ".minicart__open--btn",
+      ".minicart__close--btn",
+      ".offCanvas__minicart"
+    );
+  }
+}

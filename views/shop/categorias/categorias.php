@@ -54,8 +54,8 @@ $idMotor = isset($_GET['idMotor']) ? $_GET['idMotor'] : null;
                         $url .= '&idMotor=' . $idMotor;
                     }
 
-                    echo '<li class="categories__shop--card">';
-                    echo '    <a class="categories__shop--card__link" href="' . $url . '">';
+                    echo '<li class="categories__shop--card" data-idFiltroCategoria='.$categoria['id_categoria'].'>';
+                    echo '    <a class="categories__shop--card__link " href="' . $url . '"  >';
                     echo '        <div class="categories__thumbnail mb-15">';
                     echo '            <img class="categories__thumbnail--img" src="'. BASE_URL.'public/assets/shop/img/categories/' . htmlspecialchars($categoria['img_categoria']) . '" alt="categories-img">';
                     echo '        </div>';

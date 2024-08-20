@@ -1,9 +1,10 @@
 $(document).ready(function () {
   // Inicializar el carrito al cargar la página
+  cargarDatosCarrito();
   actualizarModalCarrito();
   actualizarContadorCarrito();
   actualizarTotalCarrito();
-  cargarDatosCarrito();
+
 
   // Manejar clic en "Añadir al carrito"
   $(document).on('click', '.add-to-cart-btn', function () {
@@ -16,7 +17,7 @@ $(document).ready(function () {
       var imagen = productCard.find('.product__primary--img').attr('src');
       var stock = productCard.data('stock-repuesto');
       var marca = productCard.data('marca-repuesto');
-        var descripcion = productCard.data('descripcion-repuesto');
+      var descripcion = productCard.data('descripcion-repuesto');
 
       // Crear un objeto con los datos del repuesto
       var repuesto = {
@@ -29,6 +30,7 @@ $(document).ready(function () {
           marca: marca,
           descripcion: descripcion
       };
+
 
       // Añadir el repuesto al carrito con validación de stock
       addToCart(repuesto);
@@ -44,7 +46,7 @@ $(document).ready(function () {
           if (existe.cantidad < repuesto.stock) {
               existe.cantidad += 1;
           } else {
-            fncToastr('warning', 'No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
+            fncToastr('warning', 'No puedes agregar más al carrito de ' + repuesto.stock + ' unidades de este producto.');
               
           }
       } else {
@@ -114,7 +116,7 @@ $(document).ready(function () {
           var totalItem = repuesto.precio * repuesto.cantidad;
           subtotal += totalItem;
 
-          var disableIncrease = repuesto.cantidad >= repuesto.stock ? 'disabled' : '';
+          var disableIncrease = repuesto.cantidad > repuesto.stock ? 'disabled' : '';
           var disableDecrease = repuesto.cantidad <= 1 ? 'disabled' : '';
 
           carritoTabla.append(`
@@ -165,6 +167,7 @@ $(document).ready(function () {
   $(document).on('click', '.quantity__value.increase', function () {
       var id = $(this).data('id');
       updateCartItem(id, 1);
+      
   });
 
   $(document).on('click', '.minicart__product--remove, .cart__remove--btn', function () {
@@ -174,27 +177,35 @@ $(document).ready(function () {
 
   // Función para actualizar la cantidad de un ítem en el carrito con validación de stock
   function updateCartItem(id, change) {
-      var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-      var repuesto = carrito.find(item => item.id === id);
+    var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    var repuesto = carrito.find(item => item.id === id);
+    //console.log('repuesto:', repuesto); // Verificar el repuesto encontrado
+    //console.log('change:', change); // Verificar el valor de change
 
-      if (repuesto) {
-          if (change > 0 && repuesto.cantidad < repuesto.stock) {
-              repuesto.cantidad += change;
-          } else if (change < 0 && repuesto.cantidad > 1) {
-              repuesto.cantidad += change;
-          } else if (change < 0 && repuesto.cantidad === 1) {
-              carrito = carrito.filter(item => item.id !== id);
-          } else {
+    if (repuesto) {
+        if (change > 0 && repuesto.cantidad < repuesto.stock) {
+            repuesto.cantidad += change;
+            //.log('Cantidad aumentada:', repuesto.cantidad);
+        } else if (change < 0 && repuesto.cantidad > 1) {
+            repuesto.cantidad += change;
+            //console.log('Cantidad disminuida:', repuesto.cantidad);
+        } else if (change < 0 && repuesto.cantidad === 1) {
+            carrito = carrito.filter(item => item.id !== id);
+            //console.log('Producto eliminado del carrito');
+        } else if (change > 0 && repuesto.cantidad >= repuesto.stock) {
             fncToastr('warning', 'No puedes agregar más de ' + repuesto.stock + ' unidades de este producto.');
-          }
+            //console.log('No se puede agregar más, stock alcanzado');
+            return;  // Detener la ejecución aquí para que no actualice el carrito si se alcanza el stock
+        }
 
-          localStorage.setItem('carrito', JSON.stringify(carrito));
-          actualizarContadorCarrito();
-          actualizarTotalCarrito();
-          actualizarModalCarrito();
-          cargarDatosCarrito();
-      }
-  }
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+        actualizarTotalCarrito();
+        actualizarModalCarrito();
+        cargarDatosCarrito();
+    }
+}
+
 
   // Función para eliminar un ítem del carrito
   function removeCartItem(id) {
@@ -234,6 +245,7 @@ $(document).ready(function () {
   $('.minicart__open--btn').on('click', function () {
       actualizarModalCarrito();
   });
+
   $(document).on('click', '.continue__shopping--clear', function() {
     // Vaciar el carrito eliminando el item del localStorage
     localStorage.removeItem('carrito');

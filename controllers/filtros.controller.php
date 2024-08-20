@@ -1,35 +1,43 @@
 <?php
 class ControladorFiltros
 {
+    public static function ctrObtenerRepuestosPorFiltros(?int $idCategoria, ?int $idMarca, ?int $idModelo, ?int $idMotor, ?string $oemRepuesto): array
+    {
+        // Filtrar por todos los parámetros
+        if ($idCategoria && $idMarca && $idModelo && $idMotor) {
+            return ModeloFiltros::mdlObtenerRepuestosPorMotorMarcaModeloCategoria($idCategoria, $idMarca, $idModelo, $idMotor);
+        }
 
-  public static function ctrObtenerRepuestosPorFiltros($idCategoria, $idMarca, $idModelo, $idMotor, $oemRepuesto)
-  {
+        // Filtrar por categoría y marca
+        if ($idCategoria && $idMarca) {
+            return ModeloFiltros::mdlObtenerRepuestosPorCategoriayMarca($idCategoria, $idMarca);
+        }
 
-    if ($idCategoria != null && $idMarca != null && $idModelo != null && $idMotor != null) {
-      return ModeloFiltros::mdlObtenerRepuestosPorMotorMarcaModeloCategoria($idCategoria, $idMarca, $idModelo, $idMotor);
-    }
-    if ($idCategoria != null && $idMarca) {
-      return ModeloFiltros::mdlObtenerRepuestosPorCategoriayMarca($idCategoria, $idMarca);
-    }
-    if ($idCategoria != null && $idMarca != null && $idModelo != null) {
-      return ModeloFiltros::mdlObtenerRepuestosPorCategoriaMarcaModelo($idCategoria, $idMarca, $idModelo);
-    }
+        // Filtrar por categoría, marca y modelo
+        if ($idCategoria && $idMarca && $idModelo) {
+            return ModeloFiltros::mdlObtenerRepuestosPorCategoriaMarcaModelo($idCategoria, $idMarca, $idModelo);
+        }
 
-    if ($idMarca != null && $idModelo != null && $idMotor != null) {
-      return ModeloFiltros::mdlObtenerRepuestosPorMotor( $idMarca, $idModelo, $idMotor);
-    }
-    //Filtrar por marca y modelo
-    if ($idMarca != null && $idModelo != null) {
-      return ModeloFiltros::mdlObtenerRepuestosPorModelo($idModelo);
-    }
-    if($idMarca!= null){
-      return ModeloFiltros::mdlObtenerRepuestosPorMarca($idMarca);
+        // Filtrar por marca, modelo y motor
+        if ($idMarca && $idModelo && $idMotor) {
+            return ModeloFiltros::mdlObtenerRepuestosPorMotor($idMarca, $idModelo, $idMotor);
+        }
 
-    }
-    if($idCategoria!= null){
-      return ModeloFiltros::mdlObtenerRepuestosPorCategoria($idCategoria);
-    }
-  }
+        // Filtrar por modelo
+        if ($idMarca && $idModelo) {
+            return ModeloFiltros::mdlObtenerRepuestosPorModelo($idModelo);
+        }
 
+        // Filtrar por marca
+        if ($idMarca) {
+            return ModeloFiltros::mdlObtenerRepuestosPorMarca($idMarca);
+        }
 
+        // Filtrar por categoría
+        if ($idCategoria) {
+            return ModeloFiltros::mdlObtenerRepuestosPorCategoria($idCategoria);
+        }
+
+        return [];
+    }
 }

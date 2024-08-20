@@ -16,9 +16,9 @@
 
                         </div>
                         <form class="search__filter--form" id="formFiltrosRepuestos" method="GET" action="categorias">
-                            <input type="hidden" id="listaFiltros" name="listaFiltros" value="">
+                            
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="filtroMarca" name="idMarca">
+                                <select class="search__filter--select__field" id="sidebarMarcaSelect" name="idMarca">
                                     <option value="" selected disabled>Seleccione una Marca</option>
                                     <?php
                                     $marcas = ControladorRepuestosCards::ctrMostrarMarcas();
@@ -29,18 +29,18 @@
                                 </select>
                             </div>
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="filtroModelo" name="idModelo">
+                                <select class="search__filter--select__field" id="sidebarModelSelect" name="idModelo">
                                     <option value="" selected disabled>Seleccione un Modelo</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="filtroMotor" name="idMotor">
+                                <select class="search__filter--select__field" id="sidebarMotorSelect" name="idMotor">
                                     <option value="" selected disabled>Seleccione un Motor</option>
                                     <!-- Opciones generadas dinámicamente -->
                                 </select>
                             </div>
-                            <button class="search__filter--btn primary__btn" type="submit">Search</button>
+                            <button class="search__filter--btn primary__btn" id="btnHomeFiltro" type="submit">Buscar</button>
                         </form>
                     </div>
                 </div>

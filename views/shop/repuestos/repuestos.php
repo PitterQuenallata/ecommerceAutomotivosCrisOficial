@@ -1,5 +1,3 @@
-
-
 <main class="main__content_wrapper">
 
     <div class="shop__section section--padding">
@@ -8,63 +6,57 @@
                 <!-- Sidebar -->
                 <div class="col-xl-3 col-lg-4 shop-col-width-lg-4">
                     <div class="shop__sidebar--widget widget__area d-none d-lg-block">
-                        <!-- Categorías -->
-                        <div class="single__widget widget__bg">
-
-                            <h2 class="widget__title h3">Categories</h2>
-
-
-                            <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="sidebarCategorySelect" name="sidebarCategorySelect">
-                                    <option value="" selected disabled>Seleccione una Categoría</option>
-                                    <?php
-                                    $categorias = ControladorCategorias::ctrMostrarCategorias();
-                                    foreach ($categorias as $categoria) {
-                                        echo '<option value="' . $categoria["id_categoria"] . '">' . $categoria["nombre_categoria"] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Filtrar por motor especifico -->
-
-                        <div class="single__widget widget__bg">
-                            <!-- Marcas -->
-                            <h2 class="widget__title h3">Filtrar por Motor</h2>
-                            <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="sidebarBrandSelect" name="sidebarBrandSelect">
-                                    <option value="" selected disabled>Seleccione una Marca</option>
-                                    <?php
-                                    $marcas = ControladorRepuestosCards::ctrMostrarMarcas();
-                                    foreach ($marcas as $marca) {
-                                        echo '<option value="' . $marca["id_marca"] . '">' . $marca["nombre_marca"] . '</option>';
-                                    }
-                                    ?>
-                                </select>
+                        <form class="search__filter--form" id="filtrosRepuestos" method="GET" action="repuestos">
+                        
+                            <!-- Categorías -->
+                            <div class="single__widget widget__bg">
+                                <h2 class="widget__title h3">Categories</h2>
+                                <div class="search__filter--select select">
+                                    <select class="search__filter--select__field" id="sidebarCategorySelect" name="idCategoria">
+                                        <option value="" selected disabled>Seleccione una Categoría</option>
+                                        <?php
+                                        $categorias = ControladorCategorias::ctrMostrarCategorias();
+                                        foreach ($categorias as $categoria) {
+                                            echo '<option value="' . $categoria["id_categoria"] . '">' . $categoria["nombre_categoria"] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
 
-                            <!-- Modelos -->
-                            <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="sidebarModelSelect" name="sidebarModelSelect" disabled>
-                                    <option value="" selected disabled>Seleccione un Modelo</option>
-                                    <!-- Opciones generadas dinámicamente -->
-                                </select>
+                            <!-- Filtrar por motor especifico -->
+                            <div class="single__widget widget__bg">
+                                <h2 class="widget__title h3">Filtrar por Motor</h2>
+                                <div class="search__filter--select select">
+                                    <select class="search__filter--select__field" id="sidebarMarcaSelect" name="idMarca">
+                                        <option value="" selected disabled>Seleccione una Marca</option>
+                                        <?php
+                                        $marcas = ControladorRepuestosCards::ctrMostrarMarcas();
+                                        foreach ($marcas as $marca) {
+                                            echo '<option value="' . $marca["id_marca"] . '">' . $marca["nombre_marca"] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="search__filter--select select">
+                                    <select class="search__filter--select__field" id="sidebarModelSelect" name="idModelo">
+                                        <option value="" selected disabled>Seleccione un Modelo</option>
+                                        <!-- Opciones generadas dinámicamente -->
+                                    </select>
+                                </div>
+                                <div class="search__filter--select select">
+                                    <select class="search__filter--select__field" id="sidebarMotorSelect" name="idMotor">
+                                        <option value="" selected disabled>Seleccione un Motor</option>
+                                        <!-- Opciones generadas dinámicamente -->
+                                    </select>
+                                </div>
+                                <button class="search__filter--btn primary__btn" id="filterSearchButton">Buscar</button>
                             </div>
-                            <!-- Motor -->
-                            <div class="search__filter--select select">
-                                <select class="search__filter--select__field" id="sidebarMotorSelect" name="sidebarMotorSelect" disabled>
-                                    <option value="" selected disabled>Seleccione un Motor</option>
-                                    <!-- Opciones generadas dinámicamente -->
-                                </select>
-                                
-                            </div>
-                            <button class="search__filter--btn primary__btn" id="filterSearchButton">Buscar</button>
-                        </div>
-
-
+                        </form>
                     </div>
+
                 </div>
+
 
 
 
@@ -164,4 +156,4 @@
 
 
 
-<script src="<?php BASE_URL?>public/assets/shop/js/manejarSelectsYUrl.js"></script>
+<!-- <script src="<?php BASE_URL ?>public/assets/shop/js/manejarSelectsYUrl.js"></script> -->

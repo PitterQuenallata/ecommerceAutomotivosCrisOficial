@@ -25,7 +25,7 @@ class ControladorRepuestosCards
   public static function ctrMostrarRepuestoPorId($idRepuesto)
   {
 
-    $respuesta = ModeloRepuestosCards::mdlMostrarRepuestosPorId($idRepuesto);
+    $respuesta = ModeloRepuestosCards::mdlObtenerRepuestoPorId($idRepuesto);
 
     return $respuesta;
   }

@@ -37,8 +37,13 @@
               </div>
 
               <p class="product__details--info__desc mb-15">Descripción del repuesto.</p>
+              <p>Marca:<span class="marcaRepuesto"></span></p>
+              
               <div class="product__variant">
-
+              <input type="hidden" id="hidden_id_repuesto" value="">
+                                <input type="hidden" value="" id="stock_repuesto">
+                                <input type="hidden" value="" id="precio_repuesto">
+                                <input type="hidden" value="" id="marca_repuesto">
                 <div class="product__variant--list quantity d-flex align-items-center mb-20">
                   <div class="col-lg-2">
                     <div class="input-group">

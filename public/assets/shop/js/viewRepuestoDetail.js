@@ -1,6 +1,7 @@
 $(document).ready(function () {
   actualizarContadorCarrito();
   actualizarTotalCarrito();
+
   // Función para cargar los datos del repuesto, usada tanto en el modal como en la página de detalles
   function cargarDatosRepuesto(idRepuesto, isModal = false) {
     $.ajax({
@@ -9,6 +10,7 @@ $(document).ready(function () {
       data: { idRepuesto: idRepuesto },
       dataType: "json",
       success: function (response) {
+        //console.log(response);
         var container = isModal ? $("#modal1") : $(document);
 
         container.find(".product__details--info__title").text(response.nombre);
@@ -16,7 +18,12 @@ $(document).ready(function () {
         container.find(".old__price").text("BS" + response.precio_anterior);
         container.find(".product__details--info__desc").text(response.descripcion);
         container.find(".product__media--preview__items--img").attr("src", response.imagen);
-        
+        container.find(".marcaRepuesto").text(response.marca);
+        // Asignar el valor al input oculto
+        $("#precio_repuesto").val(response.precio_actual);
+        // Asignar el valor al input oculto
+        //$("#marca_repuesto").val(response.marca);
+
         if (isModal) {
           $("#hidden_id_repuesto").val(response.id);
           $("#stock_repuesto").val(response.stock);
@@ -60,41 +67,50 @@ $(document).ready(function () {
   // Función para añadir el producto al carrito
   function añadirAlCarrito(event, isModal = false) {
     event.preventDefault();
-
+    let precio_repuesto = parseFloat($("#precio_repuesto").val());
+    //console.log(precio_repuesto);
     var repuesto = {
-      id: parseInt($('#hidden_id_repuesto').val(), 10),
-      nombre: $('.product__details--info__title').text(),
-      precio: parseFloat($('.current__price').text().replace('BS', '')),
-      imagen: $('.product__media--preview__items--img').attr('src'),
-      cantidad: parseInt($('#quantity').val(), 10),
-      stock: parseInt($('#stock_repuesto').val(), 10)
-    };
+        id: parseInt($('#hidden_id_repuesto').val(), 10),
+        nombre: $('.product__details--info__title').text(),
+        precio: (precio_repuesto),  
+        imagen: $('.product__media--preview__items--img').attr('src'),
+        cantidad: parseInt($('#quantity').val(), 10),
+        stock: parseInt($('#stock_repuesto').val(), 10),
+        marca: $(".marcaRepuesto").text(),
+        descripcion: $(".product__details--info__desc").text(),
 
-    if (repuesto.cantidad <= 0) {
-      fncToastr('warning', 'No puedes añadir 0 productos al carrito.');
-      return;
+    };
+    //console.log(repuesto);
+    if (isNaN(repuesto.precio) || repuesto.precio <= 0) {
+        fncToastr('warning', 'El precio del producto no es válido. No se puede añadir al carrito.');
+        return;
     }
 
+    if (repuesto.cantidad <= 0) {
+        fncToastr('warning', 'No puedes añadir 0 productos al carrito.');
+        return;
+    }
+    
     var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     var existe = carrito.find(item => item.id === repuesto.id);
 
     if (existe) {
-      if (existe.cantidad + repuesto.cantidad <= repuesto.stock) {
-        existe.cantidad += repuesto.cantidad;
-      } else {
-        fncToastr('warning', 'No puedes añadir más productos de los que hay en stock.');
-        return;
-      }
+        if (existe.cantidad + repuesto.cantidad <= repuesto.stock) {
+            existe.cantidad += repuesto.cantidad;
+        } else {
+            fncToastr('warning', 'No puedes añadir más productos de los que hay en stock.');
+            return;
+        }
     } else {
-      carrito.push(repuesto);
+        carrito.push(repuesto);
     }
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
     fncToastr('success', 'Producto añadido al carrito con éxito.');
 
     if (isModal) {
-      $('#modal1').removeClass('is-visible');
+        $('#modal1').removeClass('is-visible');
     }
     actualizarContadorCarrito();
     actualizarTotalCarrito();
@@ -142,8 +158,8 @@ $(document).ready(function () {
     }
   });
 
-    // Función para actualizar el contador de ítems en el carrito
-    function actualizarContadorCarrito() {
+  // Función para actualizar el contador de ítems en el carrito
+  function actualizarContadorCarrito() {
       var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
       var totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
       $('.items__count').text(totalItems);

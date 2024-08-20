@@ -4,32 +4,32 @@ require_once "../models/repuestosCards.model.php";
 require_once "../controllers/filtros.controller.php";
 require_once "../models/filtros.model.php";
 
-if (!isset($_GET['idCategoria']) && !isset($_GET['idMarca']) && !isset($_GET['idModelo']) && !isset($_GET['idMotor']) && !isset($_GET['oemRepuesto'])) {
-    echo "<div class='col-12 text-center'>Seleccione algun Filtro</div>";
+// Capturar y validar los parámetros de la URL
+$idCategoria = filter_input(INPUT_GET, 'idCategoria', FILTER_VALIDATE_INT);
+$idMarca = filter_input(INPUT_GET, 'idMarca', FILTER_VALIDATE_INT);
+$idModelo = filter_input(INPUT_GET, 'idModelo', FILTER_VALIDATE_INT);
+$idMotor = filter_input(INPUT_GET, 'idMotor', FILTER_VALIDATE_INT);
+$oemRepuesto = filter_input(INPUT_GET, 'oemRepuesto', FILTER_SANITIZE_STRING);
+
+// Validar que al menos un filtro esté presente
+if (!$idCategoria && !$idMarca && !$idModelo && !$idMotor && !$oemRepuesto) {
+    echo "<div class='col-12 text-center'>Seleccione algún Filtro</div>";
     return;
 }
 
-$idCategoria = isset($_GET['idCategoria']) ? (int)$_GET['idCategoria'] : null;
-$idMarca = isset($_GET['idMarca']) ? (int)$_GET['idMarca'] : null;
-$idModelo = isset($_GET['idModelo']) ? (int)$_GET['idModelo'] : null;
-$idMotor = isset($_GET['idMotor']) ? (int)$_GET['idMotor'] : null;
-$oemRepuesto = isset($_GET['oemRepuesto']) ? $_GET['oemRepuesto'] : null;
-
-$repuestos = [];
-// var_dump($idCategoria, $idMarca, $idModelo, $idMotor, $oemRepuesto);
-
+// Obtener los repuestos filtrados
 $repuestos = ControladorFiltros::ctrObtenerRepuestosPorFiltros($idCategoria, $idMarca, $idModelo, $idMotor, $oemRepuesto);
-// echo json_encode($repuestos);
+
+// Si no se encuentran repuestos, mostrar un mensaje
 if (empty($repuestos)) {
     echo "<div class='col-12 text-center'>No se encontraron repuestos</div>";
     return;
 }
 
-
 // Generar el HTML de los repuestos filtrados
 foreach ($repuestos as $repuesto) {
-    echo "<div class='col-lg-3 col-md-4 col-sm-6 col-6 mb-30' data-product-id='{$repuesto['id_repuesto']}' >";
-    echo "<article class='product__card' data-stock-repuesto='{$repuesto['stock_repuesto']}' data-descripcion-repuesto='{$repuesto['descripcion_repuesto']}' data-marca-repuesto='{$repuesto['marca_repuesto']}'>";
+    echo "<div class='col-lg-3 col-md-4 col-sm-6 col-6 mb-30' data-product-id='{$repuesto['id_repuesto']}'>";
+    echo "<article class='product__card' data-stock-repuesto='{$repuesto['stock_repuesto']}' data-descripcion-repuesto='{$repuesto['descripcion_repuesto']}' data-marca-repuesto='{$repuesto['fabricante_repuesto']}'>";
     echo "<div class='product__card--thumbnail'>";
     echo "<a class='product__card--thumbnail__link display-block' href='product-details?idRepuesto={$repuesto['id_repuesto']}'>";
     echo "<img class='product__card--thumbnail__img product__primary--img' src='{$repuesto['img_repuesto']}' alt='Imagen del producto'>";
@@ -67,6 +67,3 @@ foreach ($repuestos as $repuesto) {
     echo "</div>";
 }
 ?>
-
-
-
