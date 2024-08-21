@@ -23,13 +23,13 @@
           </li>
         </ul>
         <div class="header__top--right d-flex align-items-center">
-          <ul class="header__top--link d-flex align-items-center">
+          <!-- <ul class="header__top--link d-flex align-items-center">
             <li class="header__link--menu"><a class="header__link--menu__text" href="wishlist.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>Mi lista</a>
             </li>
-          </ul>
+          </ul> -->
           <ul class="social__share d-flex">
             <li class="social__share--list">
               <a class="social__share--icon" target="_blank" href="https://www.facebook.com">
@@ -145,32 +145,34 @@
         <!-- Desliza el navbar en movil -->
         <div class="header__account header__sticky--none">
           <ul class="header__account--wrapper d-flex align-items-center">
-            <li class="header__account--items d-none d-lg-block">
-              <a class="header__account--btn" href="profile">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -user">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <span class="visually-hidden">Mi cuenta</span>
-              </a>
-            </li>
-            <li class="header__account--items  header__account--search__items mobile__d--block d-sm-2-none">
-              <a class="header__account--btn search__open--btn" href="javascript:void(0)" data-offcanvas>
-                <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="20.443" viewBox="0 0 512 512">
-                  <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448" />
-                </svg>
-                <span class="visually-hidden">Buscar</span>
-              </a>
-            </li>
-            <li class="header__account--items d-none d-lg-block">
+
+            <?php 
+              if (isset($_SESSION["id_cliente"])) {
+                echo '<li class="header__account--items d-none d-lg-block">
+                      <a class="header__account--btn" href="profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -user">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span class="visually-hidden">Mi cuenta</span>
+                      </a>
+                    </li>';
+              }else{
+
+                echo '<li class="header__account--items d-none d-lg-block"><a href="/login">Iniciar Session</a></li>';
+              }
+            
+    
+            ?>
+
+            <!-- <li class="header__account--items d-none d-lg-block">
               <a class="header__account--btn" href="wishlist">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
                 <span class="items__count">3</span>
               </a>
-            </li>
+            </li> -->
             <li class="header__account--items header__minicart--items">
               <a class="header__account--btn minicart__open--btn" href="javascript:void(0)" data-offcanvas>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22.706" height="22.534" viewBox="0 0 14.706 13.534">
@@ -183,33 +185,41 @@
                   </g>
                 </svg>
                 <span class="items__count"></span>
-                <span class="minicart__btn--text">My Cart <br> <span class="minicart__btn--text__price">$0.00</span></span>
+                <span class="minicart__btn--text">Mi carrito<br> <span class="minicart__btn--text__price"></span></span>
               </a>
             </li>
           </ul>
         </div>
 
+
         <!-- movil navbar que desliza y se bloque lado login -->
         <div class="header__account header__sticky--block">
           <ul class="header__account--wrapper d-flex align-items-center">
-
-            <li class="header__account--items d-none d-lg-block">
-              <a class="header__account--btn" href="my-account.html">
+          <?php 
+              if (isset($_SESSION["id_cliente"])) {
+              echo '<li class="header__account--items">
+              <a class="header__account--btn" href="/profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -user">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                <span class="visually-hidden">My account</span>
+                <span class="visually-hidden">Mi cuenta</span>
               </a>
-            </li>
-            <li class="header__account--items d-none d-lg-block">
+            </li>';
+              }else{
+                echo '<li class="header__account--items">a href="/login">Iniciar Session</a></li>'; 
+              }
+              ?>
+
+            <!-- <li class="header__account--items  d-lg-block">
               <a class="header__account--btn" href="wishlist.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
-                <span class="items__count">3</span>
+                <span class="items__count"></span>
               </a>
-            </li>
+            </li> -->
+
             <li class="header__account--items header__minicart--items">
               <a class="header__account--btn minicart__open--btn" href="javascript:void(0)" data-offcanvas>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22.706" height="22.534" viewBox="0 0 14.706 13.534">
@@ -221,7 +231,7 @@
                     </g>
                   </g>
                 </svg>
-                <span class="items__count">2</span>
+                <span class="items__count"></span>
               </a>
             </li>
           </ul>
@@ -260,11 +270,7 @@
               foreach ($categorias as $categoria) {
                 echo '<li class="categories__menu--items">';
                 echo '    <a class="categories__menu--link" href="repuestos?idCategoria=' . $categoria['id_categoria'] . '">';
-                echo '        <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
-                echo '            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>';
-                echo '            <line x1="8" y1="21" x2="16" y2="21"></line>';
-                echo '            <line x1="12" y1="17" x2="12" y2="21"></line>';
-                echo '        </svg>';
+
                 echo '        ' . htmlspecialchars($categoria['nombre_categoria']) . '';
                 echo '    </a>';
                 echo '</li>';
@@ -278,13 +284,12 @@
                 <?php
                 $categorias = ControladorCategorias::ctrMostrarCategorias();
                 foreach ($categorias as $categoria) {
-                ?>
-                  <li class="categories__menu--items">
-                    <a class="categories__menu--link" href="repuestos?idCategoria=' . $categoria['id_categoria'] . '">
-                      <?php echo $categoria['nombre_categoria']; ?>
-                    </a>
-                  </li>
-                <?php
+                
+                 echo '<li class="categories__menu--items">';
+                  echo '    <a class="categories__menu--link" href="repuestos?idCategoria=' . $categoria['id_categoria'] . '">';
+                  echo '        ' . htmlspecialchars($categoria['nombre_categoria']) . '';
+                  echo '    </a>';
+                  echo '</li>';
                 }
                 ?>
 
@@ -340,22 +345,32 @@
 
       <nav class="offcanvas__menu">
         <ul class="offcanvas__menu_ul">
-          <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="inicio">Inicio</a></li>
+          <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="home">Inicio</a></li>
           <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="categorias">Categorias</a></li>
           <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="repuestos">Repuestos</a></li>
           <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="carrito">Carrito</a></li>
           <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contacto">Contacto</a></li>
         </ul>
         <div class="offcanvas__account--items">
-          <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
-            <span class="offcanvas__account--items__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512">
-                <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-                <path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
-              </svg>
-            </span>
-            <span class="offcanvas__account--items__label">Ingresar / Registrar</span>
-          </a>
+
+        <?php
+              if (isset($_SESSION["id_cliente"])){ 
+                echo '<a class="offcanvas__account--items__btn d-flex align-items-center" href="/profile">Cuenta</a>';
+                echo '<a class="offcanvas__account--items__btn d-flex align-items-center" href="/salir">Cerrar Session</a>';
+              }else{
+                echo '<a class="offcanvas__account--items__btn d-flex align-items-center" href="login">
+                  <span class="offcanvas__account--items__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512">
+                      <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                      <path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+                    </svg>
+                  </span>
+                  <span class="offcanvas__account--items__label">Ingresar / Registrar</span>
+                </a>';
+              }
+
+              ?>
+
         </div>
 
       </nav>

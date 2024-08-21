@@ -17,43 +17,42 @@ include "views/shop/modals/carrito.php";
 /*=============================================
 Filtro de lista blanca
 =============================================*/
+$pages = array(
+  "home" => "home/home.php",
+  "contactos" => "contactos/contactos.php",
+  "categorias" => "categorias/categorias.php",
+  "repuestos" => "repuestos/repuestos.php",
+  "profile" => "profile/profile.php",
+  "wishlist" => "wishlist/wishlist.php",
+  "about" => "about/about.php",
+  "privacy-policy" => "privacy-policy/privacy-policy.php",
+  "cart" => "cart/cart.php",
+  "product-details" => "product-details/product-details.php",
+  "checkout" => "checkout/checkout.php",
+  "login" => "login/login.php"
+);
+
 if (empty($routesArray[0])) {
-  // Si la ruta está vacía, cargar la página de inicio
   include "views/shop/home/home.php";
-} elseif (
-  $routesArray[0] == "home" ||
-  $routesArray[0] == "contactos" ||
-  $routesArray[0] == "categorias" ||
-  $routesArray[0] == "repuestos" ||
-  $routesArray[0] == "profile" ||
-  $routesArray[0] == "wishlist" ||
-  $routesArray[0] == "about" ||
-  $routesArray[0] == "privacy-policy" ||
-  $routesArray[0] == "cart"||
-  $routesArray[0] == "product-details"
-
-) {
-
-  include "views/shop/" . $routesArray[0] . "/" . $routesArray[0] . ".php";
-} elseif ($routesArray[0] == "checkout") {
-
-  // Verificar si el cliente ha iniciado sesión
-  if (isset($_SESSION["id_cliente"])) {
-    include "views/shop/checkout/checkout.php";
+} elseif (array_key_exists($routesArray[0], $pages)) {
+  if ($routesArray[0] == "checkout" && !isset($_SESSION["cliente"])) {
+      $_SESSION['return_to'] = $_SERVER['REQUEST_URI'];
+      //include "views/shop/login/login.php";
+      echo '<script>
+              window.location = "login";
+            </script>';
+      //header("Location: " . BASE_URL . "login");
+      
   } else {
-    // Redirigir a la página de login si el usuario no ha iniciado sesión
-    header("Location: " . BASE_URL . "login");
-    exit();
+      include "views/shop/" . $pages[$routesArray[0]];
   }
 } else {
-  // Página 404 si no se encuentra la ruta
   include "views/shop/404/404.php";
 }
+
 
 include "views/shop/modals/ver_repuesto.php";
 
 // Footer y cierre del HTML (incluye scripts al final)
 include "views/partials/shop_footer.php";
 include "views/layouts/shop_footer_end.php";
-
-?>
