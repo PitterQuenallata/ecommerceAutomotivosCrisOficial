@@ -1,3 +1,15 @@
+<?php
+  if ($routesArray[0] == "home") {
+
+    if(isset($routesArray[1])){
+      echo '<script>
+      window.location = "/home";
+      </script>';
+    }
+  }
+
+?>
+
 <main class="main__content_wrapper">
     <!-- Start slider section -->
     <section class="hero__slider--section slider__section--bg2 section--padding">

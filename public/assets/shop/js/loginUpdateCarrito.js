@@ -14,7 +14,9 @@ $(document).ready(function() {
             if (response.success) {
                 // Mostrar una alerta de bienvenida
                 fncToastr("success", "Bienvenido", "Has iniciado sesión exitosamente.");
-
+                sincronizarCarrito_A_BaseDatos();
+                obtenerCarrito_de_BaseDatos();
+                //window.reload();
                 // Esperar un poco para que la alerta de bienvenida sea visible
                 setTimeout(function() {
                     // Redirigir al usuario a la URL donde estaba
@@ -26,13 +28,14 @@ $(document).ready(function() {
             }
         },
         error: function() {
-            fncToastr("error", "Error", "Error en la comunicación con el servidor.");
+            fncToastr("error", "Error en la comunicación con el servidor.");
         }
     });
 });
 
-  function sincronizarCarrito() {
+function sincronizarCarrito_A_BaseDatos() {
     var carrito = localStorage.getItem('carrito');
+    console.log(carrito);
     if (carrito) {
         $.ajax({
             url: "ajax/sincronizar_carrito.ajax.php",
@@ -42,24 +45,48 @@ $(document).ready(function() {
             },
             dataType: "json",
             success: function(syncResponse) {
+                console.log(syncResponse);
                 if (syncResponse.success) {
+                    fncToastr("success", "Carrito sincronizadoCarrito sincronizado con la base de datos.");
                     if (syncResponse.clearLocalStorage) {
                         localStorage.removeItem('carrito'); // Vaciar el carrito local
+                        
                     }
                     if (syncResponse.alerts && syncResponse.alerts.length > 0) {
                         syncResponse.alerts.forEach(function(alert) {
-                            fncToastr("warning", "Atención", alert);
+                            fncToastr("warning", alert);
                         });
                     }
                 } else {
-                    fncToastr("error", "Error", syncResponse.error);
+                    fncToastr("error", syncResponse.error);
                 }
             },
             error: function() {
-                fncToastr("error", "Error", "Error en la sincronización del carrito.");
+                fncToastr("error", "Error en la sincronización del carrito.");
             }
         });
     }
+}
+
+
+function obtenerCarrito_de_BaseDatos() {
+    $.ajax({
+        url: "ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
+        method: "POST",
+        dataType: "json",
+        success: function(syncResponse) {
+            console.log(syncResponse);
+            if (syncResponse.success) {
+                localStorage.setItem('carrito', JSON.stringify(syncResponse.carrito));
+                fncToastr("success", "Carrito actualizado desde la base de datos.");
+            } else {
+                fncToastr("error", syncResponse.error);
+            }
+        },
+        error: function() {
+            fncToastr("error", "Error al obtener el carrito desde la base de datos.");
+        }
+    });
 }
 
 });

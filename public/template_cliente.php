@@ -29,7 +29,11 @@ $pages = array(
   "cart" => "cart/cart.php",
   "product-details" => "product-details/product-details.php",
   "checkout" => "checkout/checkout.php",
-  "login" => "login/login.php"
+  "login" => "login/login.php",
+  "salir" => "salir/salir.php",
+  "success" => "checkout/success.php",
+  "cancel" => "checkout/cancel.php",
+  
 );
 
 if (empty($routesArray[0])) {
@@ -39,7 +43,7 @@ if (empty($routesArray[0])) {
       $_SESSION['return_to'] = $_SERVER['REQUEST_URI'];
       //include "views/shop/login/login.php";
       echo '<script>
-              window.location = "login";
+              window.location = "/login";
             </script>';
       //header("Location: " . BASE_URL . "login");
       
@@ -49,6 +53,7 @@ if (empty($routesArray[0])) {
 } else {
   include "views/shop/404/404.php";
 }
+
 
 
 include "views/shop/modals/ver_repuesto.php";

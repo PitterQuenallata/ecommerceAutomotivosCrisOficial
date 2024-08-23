@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
     fncToastr('success', 'Producto añadido al carrito con éxito.');
-
+    sincronizarConBaseDeDatos(repuesto.id, repuesto.cantidad);
     if (isModal) {
         $('#modal1').removeClass('is-visible');
     }

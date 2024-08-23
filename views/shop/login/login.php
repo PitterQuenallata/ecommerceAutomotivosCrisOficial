@@ -1,3 +1,20 @@
+<?php
+if (isset($_SESSION['id_cliente']) && isset($_SESSION['cliente'])) {
+  echo '<script>
+    window.location = "/home";
+    </script>';
+}
+if(!empty($routesArray[1])){
+
+  if($routesArray[1] != "register"){
+    echo '<script>
+    window.location = "/login";
+    </script>';
+  }
+}
+?>
+
+
 <main class="main__content_wrapper">
 
   <div class="login__section section--padding">

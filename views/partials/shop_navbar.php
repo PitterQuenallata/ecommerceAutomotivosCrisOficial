@@ -90,7 +90,7 @@
           </a>
         </div>
         <div class="main__logo">
-          <h1 class="main__logo--title"><a class="main__logo--link" href="home"><img class="main__logo--img" src="<?php BASE_URL ?>public/assets/ecommerce/logoHoriz.png" alt="logo-img"></a></h1>
+          <h1 class="main__logo--title"><a class="main__logo--link" href="home"><img class="main__logo--img" src="<?= BASE_URL ?>public/assets/ecommerce/logoHoriz.png" alt="logo-img"></a></h1>
         </div>
         <div class="header__search--widget d-none d-lg-block header__sticky--none">
           <form class="d-flex header__search--form border-radius-5" action="#">
@@ -207,7 +207,7 @@
               </a>
             </li>';
               }else{
-                echo '<li class="header__account--items">a href="/login">Iniciar Session</a></li>'; 
+                echo '<li class="header__account--items"><a href="/login">Iniciar Session</a></li>'; 
               }
               ?>
 
@@ -338,7 +338,7 @@
     <div class="offcanvas__inner">
       <div class="offcanvas__logo">
         <a class="offcanvas__logo_link" href="index.html">
-          <img src="<?php BASE_URL ?>public/assets/shop/img/logo/nav-log.webp" alt="Grocee Logo" width="158" height="36">
+          <img src="<?= BASE_URL ?>public/assets/shop/img/logo/nav-log.webp" alt="Grocee Logo" width="158" height="36">
         </a>
         <button class="offcanvas__close--btn" data-offcanvas>Cerrar</button>
       </div>
@@ -462,7 +462,7 @@
     <div class="minicart__product">
       <div class="minicart__product--items d-flex">
         <div class="minicart__thumb">
-          <a href="product-details.html"><img src="<?php BASE_URL ?>public/assets/shop/img/product/small-product/product1.webp" alt="prduct-img"></a>
+          <a href="product-details.html"><img src="<?= BASE_URL ?>public/assets/shop/img/product/small-product/product1.webp" alt="prduct-img"></a>
         </div>
         <div class="minicart__text">
           <h4 class="minicart__subtitle"><a href="product-details.html">Car & Motorbike Care.</a></h4>
@@ -485,7 +485,7 @@
       </div>
       <div class="minicart__product--items d-flex">
         <div class="minicart__thumb">
-          <a href="product-details.html"><img src="<?php BASE_URL ?>public/assets/shop/img/product/small-product/product2.webp" alt="prduct-img"></a>
+          <a href="product-details.html"><img src="<?= BASE_URL ?>public/assets/shop/img/product/small-product/product2.webp" alt="prduct-img"></a>
         </div>
         <div class="minicart__text">
           <h4 class="minicart__subtitle"><a href="product-details.html">Engine And Drivetrain.</a></h4>

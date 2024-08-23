@@ -13,5 +13,7 @@
 <script src="<?= BASE_URL ?>public/assets/shop/js/script.js"></script>
 <script src="<?= BASE_URL ?>public/assets/shop/js/viewRepuestoDetail.js"></script>
 
+<script src="https://js.stripe.com/v3/"></script>
+<script src="<?= BASE_URL ?>public/assets/shop/js/stripe.js"></script>
 </body>
 </html>

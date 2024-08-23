@@ -16,6 +16,8 @@ require_once "controllers/repuestosCards.controller.php";
 require_once "controllers/filtros.controller.php";
 require_once "controllers/clientes.controller.php";
 require_once "controllers/carrito.controller.php";
+require_once "controllers/carrito.session.controller.php";
+require_once "controllers/repuestos.controller.php";
 
 
 require_once "models/categorias.model.php";
@@ -23,6 +25,8 @@ require_once "models/repuestosCards.model.php";
 require_once "models/filtros.model.php";
 require_once "models/clientes.model.php";
 require_once "models/carrito.model.php";
+require_once "models/carrito.session.model.php";
+require_once "models/repuestos.model.php";
 
 
 // Capturar las rutas de la URL

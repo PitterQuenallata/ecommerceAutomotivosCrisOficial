@@ -24,50 +24,30 @@ function fncNotie(type, text) {
 /*=============================================
 Alerta SweetAlert
 =============================================*/
-function fncSweetAlert(type, text, url, callback) {
+function fncSweetAlert(type, text, url) {
   switch (type) {
     case "error":
-      if (url == "") {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: text,
-        }).then((result) => {
-          if (callback) callback(result);
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: text,
-        }).then((result) => {
-          if (result.value) {
-            window.open(url, "_top");
-          }
-        });
-      }
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: text,
+      }).then((result) => {
+        if (url) {
+          window.open(url, "_top");
+        }
+      });
       break;
 
     case "success":
-      if (url == "") {
-        Swal.fire({
-          icon: "success",
-          title: "Correcto",
-          text: text,
-        }).then((result) => {
-          if (callback) callback(result);
-        });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Correcto",
-          text: text,
-        }).then((result) => {
-          if (result.value) {
-            window.open(url, "_top");
-          }
-        });
-      }
+      Swal.fire({
+        icon: "success",
+        title: "Correcto",
+        text: text,
+      }).then((result) => {
+        if (url) {
+          window.open(url, "_top");
+        }
+      });
       break;
 
     case "loading":
@@ -111,6 +91,7 @@ function fncSweetAlert(type, text, url, callback) {
       break;
   }
 }
+
 
 
 /*=============================================

@@ -65,8 +65,8 @@
                 <div class="cart__summary--footer">
                   <p class="cart__summary--footer__desc">Envío e impuestos calculados al finalizar la compra</p>
                   <ul class="d-flex justify-content-between">
-                    <li><button class="cart__summary--footer__btn primary__btn cart" type="button">Actualizar Carrito</button></li>
-                    <li><a class="cart__summary--footer__btn primary__btn checkout" href="checkout">Verificar</a></li>
+                    <li><button class="cart__summary--footer__btn primary__btn cart" id="sincronizarCarrito" type="button">Verificar Carrito</button></li>
+                    <li><a class="cart__summary--footer__btn primary__btn checkout" href="checkout">Comprar</a></li>
                   </ul>
                 </div>
               </div>

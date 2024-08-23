@@ -10871,6 +10871,135 @@ span.info__list--item-content {
   font-size: 1.5rem;
 }
 
+/*     ----------------------               */
+/* 
+    Estilos para la página de perfil
+*/
+.perfil__section--heading__maintitle {
+  font-size: 2.8rem;
+  line-height: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.perfil__section--heading__desc {
+  color: var(--foreground-sub-color);
+  width: 75%;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .perfil__section--heading__desc {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+    width: 55%;
+  }
+}
+
+.perfil__form {
+  background: var(--body-background-color);
+  border-radius: 10px;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.16);
+  padding: 4rem;
+}
+
+@media only screen and (min-width: 992px) {
+  .perfil__form {
+    margin-left: 36rem;
+    padding: 5.5rem 3.5rem 5.5rem 10rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .perfil__form {
+    margin-left: 40rem;
+  }
+}
+
+.perfil__form--title {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .perfil__form--title {
+    font-size: 2.2rem;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .perfil__form--title.mb-30 {
+    margin-bottom: 2rem;
+  }
+}
+
+.perfil__form--label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.perfil__form--label__star {
+  color: var(--secondary-color);
+}
+
+.perfil__form--input {
+  width: 100%;
+  height: 50px;
+  padding: 5px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.perfil__form--input:focus {
+  border-color: var(--secondary-color) !important;
+}
+
+.perfil__form--textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  resize: none;
+  border: 1px solid var(--border-color);
+}
+
+.perfil__form--textarea:focus {
+  border-color: var(--secondary-color) !important;
+}
+
+@media only screen and (min-width: 992px) {
+  .perfil__form--textarea {
+    height: 120px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .perfil__form--textarea {
+    height: 160px;
+  }
+}
+
+.perfil__form--btn {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--text-white-color);
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: background-color 0.3s ease;
+}
+
+.perfil__form--btn:hover {
+  background-color: var(--primary-color);
+  color: var(--text-white-color);
+}
+
+
+
+
 /* 
     28. Contact page css 
 */

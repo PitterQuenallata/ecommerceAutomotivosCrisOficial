@@ -47,7 +47,7 @@
           <a class="account__social--link google" target="_blank" href="https://www.google.com">Google</a>
           <a class="account__social--link twitter" target="_blank" href="https://twitter.com">Twitter</a>
         </div> -->
-        <p class="account__login--signup__text">No tienes una cuenta? <button><a href="login/register">Registrarse</a></button></p>
+        <p class="account__login--signup__text">No tienes una cuenta? <button><a href="/login/register">Registrarse</a></button></p>
       </form>
     </div>
   </div>

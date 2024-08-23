@@ -50,6 +50,8 @@
 
   <script src="<?= BASE_URL ?>public/assets/shop/js/carrito.js"></script>
   <script src="<?= BASE_URL ?>public/assets/shop/js/loginUpdateCarrito.js"></script>
+
+
 </head>
 
 <body>

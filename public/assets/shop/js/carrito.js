@@ -1,4 +1,13 @@
 $(document).ready(function () {
+
+
+    obtenerCarrito_de_BaseDatos();
+
+        
+
+    
+
+    
   // Inicializar el carrito al cargar la página
   cargarDatosCarrito();
   actualizarModalCarrito();
@@ -34,6 +43,7 @@ $(document).ready(function () {
 
       // Añadir el repuesto al carrito con validación de stock
       addToCart(repuesto);
+      sincronizarConBaseDeDatos(repuesto.id, repuesto.cantidad);
   });
 
   // Función para añadir un producto al carrito con validación de stock
@@ -57,8 +67,9 @@ $(document).ready(function () {
               
           }
       }
-
+      //sincronizarConBaseDeDatos(repuesto.id, repuesto.cantidad);
       localStorage.setItem('carrito', JSON.stringify(carrito));
+      sincronizarConBaseDeDatos(repuesto.id, repuesto.cantidad);
       actualizarContadorCarrito();
       actualizarTotalCarrito();
       actualizarModalCarrito();
@@ -198,6 +209,9 @@ $(document).ready(function () {
             return;  // Detener la ejecución aquí para que no actualice el carrito si se alcanza el stock
         }
 
+        // Sincronizar con la base de datos
+        sincronizarConBaseDeDatos(id, repuesto.cantidad);
+  
         localStorage.setItem('carrito', JSON.stringify(carrito));
         actualizarContadorCarrito();
         actualizarTotalCarrito();
@@ -211,6 +225,8 @@ $(document).ready(function () {
   function removeCartItem(id) {
       var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
       carrito = carrito.filter(item => item.id !== id);
+        // Sincronizar la eliminación con la base de datos
+    sincronizarConBaseDeDatos(id, 0);  // 0 significa que el ítem debe ser eliminado
       localStorage.setItem('carrito', JSON.stringify(carrito));
       actualizarContadorCarrito();
       actualizarTotalCarrito();
@@ -248,9 +264,12 @@ $(document).ready(function () {
 
   $(document).on('click', '.continue__shopping--clear', function() {
     // Vaciar el carrito eliminando el item del localStorage
+
+    vaciarCarrito(); //db vaicaiar carrito
     localStorage.removeItem('carrito');
     
     // Actualizar la interfaz de usuario
+   
     actualizarContadorCarrito();
     actualizarTotalCarrito();
     actualizarModalCarrito();
@@ -261,3 +280,136 @@ $(document).ready(function () {
 });
 
 });
+
+
+
+// $(document).ready(function() {
+// // Manejar el envío del formulario de compra
+// $(document).on('click', '#sincronizarCarrito', function () {
+//     //console.log('Sincronizando carrito...');
+//     //sincronizarCarrito_A_BaseDatos();
+//     //obtenerCarrito_de_BaseDatos();
+// });
+
+// });
+
+function sincronizarCarrito_A_BaseDatos() {
+    var carrito = localStorage.getItem('carrito');
+    //console.log(carrito);
+    if (carrito) {
+        $.ajax({
+            url: "ajax/sincronizar_carrito.ajax.php",
+            method: "POST",
+            data: {
+                carrito_local: carrito
+            },
+            dataType: "json",
+            success: function(syncResponse) {
+                //console.log(syncResponse);
+                if(syncResponse.error === "noSession"){
+                    fncToastr("warning", "No hay una sesión activa.");
+                    return;
+
+                }   
+                if (syncResponse.success) {
+
+                    fncToastr("success", "Carrito sincronizadoCarrito sincronizado con la base de datos.");
+                    if (syncResponse.clearLocalStorage) {
+                        localStorage.removeItem('carrito'); // Vaciar el carrito local
+                        
+                    }
+                    if (syncResponse.alerts && syncResponse.alerts.length > 0) {
+                        syncResponse.alerts.forEach(function(alert) {
+                            fncToastr("warning", alert);
+                        });
+                    }
+                } else {
+                    fncToastr("error", syncResponse.error);
+                }
+            },
+            error: function() {
+                fncToastr("error", "Error en la sincronización del carrito.");
+            }
+        });
+    }
+}
+
+//obtener
+function obtenerCarrito_de_BaseDatos() {
+    $.ajax({
+        url: "ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
+        method: "POST",
+        dataType: "json",
+        success: function(syncResponse) {
+            if(syncResponse.error === "noSession"){
+                fncToastr("warning", "No hay una sesión activa.");
+                return;
+            }
+            if (syncResponse.success) {
+                localStorage.setItem('carrito', JSON.stringify(syncResponse.carrito));
+                fncToastr("success", "Carrito actualizado desde la base de datos.");
+            } else {
+                fncToastr("error", syncResponse.error);
+            }
+        },
+        error: function() {
+            fncToastr("error", "Error al obtener el carrito desde la base de datos.");
+        }
+    });
+}
+
+
+function sincronizarConBaseDeDatos(id_repuesto, cantidad) {
+    // var a = id_repuesto;
+    // var cantidad = cantidad;
+    //console.log(a, cantidad);
+    $.ajax({
+        url: 'ajax/sincronizar_carrito_sesion.ajax.php',
+        method: 'POST',
+        data: {
+            id_repuesto: id_repuesto,
+            cantidad: cantidad
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.error === "noSession"){
+                return;
+            }
+            if( response.success && response.alerts !== ""){
+                fncToastr('success', response.alerts);
+            }else {
+                fncToastr('error', 'Error al sincronizar el carrito.');
+            }
+                
+            
+        },
+        error: function() {
+            fncToastr('error', 'Error en la comunicación con el servidor.');
+        }
+    });
+}
+
+
+function vaciarCarrito() {
+    $.ajax({
+        url: 'ajax/sincronizar_carrito_sesion.ajax.php',
+        method: 'POST',
+        data: {
+            action: 'vaciar'  // Enviar la acción 'vaciar'
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                // Limpiar el localStorage y actualizar la UI
+                localStorage.removeItem('carrito');
+               
+                fncToastr('success', response.alerts);
+            } else {
+                fncToastr('error', response.error);
+            }
+        },
+        error: function() {
+            fncToastr('error', 'Error en la comunicación con el servidor.');
+        }
+    });
+}
