@@ -2,7 +2,7 @@
 $cliente = ModeloClientes::mdlMostrarClientePorId("clientes", $_SESSION["id_cliente"]);
 ?>
 
-<div class="account__content section__cuenta " style="display:none;">
+<div class="account__content section__cuenta ">
   <div class="container mt-4">
     <h3 class="perfil__form--title mb-30">Mi Perfil</h3>
     <form class="perfil__form--inner" id="formEditarPerfil" method="POST">
@@ -67,7 +67,7 @@ $cliente = ModeloClientes::mdlMostrarClientePorId("clientes", $_SESSION["id_clie
       </div>
 
     </form>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
       $(document).ready(function() {
         const editBtn = $('#editPerfilbtn');

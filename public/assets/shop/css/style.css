@@ -11127,6 +11127,18 @@ span.info__list--item-content {
     height: 160px;
   }
 }
+.pagoRealizado{
+  background: var(--secondary-color);
+  padding: 1rem;
+
+}
+
+.pagoRealizado--items {
+  margin-bottom: 1rem;
+}
+.pagoRealizado__title {
+  font-weight: 600;
+}
 
 .contact__info {
   background: var(--secondary-color);

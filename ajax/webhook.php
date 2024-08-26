@@ -10,12 +10,13 @@ $payload = @file_get_contents('php://input');
 $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
 $event = null;
 
+session_start();
 try {
     $event = \Stripe\Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
-} catch(\UnexpectedValueException $e) {
+} catch (\UnexpectedValueException $e) {
     http_response_code(400);
     exit();
-} catch(\Stripe\Exception\SignatureVerificationException $e) {
+} catch (\Stripe\Exception\SignatureVerificationException $e) {
     http_response_code(400);
     exit();
 }
@@ -24,7 +25,6 @@ switch ($event->type) {
     case 'checkout.session.completed':
         $session = $event->data->object;
         handleSuccessfulPayment($session);
-
         break;
 
     case 'payment_intent.payment_failed':
@@ -39,34 +39,34 @@ switch ($event->type) {
 http_response_code(200);
 
 function handleSuccessfulPayment($session) {
+    // Crear una conexión a la base de datos
+    $conn = Conexion::conectar();
+    $conn->beginTransaction();
 
-  
+    try {
+        $id_cliente = $session->client_reference_id;
+        $monto_total = $session->amount_total / 100;  // Stripe devuelve el monto en centavos
 
-  // Crear una conexión a la base de datos
-  $conn = Conexion::conectar();  // Usar la clase Conexion para conectarse a la base de datos
-  $conn->beginTransaction();
+        // Insertar la nueva orden en la base de datos
+        $stmt = $conn->prepare("INSERT INTO ordenes (id_cliente, total_orden, estado_orden, metodo_pago_orden) VALUES (:id_cliente, :total_orden, '1', 'stripe')");
+        $stmt->execute([':id_cliente' => $id_cliente, ':total_orden' => $monto_total]);
+        $id_orden = $conn->lastInsertId();
 
-  try {
-      $id_cliente = $session->client_reference_id;
-      $monto_total = $session->amount_total / 100;  // Stripe devuelve el monto en centavos
+        // Insertar un nuevo registro en la tabla envios
+        $stmt = $conn->prepare("INSERT INTO envios (id_orden, estado_envio, direccion_envio) VALUES (:id_orden, '0', 'La Paz')");
+        $stmt->execute([':id_orden' => $id_orden]);
 
-      // Insertar la nueva orden en la base de datos
-      $stmt = $conn->prepare("INSERT INTO ordenes (id_cliente, total_orden, estado_orden) VALUES (:id_cliente, :total_orden, 'Pagada')");
-      $stmt->execute([':id_cliente' => $id_cliente, ':total_orden' => $monto_total]);
-      $id_orden = $conn->lastInsertId();
+        // Mover los ítems del carrito a detalles_orden
+        $stmt = $conn->prepare("
+            INSERT INTO detalles_orden (id_orden, id_repuesto, cantidad, precio)
+            SELECT :id_orden, dc.id_repuesto, dc.cantidad, r.precio_repuesto
+            FROM detalles_carrito dc
+            INNER JOIN carrito c ON dc.id_carrito = c.id_carrito
+            INNER JOIN repuestos r ON dc.id_repuesto = r.id_repuesto
+            WHERE c.id_cliente = :id_cliente
+        ");
+        $stmt->execute([':id_orden' => $id_orden, ':id_cliente' => $id_cliente]);
 
-      // Mover los ítems del carrito a detalles_orden
-      $stmt = $conn->prepare("
-          INSERT INTO detalles_orden (id_orden, id_repuesto, cantidad, precio)
-          SELECT :id_orden, dc.id_repuesto, dc.cantidad, r.precio_repuesto
-          FROM detalles_carrito dc
-          INNER JOIN carrito c ON dc.id_carrito = c.id_carrito
-          INNER JOIN repuestos r ON dc.id_repuesto = r.id_repuesto
-          WHERE c.id_cliente = :id_cliente
-      ");
-      $stmt->execute([':id_orden' => $id_orden, ':id_cliente' => $id_cliente]);
-
-      
         // Eliminar los detalles del carrito
         $stmt = $conn->prepare("
             DELETE FROM detalles_carrito WHERE id_carrito = (
@@ -79,19 +79,33 @@ function handleSuccessfulPayment($session) {
         $stmt = $conn->prepare("
             DELETE FROM carrito WHERE id_cliente = :id_cliente
         ");
-      $stmt->execute([':id_cliente' => $id_cliente]);
+        $stmt->execute([':id_cliente' => $id_cliente]);
+        
+        $_SESSION['id_orden'] = $id_orden;
 
+        echo '<script>
+        console.log("hola)
+        window.location = "/profile/orden/detalle?idOrden='. $id_orden.'&idCliente='.$id_cliente.'";
+        </script>';
+        // Confirmar la transacción
+        $conn->commit();
 
-      // Confirmar la transacción
-      $conn->commit();
-      
-  } catch (Exception $e) {
-      // Revertir la transacción en caso de error
-      $conn->rollback();
-      error_log("Error al procesar el pago: " . $e->getMessage());
-  }
+       
+
+        // Redirigir a la página de detalles de la orden
+    // Redirigir a la página de detalles de la orden
+        error_log('Redirigiendo a /profile/orden/detalle?idOrden='.$id_orden.'&idCliente='.$id_cliente.'');
+    // header('Location: /profile/orden/detalle?idOrden='.$id_orden.'&idCliente='.$id_cliente.'');
+    // exit;
+
+        exit;
+
+    } catch (Exception $e) {
+        // Revertir la transacción en caso de error
+        $conn->rollback();
+        error_log("Error al procesar el pago: " . $e->getMessage());
+    }
 }
-
 
 function handleFailedPayment($paymentIntent) {
     // Aquí puedes manejar el fallo en el pago, por ejemplo, notificando al cliente o registrando el error

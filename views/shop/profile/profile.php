@@ -10,8 +10,6 @@ if (isset($_SESSION['cliente'])) {
 
 ?>
 
-
-
 <main class="main__content_wrapper">
 
     <!-- Start breadcrumb section -->
@@ -48,49 +46,43 @@ if (isset($_SESSION['cliente'])) {
                 <div class="account__left--sidebar">
                     <h2 class="account__content--title mb-20">Mi perfil</h2>
                     <ul class="account__menu">
-                        <li class="account__menu--list listaPerfilSelect active"><a href="#">Cuenta</a></li>
-                        <li class="account__menu--list listaPerfilSelect"><a href="#">Ordenes</a></li>
-                        <li class="account__menu--list listaPerfilSelect"><a href="#">Historial</a></li>
+                        <li class="account__menu--list listaPerfilSelect"><a href="/profile/perfil">Cuenta</a></li>
+                        <li class="account__menu--list listaPerfilSelect ordenSlidebar" id="listaHistorialOrden" ><a  href="/profile/orden">Ordenes</a></li>
+                        <li class="account__menu--list listaPerfilSelect"><a href="/profile/direcciones">Historial</a></li>
                         <li class="account__menu--list"><a href="/salir">Cerrar sesión</a></li>
                     </ul>
+
 
                 </div>
 
                 <div class="account__wrapper">
-                    <?php include "modules/perfil.php" ?>
 
-                    <div class="account__content section__ordenes" style="display:none;">
-                        <!-- Contenido de la sección "Ordenes" -->
-                        <h2 class="account__content--title h3 mb-20">Orders History</h2>
-                        <div class="account__table--area">
-                            <table class="account__table">
-                                <thead class="account__table--header">
-                                    <tr class="account__table--header__child">
-                                        <th class="account__table--header__child--items">Order</th>
-                                        <th class="account__table--header__child--items">Date</th>
-                                        <th class="account__table--header__child--items">Payment Status</th>
-                                        <th class="account__table--header__child--items">Fulfillment Status</th>
-                                        <th class="account__table--header__child--items">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="account__table--body mobile__none">
-                                    <tr class="account__table--body__child">
-                                        <td class="account__table--body__child--items">#2014</td>
-                                        <td class="account__table--body__child--items">November 24, 2022</td>
-                                        <td class="account__table--body__child--items">Paid</td>
-                                        <td class="account__table--body__child--items">Unfulfilled</td>
-                                        <td class="account__table--body__child--items">$40.00 USD</td>
-                                    </tr>
 
-                                </tbody>
+                    <?php
+                    /*=============================================
+                    Lista blanca de url permitidas en el dashboard
+                    =============================================*/
+                    $pages = array(
+                        "perfil" => "modules/perfil.php",
+                        "orden" => "modules/orden.php",
+                        "direcciones" => "modules/direcciones.php",
+                        "success" => "modules/success.php",
+                
+                      );
+                      if (!empty($routesArray[1])){
+                        if (array_key_exists($routesArray[1], $pages)) {
 
-                            </table>
-                        </div>
-                    </div>
+                            include $pages[$routesArray[1]];
+                        }else {
+                            echo '<script>
+                            window.location = "' . BASE_URL . 'views/shop/404/404";
+                        </script>';
+                        }
+                      } else {
 
-                    <div class="account__content section__historial" style="display:none;">
-                        <!-- Contenido de la sección "Historial" -->
-                    </div>
+                        include "modules/perfil.php";
+                    } ?>
+
                 </div>
 
 
@@ -104,4 +96,9 @@ if (isset($_SESSION['cliente'])) {
 
 </main>
 
+
+
 <script src="<?= BASE_URL ?>public/assets/shop/js/perfil.js"></script>
+<script src="<?= BASE_URL ?>views/shop/profile/historialOrden.js"></script>
+<script src="<?= BASE_URL ?>views/shop/profile/detalleOrden.js"></script>
+

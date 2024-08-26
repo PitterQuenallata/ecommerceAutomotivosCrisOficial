@@ -21,7 +21,10 @@
 
   <!-- Plugin css -->
   <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/css/vendor/bootstrap.min.css">
-
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Custom Style CSS -->
   <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/css/style.css">
   <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/shop/css/responsive.css">
@@ -51,7 +54,19 @@
   <script src="<?= BASE_URL ?>public/assets/shop/js/carrito.js"></script>
   <script src="<?= BASE_URL ?>public/assets/shop/js/loginUpdateCarrito.js"></script>
 
-
+  <!-- DataTables  & Plugins -->
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/jszip/jszip.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 </head>
 
 <body>

@@ -1,11 +1,13 @@
 <?php
 require '../vendor/autoload.php';
+
 session_start();
 
-\Stripe\Stripe::setApiKey('sk_test_51PW9ic04RCXZmKru1sOIVEsuSzuoUY8Pe17Eu3BDLIFqjDKg5jr71wYRBuQUHwBZrtoEYGrtDIDkJMpbkki1bu3b00miNJ9ndj'); // Tu clave secreta de Stripe
-// Recibir los datos del carrito desde el frontend
+\Stripe\Stripe::setApiKey('sk_test_51PW9ic04RCXZmKru1sOIVEsuSzuoUY8Pe17Eu3BDLIFqjDKg5jr71wYRBuQUHwBZrtoEYGrtDIDkJMpbkki1bu3b00miNJ9ndj');
+
 // Recibir los datos del carrito desde el frontend
 $carrito = $_POST['carrito'];
+$id_cliente = $_SESSION['id_cliente']; // Recuperar idCliente de la sesión
 
 // Inicializa el monto total a cero
 $montoTotal = 0;
@@ -36,11 +38,10 @@ try {
         'payment_method_types' => ['card'],
         'line_items' => $line_items,
         'mode' => 'payment',
-        'success_url' => 'http://cris.local/success', // URL de redirección en caso de éxito
-        'cancel_url' => 'http://cris.local/cancel',
-        'client_reference_id' => $_SESSION['id_cliente'], // Puedes enviar el ID del cliente como referencia
+        'success_url' => 'http://cris.local/profile/success?session_id={CHECKOUT_SESSION_ID}&idCliente=' . $id_cliente, // Agregar idCliente a la URL
+        'client_reference_id' => $_SESSION['id_cliente'], // Envía el ID del cliente como referencia
         'metadata' => [
-            'order_id' => uniqid(), // Por ejemplo, puedes generar un ID de orden único
+            'order_id' => uniqid(), // ID único de la orden
         ]
     ]);
 
