@@ -22,7 +22,7 @@ require_once '../api/ApiController.php'; // Asegúrate de ajustar la ruta según
       "direccion_remitente" => "santa", // Cambia esto según sea necesario
       "sucursalPartida" => $departamento,
       "sucursalLlegada" => $sucursal,
-      "tipoEnvio" => "Normal",  // Cambia esto según sea necesario
+      "tipoEnvio" => 0,  // Cambia esto según sea necesario
       "descripcion" => "Repuesto",  // Cambia esto según sea necesario
       "cantidad" => 1,  // Cambia esto según sea necesario
       "precio" => 10.00,  // Cambia esto según sea necesario

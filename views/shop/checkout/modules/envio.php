@@ -1,21 +1,58 @@
-<script src="<?= BASE_URL ?>views/shop/checkout/modules/envios.js"></script>
+<!-- <script src="<?= BASE_URL ?>views/shop/checkout/modules/envios.js"></script> -->
 <?php
 $usuario = $_SESSION['cliente'];
 
 $api = new ApiController();
 
-// Obtener sucursales
+// Definir los arrays de departamentos y provincias antes de procesar las sucursales
+$departamentos = [
+  1 => 'Santa Cruz',
+  2 => 'La Paz',
+  3 => 'Cochabamba',
+  4 => 'Sucre',
+  5 => 'Potosi',
+  6 => 'Oruro',
+  7 => 'Beni',
+  8 => 'Pando',
+  9 => 'Tarija'
+];
+
+$provincias = [
+  1 => ['Andrés Ibáñez', 'Ichilo', 'Sara', 'Cordillera', 'Germán Busch'],
+  2 => ['Murillo', 'Los Andes', 'Ingavi', 'Pacajes', 'Nor Yungas'],
+  3 => ['Arani', 'Carrasco', 'Cercado', 'Esteban Arce', 'Germán Jordán'],
+  4 => ['Oropeza', 'Azurduy', 'Tomina', 'Zudáñez', 'Yamparáez'],
+  5 => ['Tomás Frías', 'Charcas', 'Nor Chichas', 'Sud Chichas', 'Linares'],
+  6 => ['Cercado', 'Litoral', 'Ladislao Cabrera', 'Poopó', 'Sajama'],
+  7 => ['Cercado', 'Yacuma', 'Ballivián', 'Moxos', 'Vaca Díez'],
+  8 => ['Madre de Dios', 'Manuripi', 'Abuná', 'Federico Román', 'Nicolás Suárez'],
+  9 => ['Cercado', 'Arce', 'Avilés', 'O’Connor', 'Gran Chaco']
+];
+
+// Obtener las sucursales desde la API
 $sucursales = $api->getSucursales();
-// echo "<pre>"; 
-// print_r($sucursales);
-// echo "</pre>";
-// Crear un array para almacenar departamentos y sucursales
-$departamentos = [];
+
+// Crear un array para almacenar las sucursales con nombres de departamento y provincia
+$sucursalesConNombres = [];
+
 foreach ($sucursales as $sucursal) {
-    $departamentos[$sucursal['departamento']][] = $sucursal;
+    $departamentoId = $sucursal['departamento'];
+    $provinciaId = $sucursal['provincia'];
+
+    // Asignar el nombre del departamento y la provincia
+    $sucursal['nombre_departamento'] = $departamentos[$departamentoId];
+    $sucursal['nombre_provincia'] = $provincias[$departamentoId][$provinciaId - 1]; // Se resta 1 porque el array de provincias es de 0 indexado
+
+    // Agregar la sucursal al array con los nombres
+    $sucursalesConNombres[] = $sucursal;
 }
 
+// Ahora $sucursalesConNombres tiene todas las sucursales con los nombres correctos de departamento y provincia
+
+// Para verificar que todo esté correcto, puedes hacer un print_r:
+
 ?>
+
 
 <div class="col-lg-11 col-md-6 justify-content-center align-items-center">
   <div class="main checkout__mian">
@@ -28,6 +65,7 @@ foreach ($sucursales as $sucursal) {
         <div class="section__shipping--address__content">
           <div class="row">
 
+            <!-- Nombre y Apellido -->
             <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
               <div class="checkout__input--list">
                 <label class="checkout__input--label mb-2" for="nombreEnvio">Nombre<span class="checkout__input--label__star">*</span></label>
@@ -41,6 +79,7 @@ foreach ($sucursales as $sucursal) {
               </div>
             </div>
 
+            <!-- Carnet y Celular -->
             <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
               <div class="checkout__input--list">
                 <label class="checkout__input--label mb-2" for="ciEnvio">Carnet<span class="checkout__input--label__star">*</span></label>
@@ -55,17 +94,15 @@ foreach ($sucursales as $sucursal) {
               </div>
             </div>
 
-            <div class="col-lg-6 mb-5">
+            <!-- Selección de Departamento, Provincia y Sucursal -->
+            <div class="col-lg-4 mb-5">
               <div class="checkout__input--list">
                 <label class="checkout__input--label mb-2" for="departamento">Departamento<span class="checkout__input--label__star">*</span></label>
                 <div class="checkout__input--select select">
-                  <select class="checkout__input--select__field border-radius-5" id="departamento" onchange="actualizarSucursales()">
+                  <select class="checkout__input--select__field border-radius-5" id="departamento" onchange="actualizarProvincias()">
                     <option value="">Seleccionar Departamento</option>
                     <?php
-                    // Recorrer los departamentos y mostrarlos como opciones
-                    foreach ($departamentos as $id_departamento => $sucursales) {
-                      // Aquí puedes reemplazar el nombre del departamento con un array que contenga los nombres según los IDs
-                      $nombre_departamento = "Departamento " . $id_departamento; // Placeholder
+                    foreach ($departamentos as $id_departamento => $nombre_departamento) {
                       echo "<option value='$id_departamento'>$nombre_departamento</option>";
                     }
                     ?>
@@ -74,13 +111,23 @@ foreach ($sucursales as $sucursal) {
               </div>
             </div>
 
-            <div class="col-lg-6 mb-5">
+            <div class="col-lg-4 mb-5">
+              <div class="checkout__input--list">
+                <label class="checkout__input--label mb-2" for="provincia">Provincia<span class="checkout__input--label__star">*</span></label>
+                <div class="checkout__input--select select">
+                  <select class="checkout__input--select__field border-radius-5" id="provincia" onchange="actualizarSucursales()">
+                    <option value="">Seleccionar Provincia</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
               <div class="checkout__input--list">
                 <label class="checkout__input--label mb-2" for="sucursal">Sucursal<span class="checkout__input--label__star">*</span></label>
                 <div class="checkout__input--select select">
                   <select class="checkout__input--select__field border-radius-5" id="sucursal">
                     <option value="">Seleccionar Sucursal</option>
-                    <!-- Las sucursales se actualizarán dinámicamente mediante JavaScript -->
                   </select>
                 </div>
               </div>
@@ -98,26 +145,56 @@ foreach ($sucursales as $sucursal) {
   </div>
 </div>
 
-<script>
-  // JavaScript para actualizar dinámicamente las sucursales según el departamento seleccionado
-  const sucursalesPorDepartamento = <?= json_encode($departamentos) ?>;
 
-  function actualizarSucursales() {
+
+<script>
+const provinciasPorDepartamento = <?= json_encode($provincias) ?>;
+const sucursales = <?= json_encode($sucursalesConNombres) ?>;
+
+function actualizarProvincias() {
     const departamentoId = document.getElementById('departamento').value;
-    const sucursalSelect = document.getElementById('sucursal');
+    const provinciaSelect = document.getElementById('provincia');
+
+    // Limpiar opciones previas
+    provinciaSelect.innerHTML = '<option value="">Seleccionar Provincia</option>';
     
+    if (departamentoId && provinciasPorDepartamento[departamentoId]) {
+        const provincias = provinciasPorDepartamento[departamentoId];
+        provincias.forEach((provincia, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1; // Asume que los índices comienzan desde 1
+            option.textContent = provincia;
+            provinciaSelect.appendChild(option);
+        });
+    }
+
+    // Limpiar el select de sucursales cuando cambie el departamento o provincia
+    actualizarSucursales();
+}
+
+function actualizarSucursales() {
+    const departamentoId = document.getElementById('departamento').value;
+    const provinciaIndex = document.getElementById('provincia').value;
+    const sucursalSelect = document.getElementById('sucursal');
+
     // Limpiar opciones previas
     sucursalSelect.innerHTML = '<option value="">Seleccionar Sucursal</option>';
     
-    if (departamentoId && sucursalesPorDepartamento[departamentoId]) {
-      const sucursales = sucursalesPorDepartamento[departamentoId];
-      sucursales.forEach(sucursal => {
-        const option = document.createElement('option');
-        option.value = sucursal.id;
-        option.textContent = sucursal.nombre;
-        sucursalSelect.appendChild(option);
-      });
+    if (departamentoId && provinciaIndex) {
+        const filteredSucursales = sucursales.filter(sucursal => 
+            sucursal.departamento == departamentoId && sucursal.provincia == provinciaIndex
+        );
+
+        filteredSucursales.forEach(sucursal => {
+            const option = document.createElement('option');
+            option.value = sucursal.id;
+            option.textContent = sucursal.nombre;
+            sucursalSelect.appendChild(option);
+        });
     }
-  }
+}
+
+
 </script>
+
 
