@@ -1,31 +1,23 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es" class="js">
 
 <head>
-  <meta charset="utf-8">
-  <title>Admin Automotivos Cris</title>
+    <base href="../">
+    <meta charset="utf-8">
 
-  <!-- Basic Page Needs -->
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <!-- Page Title  -->
+    <title>Admin Automotivos Cris</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/admin/assets/css/dashlite.css?ver=3.2.3">
+    <link id="skin-default" rel="stylesheet" href="<?= BASE_URL ?>public/assets/admin/assets/css/theme.css?ver=3.2.3">
 
-  <!-- Mobile Specific Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <!-- Formatear envio de formulario lado servidor  -->
 
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/assets/admin/css/animate.min.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/assets/admin/css/animation.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/assets/admin/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/assets/admin/css/bootstrap-select.min.css">
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>public/assets/admin/css/style.css">
+  <!-- <script src="<?= BASE_URL ?>public/assets/shop/js/alerts/alerts.js"></script>
+  <script src="<?= BASE_URL ?>public/assets/shop/js/alerts/forms.js"></script> -->
 
-  <!-- Font -->
-  <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/admin/font/fonts.css">
-
-  <!-- Icon -->
-  <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/admin/icon/style.css">
-
-  <!-- Favicon and Touch Icons  -->
-  <link rel="shortcut icon" href="<?= BASE_URL ?>public/assets/admin/images/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="<?= BASE_URL ?>public/assets/admin/images/favicon.png">
 </head>
 
-<body>
+<body class="nk-body bg-lighter npc-default has-sidebar">

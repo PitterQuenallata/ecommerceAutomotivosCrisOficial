@@ -1,1013 +1,483 @@
-<!-- main-content -->
-<div class="main-content">
-  <!-- main-content-wrap -->
-  <div class="main-content-inner">
-    <!-- main-content-wrap -->
-    <div class="main-content-wrap">
-      <div class="tf-section-4 mb-30">
-        <!-- chart-default -->
-        <div class="wg-chart-default">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap14">
-              <div class="image type-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
-                  <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#22C55E" />
-                </svg>
-                <i class="icon-shopping-bag"></i>
-              </div>
-              <div>
-                <div class="body-text mb-2">Total Sales</div>
-                <h4>34,945</h4>
-              </div>
-            </div>
-            <div class="box-icon-trending up">
-              <i class="icon-trending-up"></i>
-              <div class="body-title number">1.56%</div>
-            </div>
-          </div>
-          <div class="wrap-chart">
-            <div id="line-chart-1"></div>
-          </div>
-        </div>
-        <!-- /chart-default -->
-        <!-- chart-default -->
-        <div class="wg-chart-default">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap14">
-              <div class="image type-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
-                  <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#FF5200" />
-                </svg>
-                <i class="icon-dollar-sign"></i>
-              </div>
-              <div>
-                <div class="body-text mb-2">Total Income</div>
-                <h4>$37,802</h4>
-              </div>
-            </div>
-            <div class="box-icon-trending down">
-              <i class="icon-trending-down"></i>
-              <div class="body-title number">1.56%</div>
-            </div>
-          </div>
-          <div class="wrap-chart">
-            <div id="line-chart-2"></div>
-          </div>
-        </div>
-        <!-- /chart-default -->
-        <!-- chart-default -->
-        <div class="wg-chart-default">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap14">
-              <div class="image type-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
-                  <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#CBD5E1" />
-                </svg>
-                <i class="icon-file"></i>
-              </div>
-              <div>
-                <div class="body-text mb-2">Orders Paid</div>
-                <h4>34,945</h4>
-              </div>
-            </div>
-            <div class="box-icon-trending">
-              <i class="icon-trending-up"></i>
-              <div class="body-title number">0.00%</div>
-            </div>
-          </div>
-          <div class="wrap-chart">
-            <div id="line-chart-3"></div>
-          </div>
-        </div>
-        <!-- /chart-default -->
-        <!-- chart-default -->
-        <div class="wg-chart-default">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap14">
-              <div class="image type-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
-                  <path d="M19.1094 2.12943C22.2034 0.343099 26.0154 0.343099 29.1094 2.12943L42.4921 9.85592C45.5861 11.6423 47.4921 14.9435 47.4921 18.5162V33.9692C47.4921 37.5418 45.5861 40.8431 42.4921 42.6294L29.1094 50.3559C26.0154 52.1423 22.2034 52.1423 19.1094 50.3559L5.72669 42.6294C2.63268 40.8431 0.726688 37.5418 0.726688 33.9692V18.5162C0.726688 14.9435 2.63268 11.6423 5.72669 9.85592L19.1094 2.12943Z" fill="#2377FC" />
-                </svg>
-                <i class="icon-users"></i>
-              </div>
-              <div>
-                <div class="body-text mb-2">Total Visitor</div>
-                <h4>34,945</h4>
-              </div>
-            </div>
-            <div class="box-icon-trending up">
-              <i class="icon-trending-up"></i>
-              <div class="body-title number">1.56%</div>
-            </div>
-          </div>
-          <div class="wrap-chart">
-            <div id="line-chart-4"></div>
-          </div>
-        </div>
-        <!-- /chart-default -->
-      </div>
-      <div class="tf-section-5 mb-30">
-        <!-- chart -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Recent Order</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">This Week</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">Last Week</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div id="line-chart-5"></div>
-        </div>
-        <!-- /chart -->
-        <!-- top-product -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Top Products</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="view-all">View all<i class="icon-chevron-down"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">3 days</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">7 days</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="wg-table table-top-product">
-            <ul class="flex flex-column gap14">
-              <li class="product-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/1.png" alt="">
+<!-- content @s -->
+<div class="nk-content ">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+          <div class="nk-block-between">
+            <div class="nk-block-head-content">
+              <h3 class="nk-block-title page-title">Dashboard</h3>
+            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-head-content">
+              <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                  <ul class="nk-block-tools g-3">
+                    <li>
+                      <div class="drodown">
+                        <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <ul class="link-list-opt no-bdr">
+                            <li><a href="#"><span>Last 30 Days</span></a></li>
+                            <li><a href="#"><span>Last 6 Months</span></a></li>
+                            <li><a href="#"><span>Last 1 Years</span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                  </ul>
                 </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-title-2">Patimax Fragrance Long...</a>
-                    <div class="text-tiny mt-3">100 Items</div>
-                  </div>
-                  <div>
-                    <div class="text-tiny mb-3">Coupon Code</div>
-                    <div class="body-text">Sflat</div>
-                  </div>
-                  <div class="country">
-                    <img src="<?= BASE_URL ?>public/assets/admin/images/country/2.png" alt="">
-                  </div>
-                  <div>
-                    <div class="body-title-2 mb-3">-15%</div>
-                    <div class="text-tiny">$27.00</div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/2.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-title-2">Nulo MedalSeries Adult Cat...</a>
-                    <div class="text-tiny mt-3">100 Items</div>
-                  </div>
-                  <div>
-                    <div class="text-tiny mb-3">Coupon Code</div>
-                    <div class="body-text">Sflat</div>
-                  </div>
-                  <div class="country">
-                    <img src="<?= BASE_URL ?>public/assets/admin/images/country/3.png" alt="">
-                  </div>
-                  <div>
-                    <div class="body-title-2 mb-3">-15%</div>
-                    <div class="text-tiny">$27.00</div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/3.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-title-2">Pedigree Puppy Dry Dog...</a>
-                    <div class="text-tiny mt-3">100 Items</div>
-                  </div>
-                  <div>
-                    <div class="text-tiny mb-3">Coupon Code</div>
-                    <div class="body-text">Sflat</div>
-                  </div>
-                  <div class="country">
-                    <img src="<?= BASE_URL ?>public/assets/admin/images/country/1.png" alt="">
-                  </div>
-                  <div>
-                    <div class="body-title-2 mb-3">-15%</div>
-                    <div class="text-tiny">$27.00</div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/4.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-title-2">Biscoito Premier Cookie...</a>
-                    <div class="text-tiny mt-3">100 Items</div>
-                  </div>
-                  <div>
-                    <div class="text-tiny mb-3">Coupon Code</div>
-                    <div class="body-text">Sflat</div>
-                  </div>
-                  <div class="country">
-                    <img src="<?= BASE_URL ?>public/assets/admin/images/country/4.png" alt="">
-                  </div>
-                  <div>
-                    <div class="body-title-2 mb-3">-15%</div>
-                    <div class="text-tiny">$27.00</div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/5.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-title-2 mb-3">Pedigree Adult Dry Dog...</a>
-                    <div class="text-tiny">100 Items</div>
-                  </div>
-                  <div>
-                    <div class="text-tiny mb-3">Coupon Code</div>
-                    <div class="body-text">Sflat</div>
-                  </div>
-                  <div class="country">
-                    <img src="<?= BASE_URL ?>public/assets/admin/images/country/5.png" alt="">
-                  </div>
-                  <div>
-                    <div class="body-title-2 mb-3">-15%</div>
-                    <div class="text-tiny">$27.00</div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- /top-product -->
-        <!-- top-countries -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Top Countries By Sales</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="view-all">View all<i class="icon-chevron-down"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">3 days</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">7 days</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex items-center gap10">
-            <h4>$37,802</h4>
-            <div class="box-icon-trending up">
-              <i class="icon-trending-up"></i>
-              <div class="body-title number">1.56%</div>
-            </div>
-            <div class="text-tiny">since last weekend</div>
-          </div>
-          <ul class="flex flex-column justify-between gap10 h-full">
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/6.png" alt="">
               </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Turkish Flag</a>
-                <div class="box-icon-trending up">
-                  <i class="icon-trending-up"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/7.png" alt="">
-              </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Belgium</a>
-                <div class="box-icon-trending up">
-                  <i class="icon-trending-up"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/8.png" alt="">
-              </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Sweden</a>
-                <div class="box-icon-trending down">
-                  <i class="icon-trending-down"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/9.png" alt="">
-              </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Vietnamese</a>
-                <div class="box-icon-trending up">
-                  <i class="icon-trending-up"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/10.png" alt="">
-              </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Australia</a>
-                <div class="box-icon-trending down">
-                  <i class="icon-trending-down"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-            <li class="country-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/country/11.png" alt="">
-              </div>
-              <div class="flex-grow flex items-center justify-between">
-                <a href="countries.html" class="body-text name">Saudi Arabia</a>
-                <div class="box-icon-trending down">
-                  <i class="icon-trending-down"></i>
-                </div>
-                <div class="body-text number">6,972</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- /top-countries -->
-      </div>
-      <div class="tf-section-6 mb-30">
-        <!-- best-shop-sellers -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Best Shop Sellers</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="view-all">View all<i class="icon-chevron-down"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">3 days</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">7 days</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="wg-table table-best-shop-sellers">
-            <ul class="table-title flex gap20 mb-14">
-              <li>
-                <div class="body-title">Shop</div>
-              </li>
-              <li>
-                <div class="body-title">Categories</div>
-              </li>
-              <li>
-                <div class="body-title">Total</div>
-              </li>
-              <li>
-                <div class="body-title">Status</div>
-              </li>
-            </ul>
-            <ul class="flex flex-column gap18">
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/1.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Robert</a>
-                    <div class="text-tiny mt-4">73 Purchases</div>
-                  </div>
-                  <div class="body-text">Kitchen, Pets</div>
-                  <div class="body-text">$1,000</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar">
-                      <span data-progress="29" data-max="70" class=""></span>
+            </div><!-- .nk-block-head-content -->
+          </div><!-- .nk-block-between -->
+        </div><!-- .nk-block-head -->
+        <div class="nk-block">
+          <div class="row g-gs">
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card">
+                <div class="nk-ecwg nk-ecwg6">
+                  <div class="card-inner">
+                    <div class="card-title-group">
+                      <div class="card-title">
+                        <h6 class="title">Today Orders</h6>
+                      </div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/2.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Calvin</a>
-                    <div class="text-tiny mt-4">66 Purchases</div>
-                  </div>
-                  <div class="body-text">Health, Grocery</div>
-                  <div class="body-text">$4,000</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar t1">
-                      <span data-progress="59" data-max="70" class=""></span>
+                    <div class="data">
+                      <div class="data-group">
+                        <div class="amount">1,945</div>
+                        <div class="nk-ecwg6-ck">
+                          <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
+                        </div>
+                      </div>
+                      <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/3.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Dwight</a>
-                    <div class="text-tiny mt-4">15,890 Purchases</div>
-                  </div>
-                  <div class="body-text">Electronics</div>
-                  <div class="body-text">$2,700</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar t2">
-                      <span data-progress="29" data-max="70" class=""></span>
+                  </div><!-- .card-inner -->
+                </div><!-- .nk-ecwg -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card">
+                <div class="nk-ecwg nk-ecwg6">
+                  <div class="card-inner">
+                    <div class="card-title-group">
+                      <div class="card-title">
+                        <h6 class="title">Today Revenue</h6>
+                      </div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/4.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Cody</a>
-                    <div class="text-tiny mt-4">15 Purchases</div>
-                  </div>
-                  <div class="body-text">Movies, Music</div>
-                  <div class="body-text">$2,100</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar">
-                      <span data-progress="25" data-max="70" class=""></span>
+                    <div class="data">
+                      <div class="data-group">
+                        <div class="amount">$2,338</div>
+                        <div class="nk-ecwg6-ck">
+                          <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
+                        </div>
+                      </div>
+                      <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/5.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Bruce</a>
-                    <div class="text-tiny mt-4">127 Purchases</div>
-                  </div>
-                  <div class="body-text">Sports, Fitness</div>
-                  <div class="body-text">$4,400</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar t3">
-                      <span data-progress="52" data-max="70" class=""></span>
+                  </div><!-- .card-inner -->
+                </div><!-- .nk-ecwg -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card">
+                <div class="nk-ecwg nk-ecwg6">
+                  <div class="card-inner">
+                    <div class="card-title-group">
+                      <div class="card-title">
+                        <h6 class="title">Today Customers</h6>
+                      </div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/6.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Jorge</a>
-                    <div class="text-tiny mt-4">30 Purchases</div>
-                  </div>
-                  <div class="body-text">Toys, Baby</div>
-                  <div class="body-text">$4,750</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar t4">
-                      <span data-progress="23" data-max="70" class=""></span>
+                    <div class="data">
+                      <div class="data-group">
+                        <div class="amount">847</div>
+                        <div class="nk-ecwg6-ck">
+                          <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
+                        </div>
+                      </div>
+                      <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
                     </div>
-                    <div class="text-tiny">100%</div>
-                  </div>
-                </div>
-              </li>
-              <li class="shop-item">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/shop/7.png" alt="">
-                </div>
-                <div class="flex-grow flex items-center justify-between gap20">
-                  <div>
-                    <a href="#" class="body-text name">Kristin Watson</a>
-                    <div class="text-tiny mt-4">93 Purchases</div>
-                  </div>
-                  <div class="body-text">Gift Cards</div>
-                  <div class="body-text">$1,000</div>
-                  <div class="flex items-center justify-between gap10">
-                    <div class="progress-level-bar t5">
-                      <span data-progress="45" data-max="70" class=""></span>
+                  </div><!-- .card-inner -->
+                </div><!-- .nk-ecwg -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card">
+                <div class="nk-ecwg nk-ecwg6">
+                  <div class="card-inner">
+                    <div class="card-title-group">
+                      <div class="card-title">
+                        <h6 class="title">Today Visitors</h6>
+                      </div>
                     </div>
-                    <div class="text-tiny">100%</div>
+                    <div class="data">
+                      <div class="data-group">
+                        <div class="amount">23,485</div>
+                        <div class="nk-ecwg6-ck">
+                          <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
+                        </div>
+                      </div>
+                      <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
+                    </div>
+                  </div><!-- .card-inner -->
+                </div><!-- .nk-ecwg -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-6">
+              <div class="card card-full">
+                <div class="nk-ecwg nk-ecwg8 h-100">
+                  <div class="card-inner">
+                    <div class="card-title-group mb-3">
+                      <div class="card-title">
+                        <h6 class="title">Sales Statistics</h6>
+                      </div>
+                      <div class="card-tools">
+                        <div class="dropdown">
+                          <a href="#" class="dropdown-toggle link link-light link-sm dropdown-indicator" data-bs-toggle="dropdown">Weekly</a>
+                          <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                            <ul class="link-list-opt no-bdr">
+                              <li><a href="#"><span>Daily</span></a></li>
+                              <li><a href="#" class="active"><span>Weekly</span></a></li>
+                              <li><a href="#"><span>Monthly</span></a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="nk-ecwg8-legends">
+                      <li>
+                        <div class="title">
+                          <span class="dot dot-lg sq" data-bg="#6576ff"></span>
+                          <span>Total Order</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="title">
+                          <span class="dot dot-lg sq" data-bg="#eb6459"></span>
+                          <span>Cancelled Order</span>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="nk-ecwg8-ck">
+                      <canvas class="ecommerce-line-chart-s4" id="salesStatistics"></canvas>
+                    </div>
+                    <div class="chart-label-group ps-5">
+                      <div class="chart-label">01 Jul, 2020</div>
+                      <div class="chart-label">30 Jul, 2020</div>
+                    </div>
+                  </div><!-- .card-inner -->
+                </div>
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-3 col-md-6">
+              <div class="card card-full overflow-hidden">
+                <div class="nk-ecwg nk-ecwg7 h-100">
+                  <div class="card-inner flex-grow-1">
+                    <div class="card-title-group mb-4">
+                      <div class="card-title">
+                        <h6 class="title">Order Statistics</h6>
+                      </div>
+                    </div>
+                    <div class="nk-ecwg7-ck">
+                      <canvas class="ecommerce-doughnut-s1" id="orderStatistics"></canvas>
+                    </div>
+                    <ul class="nk-ecwg7-legends">
+                      <li>
+                        <div class="title">
+                          <span class="dot dot-lg sq" data-bg="#816bff"></span>
+                          <span>Completed</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="title">
+                          <span class="dot dot-lg sq" data-bg="#13c9f2"></span>
+                          <span>Processing</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="title">
+                          <span class="dot dot-lg sq" data-bg="#ff82b7"></span>
+                          <span>Cancelled</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div><!-- .card-inner -->
+                </div>
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-3 col-md-6">
+              <div class="card h-100">
+                <div class="card-inner">
+                  <div class="card-title-group mb-2">
+                    <div class="card-title">
+                      <h6 class="title">Store Statistics</h6>
+                    </div>
+                  </div>
+                  <ul class="nk-store-statistics">
+                    <li class="item">
+                      <div class="info">
+                        <div class="title">Orders</div>
+                        <div class="count">1,795</div>
+                      </div>
+                      <em class="icon bg-primary-dim ni ni-bag"></em>
+                    </li>
+                    <li class="item">
+                      <div class="info">
+                        <div class="title">Customers</div>
+                        <div class="count">2,327</div>
+                      </div>
+                      <em class="icon bg-info-dim ni ni-users"></em>
+                    </li>
+                    <li class="item">
+                      <div class="info">
+                        <div class="title">Products</div>
+                        <div class="count">674</div>
+                      </div>
+                      <em class="icon bg-pink-dim ni ni-box"></em>
+                    </li>
+                    <li class="item">
+                      <div class="info">
+                        <div class="title">Categories</div>
+                        <div class="count">68</div>
+                      </div>
+                      <em class="icon bg-purple-dim ni ni-server"></em>
+                    </li>
+                  </ul>
+                </div><!-- .card-inner -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+            <div class="col-xxl-8">
+              <div class="card card-full">
+                <div class="card-inner">
+                  <div class="card-title-group">
+                    <div class="card-title">
+                      <h6 class="title">Recent Orders</h6>
+                    </div>
                   </div>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- /best-shop-sellers -->
-        <!-- product-overview -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Product overview</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="view-all">View all<i class="icon-chevron-down"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">3 days</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">7 days</a>
-                </li>
-              </ul>
+                <div class="nk-tb-list mt-n2">
+                  <div class="nk-tb-item nk-tb-head">
+                    <div class="nk-tb-col"><span>Order No.</span></div>
+                    <div class="nk-tb-col tb-col-sm"><span>Customer</span></div>
+                    <div class="nk-tb-col tb-col-md"><span>Date</span></div>
+                    <div class="nk-tb-col"><span>Amount</span></div>
+                    <div class="nk-tb-col"><span class="d-none d-sm-inline">Status</span></div>
+                  </div>
+                  <div class="nk-tb-item">
+                    <div class="nk-tb-col">
+                      <span class="tb-lead"><a href="#">#95954</a></span>
+                    </div>
+                    <div class="nk-tb-col tb-col-sm">
+                      <div class="user-card">
+                        <div class="user-avatar sm bg-purple-dim">
+                          <span>AB</span>
+                        </div>
+                        <div class="user-name">
+                          <span class="tb-lead">Abu Bin Ishtiyak</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nk-tb-col tb-col-md">
+                      <span class="tb-sub">02/11/2020</span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="tb-sub tb-amount">4,596.75 <span>USD</span></span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                    </div>
+                  </div>
+                  <div class="nk-tb-item">
+                    <div class="nk-tb-col">
+                      <span class="tb-lead"><a href="#">#95850</a></span>
+                    </div>
+                    <div class="nk-tb-col tb-col-sm">
+                      <div class="user-card">
+                        <div class="user-avatar sm bg-azure-dim">
+                          <span>DE</span>
+                        </div>
+                        <div class="user-name">
+                          <span class="tb-lead">Desiree Edwards</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nk-tb-col tb-col-md">
+                      <span class="tb-sub">02/02/2020</span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="tb-sub tb-amount">596.75 <span>USD</span></span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="badge badge-dot badge-dot-xs bg-danger">Cancelled</span>
+                    </div>
+                  </div>
+                  <div class="nk-tb-item">
+                    <div class="nk-tb-col">
+                      <span class="tb-lead"><a href="#">#95812</a></span>
+                    </div>
+                    <div class="nk-tb-col tb-col-sm">
+                      <div class="user-card">
+                        <div class="user-avatar sm bg-warning-dim">
+                          <img src="./images/avatar/b-sm.jpg" alt="">
+                        </div>
+                        <div class="user-name">
+                          <span class="tb-lead">Blanca Schultz</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nk-tb-col tb-col-md">
+                      <span class="tb-sub">02/01/2020</span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="tb-sub tb-amount">199.99 <span>USD</span></span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                    </div>
+                  </div>
+                  <div class="nk-tb-item">
+                    <div class="nk-tb-col">
+                      <span class="tb-lead"><a href="#">#95256</a></span>
+                    </div>
+                    <div class="nk-tb-col tb-col-sm">
+                      <div class="user-card">
+                        <div class="user-avatar sm bg-purple-dim">
+                          <span>NL</span>
+                        </div>
+                        <div class="user-name">
+                          <span class="tb-lead">Naomi Lawrence</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nk-tb-col tb-col-md">
+                      <span class="tb-sub">01/29/2020</span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="tb-sub tb-amount">1099.99 <span>USD</span></span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                    </div>
+                  </div>
+                  <div class="nk-tb-item">
+                    <div class="nk-tb-col">
+                      <span class="tb-lead"><a href="#">#95135</a></span>
+                    </div>
+                    <div class="nk-tb-col tb-col-sm">
+                      <div class="user-card">
+                        <div class="user-avatar sm bg-success-dim">
+                          <span>CH</span>
+                        </div>
+                        <div class="user-name">
+                          <span class="tb-lead">Cassandra Hogan</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nk-tb-col tb-col-md">
+                      <span class="tb-sub">01/29/2020</span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="tb-sub tb-amount">1099.99 <span>USD</span></span>
+                    </div>
+                    <div class="nk-tb-col">
+                      <span class="badge badge-dot badge-dot-xs bg-warning">Due</span>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- .card -->
             </div>
-          </div>
-          <div class="wg-table table-product-overview">
-            <ul class="table-title flex gap20 mb-14">
-              <li>
-                <div class="body-title">Name</div>
-              </li>
-              <li>
-                <div class="body-title">Product ID</div>
-              </li>
-              <li>
-                <div class="body-title">Price</div>
-              </li>
-              <li>
-                <div class="body-title">Quantity</div>
-              </li>
-              <li>
-                <div class="body-title">Sale</div>
-              </li>
-              <li>
-                <div class="body-title">Revenue</div>
-              </li>
-              <li>
-                <div class="body-title">Status</div>
-              </li>
-            </ul>
-            <ul class="flex flex-column gap10">
-              <li class="product-item gap14">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/6.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Soft Fluffy Cats</a>
+            <div class="col-xxl-4 col-md-8 col-lg-6">
+              <div class="card h-100">
+                <div class="card-inner">
+                  <div class="card-title-group mb-2">
+                    <div class="card-title">
+                      <h6 class="title">Top products</h6>
+                    </div>
+                    <div class="card-tools">
+                      <div class="dropdown">
+                        <a href="#" class="dropdown-toggle link link-light link-sm dropdown-indicator" data-bs-toggle="dropdown">Weekly</a>
+                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                          <ul class="link-list-opt no-bdr">
+                            <li><a href="#"><span>Daily</span></a></li>
+                            <li><a href="#" class="active"><span>Weekly</span></a></li>
+                            <li><a href="#"><span>Monthly</span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="body-text">#327</div>
-                  <div class="body-text">$11.70</div>
-                  <div class="body-text">28</div>
-                  <div class="body-text">On sale</div>
-                  <div class="body-text">$328.85</div>
-                  <div class="block-not-available">Not Available</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/7.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Taste of the Wild Formula Finder</a>
-                  </div>
-                  <div class="body-text">#380</div>
-                  <div class="body-text">$8.99</div>
-                  <div class="body-text">10</div>
-                  <div class="body-text">On sale</div>
-                  <div class="body-text">$105.55</div>
-                  <div class="block-not-available">Not Available</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/8.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Wellness Natural Food</a>
-                  </div>
-                  <div class="body-text">#126</div>
-                  <div class="body-text">$5.22</div>
-                  <div class="body-text">578</div>
-                  <div class="body-text">--/--</div>
-                  <div class="body-text">$202.87</div>
-                  <div class="block-not-available">Not Available</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/9.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Dog Food Rachael Ray</a>
-                  </div>
-                  <div class="body-text">#582</div>
-                  <div class="body-text">$14.81</div>
-                  <div class="body-text">36</div>
-                  <div class="body-text">--/--</div>
-                  <div class="body-text">$475.22</div>
-                  <div>
-                    <div class="block-available">Available</div>
-                  </div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/10.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Best Buddy Bits Dog Treats</a>
-                  </div>
-                  <div class="body-text">#293</div>
-                  <div class="body-text">$6.48</div>
-                  <div class="body-text">84</div>
-                  <div class="body-text">--/--</div>
-                  <div class="body-text">$219.78</div>
-                  <div class="block-not-available">Not Available</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="divider"></div>
-          <div class="flex items-center justify-between flex-wrap gap10">
-            <div class="text-tiny">Showing 5 entries</div>
-            <ul class="wg-pagination">
-              <li>
-                <a href="#"><i class="icon-chevron-left"></i></a>
-              </li>
-              <li>
-                <a href="#">1</a>
-              </li>
-              <li class="active">
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#"><i class="icon-chevron-right"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- /product-overview -->
-      </div>
-      <div class="tf-section-3">
-        <!-- orders -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Orders</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">This Week</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">Last Week</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="wg-table table-orders">
-            <ul class="table-title flex gap10 mb-14">
-              <li>
-                <div class="body-title">Product</div>
-              </li>
-              <li>
-                <div class="body-title">Price</div>
-              </li>
-              <li>
-                <div class="body-title">Delivery date</div>
-              </li>
-            </ul>
-            <ul class="flex flex-column gap18">
-              <li class="product-item gap14">
-                <div class="image small">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/11.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow gap10">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Prodotti per il tuo cane...</a>
-                  </div>
-                  <div class="body-text">20 Nov 2023</div>
-                  <div class="body-text">20 Nov 2023</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image small">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/12.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow gap10">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Wholesome Pride...</a>
-                  </div>
-                  <div class="body-text">20 Nov 2023</div>
-                  <div class="body-text">20 Nov 2023</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image small">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/13.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow gap10">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Beneful Baked Delights...</a>
-                  </div>
-                  <div class="body-text">20 Nov 2023</div>
-                  <div class="body-text">20 Nov 2023</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image small">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/14.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow gap10">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Taste of the Wild...</a>
-                  </div>
-                  <div class="body-text">20 Nov 2023</div>
-                  <div class="body-text">20 Nov 2023</div>
-                </div>
-              </li>
-              <li class="product-item gap14">
-                <div class="image small">
-                  <img src="<?= BASE_URL ?>public/assets/admin/images/products/15.png" alt="">
-                </div>
-                <div class="flex items-center justify-between flex-grow gap10">
-                  <div class="name">
-                    <a href="product-list.html" class="body-text">Canagan - Britain's...</a>
-                  </div>
-                  <div class="body-text">20 Nov 2023</div>
-                  <div class="body-text">20 Nov 2023</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- /orders -->
-        <!-- earnings -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>Earnings</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">This Week</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">Last Week</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap40">
-            <div>
-              <div class="mb-2">
-                <div class="block-legend">
-                  <div class="dot t1"></div>
-                  <div class="text-tiny">Revenue</div>
-                </div>
-              </div>
-              <div class="flex items-center gap10">
-                <h4>$37,802</h4>
-                <div class="box-icon-trending up">
-                  <i class="icon-trending-up"></i>
-                  <div class="body-title number">0.56%</div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="mb-2">
-                <div class="block-legend">
-                  <div class="dot t2"></div>
-                  <div class="text-tiny">Profit</div>
-                </div>
-              </div>
-              <div class="flex items-center gap10">
-                <h4>$28,305</h4>
-                <div class="box-icon-trending up">
-                  <i class="icon-trending-up"></i>
-                  <div class="body-title number">0.56%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="line-chart-6"></div>
-        </div>
-        <!-- /earnings -->
-        <!-- new-comment -->
-        <div class="wg-box">
-          <div class="flex items-center justify-between">
-            <h5>New Comments</h5>
-            <div class="dropdown default">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a href="javascript:void(0);">This Week</a>
-                </li>
-                <li>
-                  <a href="javascript:void(0);">Last Week</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <ul class="flex flex-column gap20 overflow-h">
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-2.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Kathryn Murphy</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec dolor vel est interdum</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-3.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Leslie Alexander</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Cras nec viverra justo, a mattis lacus. Vestibulum eleifend, leo sit amet aliquam laoreet, turpis leo vulputate orci</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-4.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Devon Lane</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Morbi eget commodo diam. Praesent dignissim purus ac turpis porta</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-5.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Eleanor Pena</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Phasellus et eros ullamcorper, efficitur eros eget, pharetra ante. Sed blandit risus vitae dolor feugiat, eu vulputate elit rhoncus</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-2.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Kathryn Murphy</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec dolor vel est interdum</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-3.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Leslie Alexander</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Cras nec viverra justo, a mattis lacus. Vestibulum eleifend, leo sit amet aliquam laoreet, turpis leo vulputate orci</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-4.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Devon Lane</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Morbi eget commodo diam. Praesent dignissim purus ac turpis porta</div>
-              </div>
-            </li>
-            <li class="comment-item">
-              <div class="image">
-                <img src="<?= BASE_URL ?>public/assets/admin/images/avatar/user-5.png" alt="">
-              </div>
-              <div class="">
-                <div class="mb-4 name">
-                  <a href="all-user.html" class="body-title-2">Eleanor Pena</a>
-                </div>
-                <div class="ratings mb-10">
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1 active"></i>
-                  <i class="icon-star1"></i>
-                </div>
-                <div class="text-tiny">Phasellus et eros ullamcorper, efficitur eros eget, pharetra ante. Sed blandit risus vitae dolor feugiat, eu vulputate elit rhoncus</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- /new-comment -->
+                  <ul class="nk-top-products">
+                    <li class="item">
+                      <div class="thumb">
+                        <img src="./images/product/a.png" alt="">
+                      </div>
+                      <div class="info">
+                        <div class="title">Pink Fitness Tracker</div>
+                        <div class="price">$99.00</div>
+                      </div>
+                      <div class="total">
+                        <div class="amount">$990.00</div>
+                        <div class="count">10 Sold</div>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <div class="thumb">
+                        <img src="./images/product/b.png" alt="">
+                      </div>
+                      <div class="info">
+                        <div class="title">Purple Smartwatch</div>
+                        <div class="price">$99.00</div>
+                      </div>
+                      <div class="total">
+                        <div class="amount">$990.00</div>
+                        <div class="count">10 Sold</div>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <div class="thumb">
+                        <img src="./images/product/c.png" alt="">
+                      </div>
+                      <div class="info">
+                        <div class="title">Black Smartwatch</div>
+                        <div class="price">$99.00</div>
+                      </div>
+                      <div class="total">
+                        <div class="amount">$990.00</div>
+                        <div class="count">10 Sold</div>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <div class="thumb">
+                        <img src="./images/product/d.png" alt="">
+                      </div>
+                      <div class="info">
+                        <div class="title">Black Headphones</div>
+                        <div class="price">$99.00</div>
+                      </div>
+                      <div class="total">
+                        <div class="amount">$990.00</div>
+                        <div class="count">10 Sold</div>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <div class="thumb">
+                        <img src="./images/product/e.png" alt="">
+                      </div>
+                      <div class="info">
+                        <div class="title">iPhone 7 Headphones</div>
+                        <div class="price">$99.00</div>
+                      </div>
+                      <div class="total">
+                        <div class="amount">$990.00</div>
+                        <div class="count">10 Sold</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div><!-- .card-inner -->
+              </div><!-- .card -->
+            </div><!-- .col -->
+          </div><!-- .row -->
+        </div><!-- .nk-block -->
       </div>
     </div>
-    <!-- /main-content-wrap -->
   </div>
-  <!-- /main-content-wrap -->
-
 </div>
-<!-- /main-content -->

@@ -6,6 +6,13 @@ ini_set("error-log", "C:/xampp/htdocs/ecommerceAutomotivosCris/php_error.log");
 
 define('BASE_URL', ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http") . "://".$_SERVER['HTTP_HOST']."/");
 define('BASE_URL_ADMIN', BASE_URL . 'admin/');
+
+/*=============================================
+Require Admins
+=============================================*/
+require_once "controllers/admin/user.admin.controller.php";
+require_once "models/admin/user.admin.model.php";
+
 /*=============================================
 Require
 =============================================*/
