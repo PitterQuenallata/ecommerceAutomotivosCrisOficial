@@ -1,6 +1,6 @@
 <?php
 
-class Conexion
+class ConexionAdmin
 {
     static public function conectar()
     {

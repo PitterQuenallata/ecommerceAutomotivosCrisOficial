@@ -108,7 +108,7 @@ $cliente = ModeloClientes::mdlMostrarClientePorId("clientes", $_SESSION["id_clie
 
           $.ajax({
             type: 'POST',
-            url: 'ajax/perfil.ajax.php',
+            url: '/ajax/perfil.ajax.php',
             data: {
               action: 'editarPerfil', // 'obtenerHistorial', 'obtenerCompras', etc.
               id_cliente: <?php echo $_SESSION["id_cliente"]; ?>,

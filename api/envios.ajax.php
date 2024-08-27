@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../api/ApiController.php'; // Asegúrate de ajustar la ruta según tu estructura de archivos
+require_once '../api/ApiController.php'; 
 
 // Verifica que la solicitud es POST
 //if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,9 +16,9 @@ require_once '../api/ApiController.php'; // Asegúrate de ajustar la ruta según
 
   // Preparar los datos para enviar a la API en formato JSON
   $dataEnvio = [
-      "cedula_remitente" => $ciEnvio,
+      "cedula_remitente" => 2616165,
       "nombre_remitente" => $nombreEnvio . ' ' . $apellidoEnvio,
-      "telefono_remitente" => $celularEnvio,
+      "telefono_remitente" => 7879948,
       "direccion_remitente" => "santa", // Cambia esto según sea necesario
       "sucursalPartida" => $departamento,
       "sucursalLlegada" => $sucursal,
