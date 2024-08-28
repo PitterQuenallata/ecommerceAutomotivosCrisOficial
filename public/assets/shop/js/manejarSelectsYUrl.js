@@ -73,7 +73,7 @@ $(document).ready(function () {
     const queryParams = params || getFilterParams();
 
     $.ajax({
-      url: "ajax/cargar_repuestos.ajax.php",
+      url: "/ajax/cargar_repuestos.ajax.php",
       method: "GET",
       data: queryParams,
       beforeSend: function () {
@@ -143,7 +143,7 @@ function fetchModelos(idMarca) {
   if (!idMarca) return;
 
   $.ajax({
-    url: "ajax/llenar_selects_repuestos.ajax.php",
+    url: "/ajax/llenar_selects_repuestos.ajax.php",
     method: "POST",
     data: {
       action: "cargarModelos",

@@ -6,7 +6,7 @@ $(document).ready(function() {
     console.log(formData);
 
     $.ajax({
-        url: "ajax/login_cliente.ajax.php",
+        url: "/ajax/login_cliente.ajax.php",
         method: "POST",
         data: formData,
         dataType: "json",
@@ -38,7 +38,7 @@ function sincronizarCarrito_A_BaseDatos() {
     console.log(carrito);
     if (carrito) {
         $.ajax({
-            url: "ajax/sincronizar_carrito.ajax.php",
+            url: "/ajax/sincronizar_carrito.ajax.php",
             method: "POST",
             data: {
                 carrito_local: carrito
@@ -71,7 +71,7 @@ function sincronizarCarrito_A_BaseDatos() {
 
 function obtenerCarrito_de_BaseDatos() {
     $.ajax({
-        url: "ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
+        url: "/ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
         method: "POST",
         dataType: "json",
         success: function(syncResponse) {

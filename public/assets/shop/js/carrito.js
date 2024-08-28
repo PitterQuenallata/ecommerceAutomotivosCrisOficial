@@ -337,7 +337,7 @@ function sincronizarCarrito_A_BaseDatos() {
 //obtener
 function obtenerCarrito_de_BaseDatos() {
     $.ajax({
-        url: "ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
+        url: "/ajax/obtener_carrito_db.ajax.php", // Cambia la URL si es necesario
         method: "POST",
         dataType: "json",
         success: function(syncResponse) {
@@ -364,7 +364,7 @@ function sincronizarConBaseDeDatos(id_repuesto, cantidad) {
     // var cantidad = cantidad;
     //console.log(a, cantidad);
     $.ajax({
-        url: 'ajax/sincronizar_carrito_sesion.ajax.php',
+        url: '/ajax/sincronizar_carrito_sesion.ajax.php',
         method: 'POST',
         data: {
             id_repuesto: id_repuesto,
@@ -392,7 +392,7 @@ function sincronizarConBaseDeDatos(id_repuesto, cantidad) {
 
 function vaciarCarrito() {
     $.ajax({
-        url: 'ajax/sincronizar_carrito_sesion.ajax.php',
+        url: '/ajax/sincronizar_carrito_sesion.ajax.php',
         method: 'POST',
         data: {
             action: 'vaciar'  // Enviar la acción 'vaciar'

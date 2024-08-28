@@ -53,7 +53,7 @@ function handleSuccessfulPayment($session) {
         $id_orden = $conn->lastInsertId();
 
         // Insertar un nuevo registro en la tabla envios
-        $stmt = $conn->prepare("INSERT INTO envios (id_orden, estado_envio, direccion_envio) VALUES (:id_orden, '0', 'La Paz')");
+        $stmt = $conn->prepare("INSERT INTO envios (id_orden) VALUES (:id_orden)");
         $stmt->execute([':id_orden' => $id_orden]);
 
         // Mover los ítems del carrito a detalles_orden

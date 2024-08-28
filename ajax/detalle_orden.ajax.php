@@ -1,6 +1,7 @@
 <?php
 require_once "../controllers/ordenes.controller.php";
 require_once "../models/ordenes.model.php";
+require_once '../api/ApiController.php';
 
 if (isset($_POST['idOrden']) && isset($_POST['idCliente'])) {
     $id_orden = $_POST['idOrden'];

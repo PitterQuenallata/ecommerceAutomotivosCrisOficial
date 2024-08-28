@@ -33,7 +33,7 @@ if ($idClienteGet !== $idCliente || !isset($_GET['idOrden'])) {
   <p id="ordenFecha"><span>fecha de la orden</span></p>
 
 
-  <h3 class="account__content--title h4 mb-20">Estado de envio : <span id="estadoEnvio">En Tienda</span></h3>
+  <h3 class="account__content--title h4 mb-20"><span id="estadoEnvio"></span></h3>
 
   <div class="account__table--area">
     <div class="table-responsive">

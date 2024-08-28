@@ -29,15 +29,15 @@ $(document).ready(function() {
 
         // Variables para sumar cantidades y obtener el total de la orden
         let sumaCantidad = 0;
-        let totalCompra = datos[0].total_orden;
+        let totalCompra = datos.total_orden;  // Ajustado porque datos ya no es un array
 
         // Actualizar el número y la fecha de la orden
-        $('#ordenNumero').text(`Orden # ${datos[0].id_orden}`);
-        $('#ordenFecha').text(`Fecha de la orden: ${datos[0].fecha_orden}`);
-        $('#estadoEnvio').text(`Estado de envío: ${datos[0].estado_envio}`);
+        $('#ordenNumero').text(`Orden # ${datos.id_orden}`);
+        $('#ordenFecha').text(`Fecha de la orden: ${datos.fecha_orden}`);
+        $('#estadoEnvio').text(`Estado de envío: ${datos.estadoPaquete}`);
 
         // Mostrar el mensaje de pago completado solo si el estado es "Completado"
-        if (datos[0].estado_orden === 'Completado') {
+        if (datos.estado_orden === 'Completado') {
           $('#paymentStatus').show();
         } else {
           $('#paymentStatus').hide();
@@ -46,8 +46,8 @@ $(document).ready(function() {
         // Limpiar las tablas antes de llenarlas
         $('#detalleOrdensTable').empty();
 
-        // Llenar la tabla de escritorio
-        datos.forEach(function(detalle, index) {
+        // Asumiendo que los detalles están dentro de un array en datos.detalles (ajusta según la estructura real)
+        datos.detalles.forEach(function(detalle, index) { 
           sumaCantidad += parseInt(detalle.cantidad); // Sumar la cantidad
 
           let row = `

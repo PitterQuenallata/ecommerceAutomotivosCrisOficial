@@ -66,7 +66,7 @@ $(document).ready(function () {
   function cargarModelos(idMarca, selectedModelo = null) {
     // Realiza la petición AJAX para cargar los modelos
     $.ajax({
-      url: "ajax/filtrosFormsRepuesto.ajax.php",
+      url: "/ajax/filtrosFormsRepuesto.ajax.php",
       method: "POST",
       data: { idMarca: idMarca, action: "cargarModelos" },
       success: function (response) {
@@ -89,7 +89,7 @@ $(document).ready(function () {
   function cargarMotores(idModelo, selectedMotor = null) {
     // Realiza la petición AJAX para cargar los motores
     $.ajax({
-      url: "ajax/filtrosFormsRepuesto.ajax.php",
+      url: "/ajax/filtrosFormsRepuesto.ajax.php",
       method: "POST",
       data: { idModelo: idModelo, action: "cargarMotores" },
       success: function (response) {
@@ -115,7 +115,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "ajax/cargar_repuestos.ajax.php",
+      url: "/ajax/cargar_repuestos.ajax.php",
       method: "GET",
       data: queryParams,
       beforeSend: function () {

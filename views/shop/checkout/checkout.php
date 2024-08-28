@@ -19,13 +19,23 @@
 
 <script>
 $(document).ready(function() {
-    $('#continuar-compra').on('click', function() {
-        // Ocultar la sección de envío
-        $('.direccionEnvio').hide();
+    $('#continuar-compra').on('click', function(e) {
+        e.preventDefault();
 
-        // Mostrar la sección de pago
-        $('.checkout').show();
+        // Obtener el formulario que contiene los campos de envío
+        var form = document.querySelector('.needs-validation');
+        
+        // Verificar si el formulario es válido
+        if (form.checkValidity() === false) {
+            form.classList.add('was-validated');
+            return; // Detener si el formulario no es válido
+        }
+
+        // Si el formulario es válido, continuar con la lógica
+        $('.direccionEnvio').hide();  // Ocultar la sección de envío
+        $('.checkout').show();         // Mostrar la sección de pago
     });
 });
+
 </script>
 

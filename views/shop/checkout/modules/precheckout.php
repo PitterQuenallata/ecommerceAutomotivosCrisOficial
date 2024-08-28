@@ -16,18 +16,18 @@
       <table class="checkout__total--table">
         <tbody class="checkout__total--body">
           <tr class="checkout__total--items">
-            <td class="checkout__total--title text-left">Subtotal </td>
-            <td class="checkout__total--amount text-right">$860.00</td>
+            <td class="checkout__total--title text-left"></td>
+            <td class="checkout__total--amount text-right"></td>
           </tr>
           <tr class="checkout__total--items">
-            <td class="checkout__total--title text-left">Shipping</td>
-            <td class="checkout__total--calculated__text text-right">Calculated at next step</td>
+            <td class="checkout__total--title text-left">Pasarela</td>
+            <td class="checkout__total--calculated__text text-right">Se calcula en la siguiente pagina</td>
           </tr>
         </tbody>
         <tfoot class="checkout__total--footer">
           <tr class="checkout__total--footer__items">
-            <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total </td>
-            <td class="checkout__total--footer__amount checkout__total--footer__list text-right">$860.00</td>
+            <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total</td>
+            <td class="checkout__total--footer__amount checkout__total--footer__list text-right"></td>
           </tr>
         </tfoot>
       </table>
@@ -35,10 +35,10 @@
 
 
     <div class="payment__history mb-30">
-      <h3 class="payment__history--title mb-20">Payment</h3>
+      <h3 class="payment__history--title mb-20">Pagos</h3>
       <ul class="payment__history--inner d-flex">
-        <li class="payment__history--list"><button class="payment__history--link primary__btn" type="submit">Credit Card</button></li>
-        <li class="payment__history--list"><button class="payment__history--link primary__btn" type="submit">Bank Transfer</button></li>
+        <li class="payment__history--list"><button class="payment__history--link primary__btn" type="submit">Tarjeta</button></li>
+        <!-- <li class="payment__history--list"><button class="payment__history--link primary__btn" type="submit">Bank Transfer</button></li> -->
         <li class="payment__history--list"><button class="payment__history--link primary__btn" type="submit">Paypal</button></li>
       </ul>
     </div>
@@ -48,3 +48,23 @@
 
   </aside>
 </div>
+
+<script>
+  // Función para calcular el subtotal y el total del carrito
+function calcularTotales() {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let subtotal = 0;
+
+    carrito.forEach(item => {
+        subtotal += item.precio * item.cantidad;
+    });
+
+    // Llenar los valores en el HTML
+    document.querySelector('.checkout__total--body .checkout__total--amount.text-right').textContent = `$${subtotal.toFixed(2)}`;
+    document.querySelector('.checkout__total--footer__amount.checkout__total--footer__list.text-right').textContent = `$${subtotal.toFixed(2)}`;
+}
+
+// Ejecutar la función para calcular y llenar los totales
+calcularTotales();
+
+</script>

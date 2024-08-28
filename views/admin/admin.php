@@ -30,6 +30,7 @@ Filtro de lista blanca
 $pages = array(
   "home" => "pages/home/home.php",
   "user" => "pages/user/user.php",
+  "order" => "pages/order/order.php",
   
 );
 

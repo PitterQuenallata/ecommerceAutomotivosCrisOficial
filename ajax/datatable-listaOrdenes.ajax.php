@@ -2,6 +2,7 @@
 require_once "../controllers/ordenes.controller.php";
 require_once "../models/ordenes.model.php";
 require_once "../models/envios.model.php";
+require_once '../api/ApiController.php';
 session_start();
 
 class TablaOrdenes {
@@ -13,7 +14,7 @@ class TablaOrdenes {
 
         $id_cliente = $_SESSION['id_cliente'];
         $ordenes = ControladorOrdenes::ctrMostrarOrdenesyEnvio($id_cliente);
-
+        // print_r($ordenes);
         $datosJson = '{ "data": [ ';
 
         foreach ($ordenes as $key => $orden) {
@@ -21,7 +22,7 @@ class TablaOrdenes {
                 "id_orden": "<a href=\"/profile/orden/detalle?idOrden=' . $orden["id_orden"] . '&idCliente=' . $id_cliente . '\">Ver # ' . $orden["id_orden"] . '</a>",
                 "fecha": "' . $orden["fecha_orden"] . '",
                 "estado": "' . $orden["estado_orden"] . '",
-                "envio": "' . $orden["estado_envio"] . '",
+                "envio": "' . $orden["estadoPaquete"] . '",
                 "total": "$' . number_format($orden["total_orden"], 2) . ' USD"
             },';
         }

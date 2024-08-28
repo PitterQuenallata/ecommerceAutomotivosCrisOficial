@@ -1,49 +1,60 @@
 <?php
 session_start();
-require_once '../api/ApiController.php'; 
+require_once 'ApiController.php';
+require_once '../models/ordenes.model.php';
 
-// Verifica que la solicitud es POST
-//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $usuario = $_SESSION['cliente'];
+$api = new ApiController();
 
-  // Captura los datos enviados por AJAX
-  $nombreEnvio = $_POST['nombreEnvio'];
-  $apellidoEnvio = $_POST['apellidoEnvio'];
-  $ciEnvio = $_POST['ciEnvio'];
-  $celularEnvio = $_POST['celularEnvio'];
-  $departamento = $_POST['departamento'];
-  $sucursal = $_POST['sucursal'];
+// Capturar los datos enviados por el método POST
+$envioData = json_decode($_POST['envioData'], true);
+$idOrden = $_POST['idOrden'] ?? "";
 
-  // Preparar los datos para enviar a la API en formato JSON
-  $dataEnvio = [
-      "cedula_remitente" => 2616165,
-      "nombre_remitente" => $nombreEnvio . ' ' . $apellidoEnvio,
-      "telefono_remitente" => 7879948,
-      "direccion_remitente" => "santa", // Cambia esto según sea necesario
-      "sucursalPartida" => $departamento,
-      "sucursalLlegada" => $sucursal,
-      "tipoEnvio" => 0,  // Cambia esto según sea necesario
-      "descripcion" => "Repuesto",  // Cambia esto según sea necesario
-      "cantidad" => 1,  // Cambia esto según sea necesario
-      "precio" => 10.00,  // Cambia esto según sea necesario
-      "tipoPaquete" => "caja"  // Cambia esto según sea necesario
-  ];
+// Asegurarse de que ambos datos están presentes
+if ($envioData && $idOrden) {
+    // Preparar los datos para enviar a la API
+    $data = [
+        'cedula_remitente' => $envioData['ciEnvio'],
+        'nombre_remitente' => $envioData['nombreEnvio'] . ' ' . $envioData['apellidoEnvio'],
+        'telefono_remitente' => $envioData['celularEnvio'],
+        'direccion_remitente' => $envioData['direccionEnvio'],
+        'sucursalPartida' => 1,  // Valor fijo
+        'sucursalLlegada' => $envioData['sucursalLlegada'],
+        'tipoEnvio' => 1,  // Valor predeterminado para tipo de envío
+        'descripcion' => $envioData['descripcion'],
+        'cantidad' => $envioData['cantidad'],
+        'pesoPaquete' => $envioData['pesoPaquete'],
+        'tipoPaquete' => $envioData['tipoPaquete']
+    ];
 
-  // Crear el objeto de la API
-  $api = new ApiController();
+    // Enviar los datos a la API usando el controlador
+    $response = $api->postEnvio($data);
 
-  // Enviar los datos a la API
-  $response = $api->postEnvio($dataEnvio);
-    print_r($response);
-    echo "hola";
-    // Verificar la respuesta y retornar un JSON
-    // if ($response  == 'true') {
-    //     echo json_encode(['status' => 'success', 'message' => 'Envío procesado exitosamente']);
-    // } else {
-    //     echo json_encode(['status' => 'error', 'message' => 'Error al procesar el envío']);
-    // }
-// } else {
-//     // Si no es una solicitud POST, retornar un error
-//     echo json_encode(['status' => 'error', 'message' => 'Solicitud inválida']);
-// }
-?>
+    // Verificar la respuesta de la API
+    if (isset($response['nro_registro'])) {
+        // Guardar el nro_registro en la base de datos con el idOrden
+        $resultado = ModeloOrdenes::mdlGuardarNroRegistro($idOrden, $response['nro_registro']);
+
+        if ($resultado) {
+            echo json_encode([
+                'success' => true,
+                'nro_registro' => $response['nro_registro'],
+                'message' => 'Número de registro guardado correctamente'
+            ]);
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Error al guardar el número de registro en la base de datos'
+            ]);
+        }
+    } else {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Error al obtener el número de registro de la API'
+        ]);
+    }
+} else {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Datos insuficientes para procesar el envío'
+    ]);
+}

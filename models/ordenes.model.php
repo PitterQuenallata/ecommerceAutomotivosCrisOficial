@@ -59,8 +59,7 @@ class ModeloOrdenes
                 r.nombre_repuesto,
                 r.descripcion_repuesto,
                 e.id_envio,
-                e.estado_envio,
-                e.direccion_envio
+                e.nro_registro
             FROM 
                 repuestoscris.ordenes o
             INNER JOIN 
@@ -108,5 +107,28 @@ class ModeloOrdenes
         } else {
             return false;
         }
+    }
+
+    /*=============================================
+    Método para guardar el nro_registro en la tabla envios basado en el id_orden
+    =============================================*/
+
+    public static function mdlGuardarNroRegistro($idOrden, $nroRegistro)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE envios SET nro_registro = :nroRegistro WHERE id_orden = :idOrden");
+
+        // Vincular los parámetros
+        $stmt->bindParam(":nroRegistro", $nroRegistro, PDO::PARAM_STR);
+        $stmt->bindParam(":idOrden", $idOrden, PDO::PARAM_INT);
+
+        // Ejecutar y verificar si la actualización fue exitosa
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+        $stmt->close();
+        $stmt = null;
     }
 }
