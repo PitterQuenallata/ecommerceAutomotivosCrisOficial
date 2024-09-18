@@ -53,8 +53,8 @@ foreach ($repuestos as $repuesto) {
     echo "<div class='product__card--content'>";
     echo "<h3 class='product__card--title'><a href='product-details.html'>{$repuesto['nombre_repuesto']}</a></h3>";
     echo "<div class='product__card--price'>";
-    echo "<span class='current__price'>\${$repuesto['precio_repuesto']}</span>";
-    echo "<span class='old__price'>\${$repuesto['precio_repuesto']}</span>";
+    echo "<span class='current__price'>BS {$repuesto['precio_repuesto']}</span>";
+    echo "<span class='old__price'>BS {$repuesto['precio_repuesto']}</span>";
     echo "</div>";
     echo "<div class='product__card--footer d-flex justify-content-between align-items-center'>";
     echo "<a class='product__card--btn primary__btn d-flex justify-content-center align-items-center w-75 text-center me-1' href='carritoPage' data-id-repuesto-comprar='{$repuesto['id_repuesto']}'>Comprar</a>";

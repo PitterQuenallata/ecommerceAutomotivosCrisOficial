@@ -81,12 +81,12 @@ function handleSuccessfulPayment($session) {
         ");
         $stmt->execute([':id_cliente' => $id_cliente]);
         
-        $_SESSION['id_orden'] = $id_orden;
+        // $_SESSION['id_orden'] = $id_orden;
 
-        echo '<script>
-        console.log("hola)
-        window.location = "/profile/orden/detalle?idOrden='. $id_orden.'&idCliente='.$id_cliente.'";
-        </script>';
+        // echo '<script>
+        // console.log("hola)
+        // window.location = "/profile/orden/detalle?idOrden='. $id_orden.'&idCliente='.$id_cliente.'";
+        // </script>';
         // Confirmar la transacción
         $conn->commit();
 
@@ -94,7 +94,7 @@ function handleSuccessfulPayment($session) {
 
         // Redirigir a la página de detalles de la orden
     // Redirigir a la página de detalles de la orden
-        error_log('Redirigiendo a /profile/orden/detalle?idOrden='.$id_orden.'&idCliente='.$id_cliente.'');
+        // error_log('Redirigiendo a /profile/orden/detalle?idOrden='.$id_orden.'&idCliente='.$id_cliente.'');
     // header('Location: /profile/orden/detalle?idOrden='.$id_orden.'&idCliente='.$id_cliente.'');
     // exit;
 

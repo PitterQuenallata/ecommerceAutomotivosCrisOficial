@@ -60,8 +60,8 @@ function calcularTotales() {
     });
 
     // Llenar los valores en el HTML
-    document.querySelector('.checkout__total--body .checkout__total--amount.text-right').textContent = `$${subtotal.toFixed(2)}`;
-    document.querySelector('.checkout__total--footer__amount.checkout__total--footer__list.text-right').textContent = `$${subtotal.toFixed(2)}`;
+    document.querySelector('.checkout__total--body .checkout__total--amount.text-right').textContent = `BS ${subtotal.toFixed(2)}`;
+    document.querySelector('.checkout__total--footer__amount.checkout__total--footer__list.text-right').textContent = `BS ${subtotal.toFixed(2)}`;
 }
 
 // Ejecutar la función para calcular y llenar los totales

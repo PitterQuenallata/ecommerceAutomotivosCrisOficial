@@ -95,7 +95,7 @@ $(document).ready(function () {
                   <div class="minicart__text">
                       <h4 class="minicart__subtitle"><a href="product-details.html">${repuesto.nombre}</a></h4>
                       <div class="minicart__price">
-                          <span class="minicart__current--price">$${repuesto.precio.toFixed(2)}</span>
+                          <span class="minicart__current--price">BS ${repuesto.precio.toFixed(2)}</span>
                       </div>
                       <div class="minicart__text--footer d-flex align-items-center">
                           <div class="quantity__box minicart__quantity">
@@ -112,7 +112,7 @@ $(document).ready(function () {
           `);
       });
 
-      $('#total').text(`$${subtotal.toFixed(2)}`);
+      $('#total').text(`BS ${subtotal.toFixed(2)}`);
   }
 
   // Función para cargar y mostrar los datos del carrito en la página cart.php
@@ -148,7 +148,7 @@ $(document).ready(function () {
                       </div>
                   </td>
                   <td class="cart__table--body__list">
-                      <span class="cart__price">$${repuesto.precio.toFixed(2)}</span>
+                      <span class="cart__price">BS ${repuesto.precio.toFixed(2)}</span>
                   </td>
                   <td class="cart__table--body__list">
                       <div class="quantity__box">
@@ -160,13 +160,13 @@ $(document).ready(function () {
                       </div>
                   </td>
                   <td class="cart__table--body__list">
-                      <span class="cart__price">$${totalItem.toFixed(2)}</span>
+                      <span class="cart__price">BS ${totalItem.toFixed(2)}</span>
                   </td>
               </tr>
           `);
       });
 
-      $('.cart__summary--amount.text-right').text(`$${subtotal.toFixed(2)}`);
+      $('.cart__summary--amount.text-right').text(`BS ${subtotal.toFixed(2)}`);
   }
 
   // Event listeners para los botones de aumentar/disminuir cantidad y eliminar del carrito
@@ -245,7 +245,7 @@ $(document).ready(function () {
   function actualizarTotalCarrito() {
       var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
       var total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
-      $('.minicart__btn--text__price').text(`$${total.toFixed(2)}`);
+      $('.minicart__btn--text__price').text(`BS ${total.toFixed(2)}`);
   }
 
   // Cargar los datos del carrito al cargar la página cart.php

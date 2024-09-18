@@ -17,7 +17,7 @@
     <div class="minicart__amount">
         <div class="minicart__amount_list d-flex justify-content-between">
             <span>Total:</span>
-            <span><b id="total">$0.00</b></span>
+            <span><b id="total">BS 0.00</b></span>
         </div>
     </div>
     <div class="minicart__conditions text-center">
