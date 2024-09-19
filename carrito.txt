@@ -30,5 +30,7 @@ Inicio: El cliente agrega productos al carrito sin necesidad de iniciar sesión.
 Login: El cliente debe iniciar sesión para proceder al pago, lo que sincroniza su carrito con la base de datos.
 Checkout: Después de iniciar sesión, el cliente procede al pago y completa la compra.
 
-
-stripe listen --forward-to http://cris.local/webhook.php
+intall stripe patch
+composer
+stripe login
+stripe listen --forward-to http://cris.local/ajax/webhook.php

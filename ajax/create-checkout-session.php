@@ -9,17 +9,29 @@ session_start();
 $carrito = $_POST['carrito'];
 $id_cliente = $_SESSION['id_cliente']; // Recuperar idCliente de la sesión
 
+// Verificar si el ID del cliente está presente en la sesión
+if (!$id_cliente) {
+    error_log("ID del cliente no encontrado en la sesión.");
+    exit("Error: ID del cliente no encontrado.");
+} else {
+    error_log("ID del cliente: " . $id_cliente);
+}
+
+// Verificar si el carrito tiene ítems
+if (empty($carrito)) {
+    error_log("El carrito está vacío o no se recibieron datos.");
+    exit("Error: El carrito está vacío.");
+} else {
+    error_log("Carrito recibido: " . print_r($carrito, true));
+}
+
 // Inicializa el monto total a cero
 $montoTotal = 0;
 
-// Arreglo para los ítems de Stripe Checkout
 $line_items = [];
-
 foreach ($carrito as $item) {
-    // Calcula el monto total
     $montoTotal += $item['precio'] * $item['cantidad'];
 
-    // Añade el ítem al arreglo de line_items de Stripe
     $line_items[] = [
         'price_data' => [
             'currency' => 'usd',
@@ -32,26 +44,26 @@ foreach ($carrito as $item) {
     ];
 }
 
+error_log("Monto total calculado para Stripe: " . $montoTotal);
+
 try {
-    // Crear la sesión de Stripe Checkout
     $checkout_session = \Stripe\Checkout\Session::create([
         'payment_method_types' => ['card'],
         'line_items' => $line_items,
         'mode' => 'payment',
-        'success_url' => 'http://cris.local/profile/success?session_id={CHECKOUT_SESSION_ID}&idCliente=' . $id_cliente, // Agregar idCliente a la URL
-        'client_reference_id' => $_SESSION['id_cliente'], // Envía el ID del cliente como referencia
+        'success_url' => 'http://cris.local/profile/success?session_id={CHECKOUT_SESSION_ID}&idCliente=' . $id_cliente,
+        'client_reference_id' => $_SESSION['id_cliente'], 
         'metadata' => [
-            'order_id' => uniqid(), // ID único de la orden
+            'order_id' => uniqid(), 
         ]
     ]);
 
-    // Verificar que se está generando el sessionId
     error_log('Session ID: ' . $checkout_session->id);
 
     echo json_encode(['id' => $checkout_session->id]);
 
 } catch (Exception $e) {
-    error_log('Error al crear la sesión de Stripe: ' . $e->getMessage()); // Log del error
+    error_log('Error al crear la sesión de Stripe: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);
 }

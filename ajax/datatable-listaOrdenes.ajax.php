@@ -14,18 +14,23 @@ class TablaOrdenes {
 
         $id_cliente = $_SESSION['id_cliente'];
         $ordenes = ControladorOrdenes::ctrMostrarOrdenesyEnvio($id_cliente);
-        // print_r($ordenes);
+        //print_r($ordenes);
         $datosJson = '{ "data": [ ';
 
         foreach ($ordenes as $key => $orden) {
+            // Convertir el total_orden a un número eliminando la coma
+            $totalOrden = str_replace(',', '', $orden["total_orden"]);
+            $totalOrden = floatval($totalOrden);
+        
             $datosJson .= '{
                 "id_orden": "<a href=\"/profile/orden/detalle?idOrden=' . $orden["id_orden"] . '&idCliente=' . $id_cliente . '\">Ver # ' . $orden["id_orden"] . '</a>",
                 "fecha": "' . $orden["fecha_orden"] . '",
                 "estado": "' . $orden["estado_orden"] . '",
                 "envio": "' . $orden["estadoPaquete"] . '",
-                "total": "$' . number_format($orden["total_orden"], 2) . ' USD"
+                "total": "$' . number_format($totalOrden, 2) . ' BS"
             },';
         }
+        
 
         $datosJson = substr($datosJson, 0, -1);
         $datosJson .= ']}';

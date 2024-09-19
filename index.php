@@ -16,7 +16,7 @@ require_once "models/admin/user.admin.model.php";
 /*=============================================
 Require
 =============================================*/
-require_once "vendor/autoload.php";
+// require_once "vendor/autoload.php";
 require_once 'api/ApiController.php';
 
 require_once "controllers/categorias.controller.php";

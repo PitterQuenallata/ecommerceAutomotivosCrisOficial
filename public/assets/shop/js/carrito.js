@@ -22,7 +22,7 @@ $(document).ready(function () {
       // Obtenemos el nombre, precio, imagen y stock del repuesto
       var productCard = $(this).closest('.product__card');
       var nombre = productCard.find('.product__card--title a').text();
-      var precio = productCard.find('.current__price').text().replace('$', '');
+      var precio = productCard.find('.current__price').text().replace('BS', '');
       var imagen = productCard.find('.product__primary--img').attr('src');
       var stock = productCard.data('stock-repuesto');
       var marca = productCard.data('marca-repuesto');
