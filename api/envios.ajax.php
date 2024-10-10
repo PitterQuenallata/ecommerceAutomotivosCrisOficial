@@ -23,9 +23,9 @@ if ($envioData && $idOrden) {
         'descripcion' => $envioData['descripcion'],
         'cantidad' => $envioData['cantidad'],
         'pesoPaquete' => $envioData['pesoPaquete'],
-        'tipoPaquete' => $envioData['tipoPaquete']
+        'tipoPaquete' => 4
     ];
-
+    print_r($data);
     // Enviar los datos a la API usando el controlador
     $response = $api->postEnvio($data);
 

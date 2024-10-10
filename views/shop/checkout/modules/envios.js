@@ -15,7 +15,7 @@ $(document).ready(function() {
         var descripcion = "Repuesto"; // Asignar el valor o dejarlo vacío
         var cantidad = "1"; // Asignar el valor o dejarlo vacío
         var pesoPaquete = "1"; // Asignar el valor o dejarlo vacío
-        var tipoPaquete = "5"; // Asignar el valor o dejarlo vacío
+    
 
         // Guardar los datos en localStorage
         localStorage.setItem('envioData', JSON.stringify({
@@ -27,8 +27,7 @@ $(document).ready(function() {
             direccionEnvio: direccionEnvio,
             descripcion: descripcion,
             cantidad: cantidad,
-            pesoPaquete: pesoPaquete,
-            tipoPaquete: tipoPaquete
+            pesoPaquete: pesoPaquete
         }));
 
 

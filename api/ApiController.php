@@ -2,8 +2,8 @@
 
 class ApiController {
 
-    private $jwt_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L1Byb3llY3RvLXdlYi1FbmNvbWllbmRhcyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvUHJveWVjdG8td2ViLUVuY29taWVuZGFzIiwiaWF0IjoxNzI0Nzc1NDE1LCJuYmYiOjE3MjQ3NzU0MTUsImRhdGEiOnsiaWRVc3VhcmlvIjoxMywidXN1YXJpbyI6ImF1dG9jcmlzIiwicGVyZmlsIjoiZW1wcmVzYSJ9fQ.WHg7qdzhK5Hzt0ugwUBjiWH4XeXPvRUILDEDpT_iBzs'; // Reemplaza con tu clave JWT real
-    private $base_url = 'https://proyecto-web.com/Proyecto-web-Encomiendas/api/';
+    private $jwt_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L1Npc3RlbWFFbmNvbWllbmRhcyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QvU2lzdGVtYUVuY29taWVuZGFzIiwiaWF0IjoxNzI4NTIzODMwLCJuYmYiOjE3Mjg1MjM4MzAsImRhdGEiOnsiaWRVc3VhcmlvIjoyLCJ1c3VhcmlvIjoiYWNyaXMiLCJwZXJmaWwiOiJlbXByZXNhIn19.Oh_V1caMdXapO-7BpXCELH9A6q4K1NYDK2cCjJkZOs0'; // Reemplaza con tu clave JWT real
+    private $base_url = 'https://proyecto-web.com/SistemaEncomiendas/api/';
 
     public function postEnvio($data) {
         $url = $this->base_url . 'envios';
