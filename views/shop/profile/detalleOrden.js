@@ -30,11 +30,12 @@ $(document).ready(function() {
         // Variables para sumar cantidades y obtener el total de la orden
         let sumaCantidad = 0;
         let totalCompra = datos.total_orden;  // Ajustado porque datos ya no es un array
-
+        console.log(datos);
         // Actualizar el número y la fecha de la orden
         $('#ordenNumero').text(`Orden # ${datos.id_orden}`);
         $('#ordenFecha').text(`Fecha de la orden: ${datos.fecha_orden}`);
-        $('#estadoEnvio').text(`Estado de envío: ${datos.estadoPaquete}`);
+        $('#estadoEnvio').text(`Estado de envío: ${datos.estadoPaquete} :Nro. Registro ${datos.nro_orden}`);
+
 
         // Mostrar el mensaje de pago completado solo si el estado es "Completado"
         if (datos.estado_orden === 'Completado') {

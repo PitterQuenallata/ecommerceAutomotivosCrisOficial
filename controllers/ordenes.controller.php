@@ -110,6 +110,7 @@ public static function ctrMostrarDetalleOrden($id_cliente, $id_orden)
 
     // Agrupar la respuesta en una estructura organizada
     $detalleOrden = [
+        "nro_orden" => $respuesta[0]["nro_registro"],
         "id_orden" => $respuesta[0]["id_orden"],
         "fecha_orden" => $respuesta[0]["fecha_orden"],
         "estado_orden" => $respuesta[0]["estado_orden"] == 1 ? "Completado" : "Pendiente",
